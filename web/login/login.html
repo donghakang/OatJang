@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+html, body {
+	margin: 0;
+	padding: 0;
+}
+</style>
+</head>
+<body>
+	<div id="NavBar">
+		<iframe src="/oatjang/login/loginMenu.jsp" frameborder="0"
+			style="width: 100%; height:100%"
+		>
+			<p>menu를 불러올수 없습니다.</p>
+		</iframe>
+	</div>
+
+	<div id="Login">
+		<form action="/oatjang/login.do" method="post">
+			<table border="0" align="center" width="350">
+				<tr>
+					<td>아이디</td>
+					<td>
+						<input type="text" name="id">
+					</td>
+				</tr>
+				<tr>
+					<td>비밀번호</td>
+					<td>
+						<input type="password" name="pwd">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<input type="submit" value="로그인">
+						<input type="reset" value="취&nbsp;&nbsp;소">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+
+</body>
+</html>
