@@ -5,9 +5,8 @@
 <mapper namespace="mybatis.BoardMapper">
 	<insert id="boardInsert" parameterType="BoardDTO">
       <![CDATA[
-         INSERT INTO BOARD 
-         VALUES(SEQ_BOARD.NEXTVAL,#{id},#{name},#{email},#{subject},#{content},
-         SEQ_BOARD.CURRVAL,0,0,0,0,0,SYSDATE)
+      		INSERT INTO ITEM
+      		VALUES(SEQ_ITEM.NEXTVAL,#{userid},#{title},#{price},#{images},#{description},#{category},#{success},NULL)
       ]]>
 	</insert>
 	

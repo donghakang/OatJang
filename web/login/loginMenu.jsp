@@ -47,6 +47,8 @@ a {
 		LoginDTO entity = (LoginDTO) session.getAttribute("logOK");
 		if (entity == null) {
 		%> --%>
+		
+		<a href="/oatjang/board/boardInsert.jsp">글쓰기 예시</a>
 		<a href="/oatjang/login/login.jsp">로그인</a>
 		<a href="/oatjang/logout.do">로그아웃</a> 
 	</nav>
