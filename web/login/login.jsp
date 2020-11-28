@@ -1,7 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>OatJang - 로그인 화면 </title>
+</head>
+<body>
 <%@ include file="loginMenu.jsp" %>
-
 <form action="/oatjang/login.do"  method="post">
 <table border="0" align="center" width="350">
 	<tr>

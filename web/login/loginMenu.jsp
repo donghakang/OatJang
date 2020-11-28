@@ -55,7 +55,7 @@ a {
 	<nav id="menu">
 		<input type="button" class="material-icons" value="search" />
 		<!-- TODO: 회원가입, 마이페이지-->
-		<a href="">회원가입</a>
+		<a href="/oatjang/login/register.jsp">회원가입</a>
 		<a href="">마이페이지</a>
 		<%-- <%
 		LoginDTO entity = (LoginDTO) session.getAttribute("logOK");

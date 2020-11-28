@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        .nav {
+            background-color: greenyellow;
+        }
+        .canvas {
+            background-color: orange;
+            height: 80vh;
+        }
+        .menu {
+            margin: auto;
+            padding: 0;
+            background-color: skyblue;
+        }
+
+        .menu > * {
+            width: 50%;
+            height: 50vh;
+            display: inline-block;
+            float: left;
+        }
+
+        #all {
+            background-color: red;
+        }
+        #popular {
+            background-color: yellow;
+        }
+        #bid {
+            background-color: green;
+        }
+        #map {
+            background-color: blue;
+        }
+
+        #all:hover {
+            background-color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+<div class="nav">navigation bar</div>
+<div class="canvas">
+    <canvas>
+        
+    </canvas>
+</div>
+<div class="menu">
+    <div id="all">전체</div>
+    <div id="popular">인기</div>
+    <div id="bid">경매</div>
+    <div id="map">지도</div>
+</div>
+</body>
+</html>
