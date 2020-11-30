@@ -1,7 +1,6 @@
 package com.board.service;
 
 import java.io.File;
-import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.List;
 
@@ -26,12 +25,11 @@ import controller.CommandAction;
 public class BoardInsertService implements CommandAction{
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		String realFolder="C:\\Users\\`User\\OatJang\\OatJang\\web\\images"; // 파일이 저장될 주소 => 나중에 서버로 쓰면 서버로 바꾸면됨
+		String realFolder= request.getSession().getServletContext().getRealPath("/images"); // 파일이 저장될 주소 => 나중에 서버를 따로 구동하면 서버에 알아서 올라감
 		String file="";
 		FileItemFactory factory = new DiskFileItemFactory();
 	 	ServletFileUpload upload = new ServletFileUpload(factory);
 		BoardDTO dto = new BoardDTO();
-	 	
 	 	try {
 	 		List items = upload.parseRequest(new ServletRequestContext(request));
 
@@ -44,14 +42,15 @@ public class BoardInsertService implements CommandAction{
 	 				if(!path.exists()) {
 	 					path.mkdirs();
 	 				}
-	 				File uploadfile = new File(path+"/"+fileName);
-	 				int n=0;
- 					int place = fileName.indexOf('.');
-	 				while(uploadfile.exists()) {
-	 					n++;
-	 					uploadfile = new File(path+"/"+fileName.substring(0,place)+n+fileName.substring(place));
-	 				}
-	 				if(fileName!="") {
+
+	 				if(fileName!="") {	// 파일을 upload할 이름으로 ,를 통해 구분해서 db상에 저장하고 upload 
+		 				File uploadfile = new File(path+"/"+fileName);
+		 				int n=0;
+	 					int place = fileName.indexOf('.');
+		 				while(uploadfile.exists()) {	// 파일이 존재하면 가장뒤에 1부터 넣어보면서 없는 이름으로 저장한다.
+		 					n++;
+		 					uploadfile = new File(path+"/"+fileName.substring(0,place)+n+fileName.substring(place));
+		 				}
 	 					file+=uploadfile.getName()+",";
 	 					item.write(uploadfile);
 	 				}
@@ -65,18 +64,18 @@ public class BoardInsertService implements CommandAction{
 	 				 	dto.setPrice(Integer.parseInt(item.getString()));
 	 				}else if(fileName.equals("description")) {
 	 				 	dto.setDescription(item.getString());
-	 				}else if(fileName.equals("chk_ca")) {
-	 				 	String cate = item.getString();
+	 				}else if(fileName.equals("category")) {
+	 				 	String category = item.getString();
 	 				 	int a;
-	 				 	if(cate.equals("상의")) {
+	 				 	if(category.equals("상의")) {
 	 				 		a=0;
-	 				 	}else if(cate.equals("하의")) {
+	 				 	}else if(category.equals("하의")) {
 	 				 		a=1;
-	 				 	}else if(cate.equals("아우터")) {
+	 				 	}else if(category.equals("아우터")) {
 	 				 		a=2;
-	 				 	}else if(cate.equals("원피스")) {
+	 				 	}else if(category.equals("원피스")) {
 	 				 		a=3;
-	 				 	}else if(cate.equals("신발")) {
+	 				 	}else if(category.equals("신발")) {
 	 				 		a=4;
 	 				 	}else {
 	 				 		a=5;

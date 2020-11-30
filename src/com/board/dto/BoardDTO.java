@@ -10,8 +10,22 @@ public class BoardDTO {
 	private int category; // 판매상품 카테고리
 	private int success; // 판매상황
 	private String bid; // 입찰자 -> 경매용
+    private int hit;	// 조회수
+    private String logtime;	// 등록일
 	public BoardDTO() {
 		super();
+	}
+	public int getHit() {
+		return hit;
+	}
+	public void setHit(int hit) {
+		this.hit = hit;
+	}
+	public String getLogtime() {
+		return logtime;
+	}
+	public void setLogtime(String logtime) {
+		this.logtime = logtime;
 	}
 	public int getIid() {
 		return iid;

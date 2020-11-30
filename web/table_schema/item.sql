@@ -15,6 +15,8 @@ create table item(
     category NUMBER(10),
     success number(1),
     bid varchar(10),
+    hit number default 0,
+    logtime date default sysdate,
     constraint fk_item foreign key(userid) references users(userid));
 
 -- insert into users(id,pwd,name,point) values('admin','1111','어드민',35.34);
@@ -22,3 +24,4 @@ create table item(
 commit
 create sequence seq_item increment by 1 start with 1 nocycle nocache;
 select * from item;
+drop sequence seq_item;
