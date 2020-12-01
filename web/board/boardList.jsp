@@ -38,7 +38,7 @@
 	<tr>
 		<td align="center"><%= ob.getIid() %></td>
 		<td><img src="images/<%=imgName%>"></td>
-		<td><%=ob.getTitle() %></td>
+		<td><a href="/oatjang/boardDelete.do?iid=<%=ob.getIid()%>&pg=<%=pg%>"><%=ob.getTitle() %></a></td>
 		<td align="center">작성자 </td>
 		<td align="center"><%=ob.getHit() %> </td>
 		<td align="center"><%=ob.getLogtime() %> </td>

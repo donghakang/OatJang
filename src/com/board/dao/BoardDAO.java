@@ -60,6 +60,28 @@ public class BoardDAO {
 		session.close();
 		return list;
 	}
+	public String deleteBoard(int iid) {
+		SqlSession session = factory.openSession();
+		BoardDTO dto = session.selectOne("mybatis.BoardMapper.getBoard",iid);
+		String imgNames = dto.getImages();
+		session.close();
+		
+		session = factory.openSession();
+		int n = 0;
+		try {
+			n = session.update("mybatis.BoardMapper.boardDelete",iid);
+			if(n>0) {
+				session.commit();
+			}
+		}catch(Exception e) {
+			session.rollback();
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		
+		return imgNames;
+	}
 
 
 }

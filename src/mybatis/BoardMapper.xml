@@ -35,7 +35,7 @@
 	
 	<select id="getBoard" parameterType="java.lang.Integer" resultType="BoardDTO">
 		<![CDATA[
-			SELECT * FROM BOARD WHERE SEQ=#{seq}
+			SELECT * FROM ITEM WHERE IID=#{iid}
 		]]>
 	</select>
 	
@@ -43,5 +43,10 @@
       <![CDATA[
          UPDATE BOARD SET SUBJECT=#{subject},CONTENT=#{content},EMAIL=#{email} WHERE SEQ=#{seq}
       ]]>
+   </update>
+   <update id="boardDelete" parameterType="java.lang.Integer">
+   		<![CDATA[
+			DELETE FROM ITEM WHERE IID=#{iid}
+		]]>
    </update>
 </mapper>
