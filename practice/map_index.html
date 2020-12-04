@@ -5,16 +5,94 @@
 	<title>Kakao 지도 시작하기</title>
 </head>
 <body>
-	<div id="map" style="width:500px;height:400px;"></div>
+	<div id="map" style="width:100vw;height:100vh;"></div>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b589ca52298076a814d3d36194e69ebe"></script>
 	<script>
 		var container = document.getElementById('map');
 		var options = {
-			center: new kakao.maps.LatLng(33.450701, 126.570667),
+			center: new kakao.maps.LatLng(37.53623519699613, 127.09128956725105),
 			level: 3
 		};
 
 		var map = new kakao.maps.Map(container, options);
+
+
+		
+		// 마커가 표시될 위치입니다 
+		var MARKER_IMG_W = 54;
+		var MARKER_IMG_H = 54;
+		var HOVER_MARKER_IMG_W = 62;
+		var HOVER_MARKER_IMG_H = 62;
+
+		
+
+		var imageSrc = 'place-blue-48dp.svg', // 마커이미지의 주소입니다    
+			markerSize = new kakao.maps.Size(MARKER_IMG_W, MARKER_IMG_H),	 // 마커이미지의 크기입니다
+    		markerOption = {offset: new kakao.maps.Point(MARKER_IMG_W/2, MARKER_IMG_H)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+      
+		var markerImage = new kakao.maps.MarkerImage(imageSrc, markerSize, markerOption);
+
+			markerSize = new kakao.maps.Size(HOVER_MARKER_IMG_W, HOVER_MARKER_IMG_H);
+			markerOption = {offset: new kakao.maps.Point(HOVER_MARKER_IMG_W/2, HOVER_MARKER_IMG_H)}; 
+		
+		var hoverMarkerImage = new kakao.maps.MarkerImage(imageSrc, markerSize, markerOption);
+
+		var markerPosition  = new kakao.maps.LatLng(37.53623519699613, 127.09128956725105); 
+
+		//------------------------------------------------------------------------
+		// Marker
+
+		// 마커를 생성합니다
+		var marker1 = new kakao.maps.Marker({
+			position: markerPosition,
+			image: markerImage,
+			clickable: true
+		});
+
+		var marker2 = new kakao.maps.Marker({
+			position: markerPosition,
+		});
+
+		// 마커가 지도 위에 표시되도록 설정합니다
+		// marker2.setMap(map);
+		marker1.setMap(map);
+
+
+		//------------------------------------------------------------------------
+		// Info Window
+
+		// 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
+		var iwContent = '<div>Hello World!</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+			iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+
+		// 인포윈도우를 생성합니다
+		var infowindow = new kakao.maps.InfoWindow({
+			content : iwContent,
+			removable : iwRemoveable
+		});
+
+
+		// Mouse Event
+		// 마커에 클릭이벤트를 등록합니다
+		kakao.maps.event.addListener(marker1, 'click', function() {
+			// 마커 위에 인포윈도우를 표시합니다
+			infowindow.open(map, marker1);  
+		});
+
+				// 마커에 마우스오버 이벤트를 등록합니다
+		kakao.maps.event.addListener(marker1, 'mouseover', function() {
+		// 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
+			// infowindow.open(map, marker1);
+			marker1.setImage(hoverMarkerImage);
+		});
+
+		// 마커에 마우스아웃 이벤트를 등록합니다
+		kakao.maps.event.addListener(marker1, 'mouseout', function() {
+			// 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
+			marker1.setImage(markerImage);
+		});
+
+		
 	</script>
 </body>
 </html> 
