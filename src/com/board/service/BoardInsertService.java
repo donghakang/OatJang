@@ -25,10 +25,12 @@ import controller.CommandAction;
 public class BoardInsertService implements CommandAction{
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+
 		String realFolder= request.getSession().getServletContext().getRealPath("/images"); // 파일이 저장될 주소 => 나중에 서버를 따로 구동하면 서버에 알아서 올라감
 		String file="";
 		FileItemFactory factory = new DiskFileItemFactory();
 	 	ServletFileUpload upload = new ServletFileUpload(factory);
+	 	
 		BoardDTO dto = new BoardDTO();
 	 	try {
 	 		List items = upload.parseRequest(new ServletRequestContext(request));
@@ -57,15 +59,16 @@ public class BoardInsertService implements CommandAction{
 	 			}else {
 	 				String fileName = item.getFieldName();
 	 				if(fileName.equals("userid")) {
-	 				 	dto.setUserid(Integer.parseInt(item.getString()));
+	 				 	dto.setUserid(Integer.parseInt(item.getString("utf-8")));
 	 				}else if(fileName.equals("title")) {
-	 					dto.setTitle(item.getString());
+	 					dto.setTitle(item.getString("utf-8"));
+	 					System.out.println("title: "+item.getString());
 	 				}else if(fileName.equals("price")) {
-	 				 	dto.setPrice(Integer.parseInt(item.getString()));
+	 				 	dto.setPrice(Integer.parseInt(item.getString("utf-8")));
 	 				}else if(fileName.equals("description")) {
-	 				 	dto.setDescription(item.getString());
+	 				 	dto.setDescription(item.getString("utf-8"));
 	 				}else if(fileName.equals("category")) {
-	 				 	String category = item.getString();
+	 				 	String category = item.getString("utf-8");
 	 				 	int a;
 	 				 	if(category.equals("상의")) {
 	 				 		a=0;

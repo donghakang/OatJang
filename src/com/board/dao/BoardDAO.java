@@ -82,6 +82,27 @@ public class BoardDAO {
 		
 		return imgNames;
 	}
+	public BoardDTO getBoard(int iid) {
+		SqlSession session = factory.openSession();
+		BoardDTO dto = session.selectOne("mybatis.BoardMapper.getBoard",iid);
+		session.close();
+		return dto;
+	}
+	public void boardUpdate(BoardDTO dto) {
+		SqlSession session = factory.openSession();
+		int n = 0;
+		try {
+			n = session.update("mybatis.BoardMapper.boardUpdate",dto);
+			if(n>0) {
+				session.commit();
+			}
+		}catch(Exception e) {
+			session.rollback();
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+	}
 
 
 }

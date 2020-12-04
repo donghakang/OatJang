@@ -41,7 +41,7 @@
 	
 	<update id="boardUpdate" parameterType="BoardDTO">
       <![CDATA[
-         UPDATE BOARD SET SUBJECT=#{subject},CONTENT=#{content},EMAIL=#{email} WHERE SEQ=#{seq}
+         UPDATE ITEM SET TITLE=#{title},PRICE=#{price},CATEGORY=#{category},DESCRIPTION=#{description} WHERE IID=#{iid}
       ]]>
    </update>
    <update id="boardDelete" parameterType="java.lang.Integer">
