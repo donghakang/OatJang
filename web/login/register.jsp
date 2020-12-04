@@ -37,7 +37,7 @@
 				); */
 			
 		});
-		// 비밀번호 체크
+		
 		$('#pw1, #pw2').keyup(function() {
 			var number = /([0-9])/;
             var alphabets = /([a-zA-Z])/;
@@ -47,28 +47,42 @@
 			var pw2 = $("#pw2").val();
 			var pwStrength = $("#pwStrength");
 			var pwCheck = $("#pwCheck");
+			var pwStatus = 0;
 			
 			if (pw1.length < 6) {
 				pwStrength.text("weak");	
+				pwStatus = 0;
 			} else {
 				 if (pw1.match(number) && pw1.match(alphabets) && pw1.match(special_characters)) {
+					 pwStatus = 2;
 					 pwStrength.text("strong");
 				 } else {
+					 pwStatus = 1;
 					 pwStrength.text("medium");
 				 }
 			}
 			
-			if (pw1 == pw2) {
-				$("#pwCheck").text("비밀번호가 일치합니다.").css({
-					'font-weight' : 'bold',
-					'color' : 'green'
-				});
+			
+			if (pwStatus == 2) {
+				if (pw1 == pw2) {
+					$("#pwCheck").text("비밀번호가 일치합니다.").css({
+						'font-weight' : 'bold',
+						'color' : 'green'
+					});
+				} else {
+					$("#pwCheck").text("비밀번호가 일치하지 않습니다. ").css({
+						'font-weight' : 'bold',
+						'color' : 'red'
+					});
+				}
 			} else {
-				$("#pwCheck").text("비밀번호가 일치하지 않습니다. ").css({
+				$("#pwCheck").text("비밀번호를 더 강하게 만들어 주세요").css({
 					'font-weight' : 'bold',
 					'color' : 'red'
 				});
 			}
+			
+			
 		});
 		
 		// TODO: 본인인증
