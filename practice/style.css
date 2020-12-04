@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #2f303a;
+    font-family: Poppins, sans-serif;
+    font-size: 1.2rem;
+    color: white;
+    min-height: 100vh;
+}
+
+.nav {
+    height: 4vh;
+    background-color: cyan;
+}
+
+.intro {
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.intro #name {
+    font-weight: bold;
+    padding-left: 25vw;
+    font-size: 4.5rem;
+}
+.intro #describe {
+    background-color: blueviolet;
+    padding-left: 25vw;
+}
+
+.menu {
+    background-color: black;
+    width: 100vw;
+    height: 46vh;
+    line-height: 50vh;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 2rem;
+}
+
+#community {
+    width: 33.3vw;
+    background-color: red;
+    transition: width 0.8s ease-in-out;
+}
+
+#maps {
+    width: 33.3vw;
+    background-color: green;
+    transition: width 0.8s ease-in-out;
+}
+#deals {
+    width: 33.3vw;
+    background-color: blue;
+    transition: width 0.8s ease-in-out;
+}  
+
+#community:hover, #maps:hover, #deals:hover {
+    width: 40vw;
+    background-color: yellow;
+}
