@@ -10,10 +10,17 @@ public class BoardDTO {
 	private int category; // 판매상품 카테고리
 	private int success; // 판매상황
 	private String bid; // 입찰자 -> 경매용
-    private int hit;	// 조회수
+	private int reply;  // 댓글수
+	private int hit;	// 조회수
     private String logtime;	// 등록일
 	public BoardDTO() {
 		super();
+	}
+	public int getReply() {
+		return reply;
+	}
+	public void setReply(int reply) {
+		this.reply = reply;
 	}
 	public int getHit() {
 		return hit;

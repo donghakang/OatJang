@@ -6,16 +6,58 @@
 	<insert id="boardInsert" parameterType="BoardDTO">
       <![CDATA[
       		INSERT INTO ITEM
-      		VALUES(SEQ_ITEM.NEXTVAL,#{userid},#{title},#{price},#{images},#{description},#{category},#{success},NULL,0,SYSDATE)
+      		VALUES(SEQ_ITEM.NEXTVAL,#{userid},#{title},#{price},#{images},#{description},#{category},#{success},NULL,0,0,SYSDATE)
       ]]>
 	</insert>
 	
+	<insert id="replyInsert" parameterType="ReplyDTO">
+      <![CDATA[
+      		INSERT INTO REPLY
+      		VALUES(SEQ_REPLY.NEXTVAL,#{iid},#{nickname},#{content},SEQ_REPLY.CURRVAL,#{step},SYSDATE)
+      ]]>
+	</insert>
+	
+	<insert id="subReplyInsert" parameterType="ReplyDTO">
+      <![CDATA[
+      		INSERT INTO REPLY
+      		VALUES(SEQ_REPLY.NEXTVAL,#{iid},#{nickname},#{content},#{ref},#{step},SYSDATE)
+      ]]>
+	</insert>
 	<select id="getBoardList" parameterType="hashmap" resultType="BoardDTO">
 		<![CDATA[
-         SELECT IID,USERID,TITLE,PRICE,IMAGES,DESCRIPTION,CATEGORY,SUCCESS,BID,HIT,TO_CHAR(LOGTIME,'YYYY.MM.DD')AS LOGTIME
+         SELECT IID,USERID,TITLE,PRICE,IMAGES,DESCRIPTION,CATEGORY,SUCCESS,BID,REPLY,HIT,TO_CHAR(LOGTIME,'YYYY.MM.DD')AS LOGTIME
          FROM (SELECT ROWNUM RN, AA.* 
                FROM (SELECT * FROM ITEM ORDER BY IID DESC)AA)
          WHERE RN>=#{startNum} AND RN<=#{endNum}
+      ]]>
+	</select>
+	<select id="getReplyList" parameterType="java.lang.Integer" resultType="ReplyDTO">
+		<![CDATA[
+         SELECT *
+         FROM REPLY
+         WHERE IID=#{iid}
+         ORDER BY STEP
+      ]]>
+	</select>
+	<select id="getReply" parameterType="java.lang.Integer" resultType="ReplyDTO">
+		<![CDATA[
+         SELECT *
+         FROM REPLY
+         WHERE RID=#{rid}
+      ]]>
+	</select>
+	<select id="getReplyStep" resultType="java.lang.Integer">
+		<![CDATA[
+         SELECT STEP
+         FROM (SELECT STEP FROM REPLY ORDER BY STEP DESC)
+         WHERE ROWNUM=1
+      ]]>
+	</select>
+	<select id="getSubReplyStep" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		<![CDATA[
+         SELECT STEP
+         FROM (SELECT STEP FROM REPLY WHERE REF=#{ref} ORDER BY STEP DESC)
+         WHERE ROWNUM=1
       ]]>
 	</select>
 	
@@ -47,6 +89,28 @@
    <update id="boardDelete" parameterType="java.lang.Integer">
    		<![CDATA[
 			DELETE FROM ITEM WHERE IID=#{iid}
+		]]>
+   </update>
+   
+   <update id="replyUpdateStep" parameterType="java.lang.Integer">
+   		<![CDATA[
+			UPDATE REPLY SET STEP=STEP+1 WHERE STEP>=#{step}
+		]]>
+   </update>
+   <update id="boardUpdateReply" parameterType="java.lang.Integer">
+   		<![CDATA[
+			UPDATE ITEM SET REPLY=(SELECT COUNT(*) FROM REPLY WHERE IID=#{iid}) WHERE IID=#{iid}
+		]]>
+   </update>
+   
+   <update id="replyUpdate" parameterType="ReplyDTO">
+   		<![CDATA[
+			UPDATE REPLY SET CONTENT=#{content} WHERE RID=#{rid}
+		]]>
+   </update>
+   <update id="replyDelete" parameterType="java.lang.Integer">
+   		<![CDATA[
+			DELETE FROM REPLY WHERE RID=#{rid} OR REF=#{rid}
 		]]>
    </update>
 </mapper>

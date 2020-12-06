@@ -3,18 +3,19 @@
 select * from tab;
 select * from item;
 drop table item purge;
-
+delete item;
 --primary key : unique + not null
 create table item(
     iid number(10) primary key,
     userid number(10),
-    title varchar(30) not null,
+    title varchar2(30) not null,
     price number(10) not null,
-    images varchar(50),
-    description varchar(100),
+    images varchar2(500),
+    description varchar2(500),
     category NUMBER(10),
     success number(1),
-    bid varchar(10),
+    bid varchar2(20),
+    reply number(6) default 0,
     hit number default 0,
     logtime date default sysdate,
     constraint fk_item foreign key(userid) references users(userid));
