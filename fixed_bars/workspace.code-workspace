@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../../study_front/travel"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "OatJang"
+	}
+}

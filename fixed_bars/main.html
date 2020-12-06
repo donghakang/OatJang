@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>삼이일강</title>
+   <link href="fixed_styles.css" rel="fixed-stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@495&display=swap" rel="font">
+   <style>
+
+      * {
+         padding: 0;
+       margin:0;
+      }
+
+      header,
+      footer {
+         font-family: Raleway;
+         margin: 0 auto;
+         padding: .45em;
+         text-align: center;
+         background: #555;
+         color: #ffffff;
+      }
+
+      header span {
+         color: #222;
+      }
+
+      footer span {
+         color: #AAA;
+      }
+
+      .flex-container {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+      }
+
+      .logo {
+         margin: 0 0 0 .45em;
+      }
+
+      .logo a {
+         color: #ffffff;
+         font-weight: bold;
+      }
+
+      .logo,
+      .navigation {
+         list-style: none;
+         text-transform: uppercase;
+      }
+
+      .navigation a,
+      .logo a {
+         text-decoration: none;
+         letter-spacing: .35rem;
+      }
+
+      .navigation {
+         display: flex;
+      }
+
+      .navigation a {
+         display: block;
+         padding: .75rem;
+         color: white;
+      }
+
+      .navigation a:hover {
+         background: #00ace6;
+      }
+
+
+      div.container {
+         font-family: Raleway;
+         margin: 0 auto;
+         padding: 1rem 2.4rem;
+         text-align: center;
+      }
+
+      div.container a {
+         color: #FFF;
+         text-decoration: none;
+         font: 20px Raleway;
+         margin: 0px 10px;
+         padding: 10px 10px;
+         position: relative;
+         z-index: 0;
+         cursor: pointer;
+      }
+
+      li {
+         list-style: none;
+      }
+
+      .brown {
+         background: #795548;
+      }
+
+      /* Highlight text out  */
+      div.highlightTextOut a {
+         color: rgba(255, 255, 255, 0.3);
+      }
+
+      div.highlightTextOut a:before,
+      div.highlightTextIn a:before {
+         position: absolute;
+         color: #FFF;
+         top: 0px;
+         left: 0px;
+         padding: 10px;
+         overflow: hidden;
+         content: attr(alt);
+         transition: all 0.3s;
+         transform: scale(0.8);
+         opacity: 0;
+      }
+
+      div.highlightTextOut a:hover:before,
+      div.highlightTextIn a:hover:before {
+         transform: scale(1);
+         opacity: 1;
+      }
+
+   </style>
+</head>
+<header class="flex-container">
+   <h1 class="logo">
+      <a href="#">LOGO</a>
+   </h1>
+   <ul class="navigation">
+      <li><a href="#">search</a></li>
+      <li><a href="#">login</a></li>
+      <li><a href="#">join us</a></li>
+   </ul>
+</header>
+
+<div class="fordong">
+   <p>
+      동하가 만든 이미지로고 메인 넣을곳
+
+   </p>
+</div>
+<div class="container brown highlightTextOut">
+   <a href="#" alt="all">all</a>
+   <a href="#" alt="community">community</a>
+   <a href="#" alt="deals">deals</a>
+   <a href="#" alt="maps">maps</a>
+
+</div>
+
+<body>
+   <p>
+      여기에는 페이지가 바뀔때마다 들어갈 내용들을 넣을것임
+   </p>
+</body>
+
+
+<footer>
+   <div>
+      <p>
+         footer: 여기에다가 옷장 /삼이일강 정보 및 코멘트 쓰면 됨
+      </p>
+   </div>
+</footer>
+
+</html>
