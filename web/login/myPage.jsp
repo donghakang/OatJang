@@ -10,14 +10,14 @@
 </head>
 <body>
 <%
-	LoginDTO entity = (LoginDTO)session.getAttribute("loginComplete");
+	LoginDTO dto = (LoginDTO)session.getAttribute("loginComplete");
 
-	if (entity != null) {
-		System.out.println(entity.getId());
-		System.out.println(entity.getName());
-		System.out.println(entity.getNickname());
-		System.out.println(entity.getPhone());
-		System.out.println(entity.getAddr());
+	if (dto != null) {
+		System.out.println(dto.getId());
+		System.out.println(dto.getName());
+		System.out.println(dto.getNickname());
+		System.out.println(dto.getPhone());
+		System.out.println(dto.getAddr());
 	}
 %>
 

@@ -20,10 +20,7 @@ public class BoardModifyService implements CommandAction{
 		request.setAttribute("dto", dto);
 		request.setAttribute("iid", iid);
 		request.setAttribute("pg", pg);
-<<<<<<< HEAD
-=======
 		
->>>>>>> f7e0610cc3b2965c86e2a27029a36594e39fc751
 		return "board/boardModify.jsp";
 	}
 }
