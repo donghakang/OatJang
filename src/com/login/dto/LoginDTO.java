@@ -3,17 +3,17 @@ package com.login.dto;
 //기본생성자, 인자4개받는 생성자, setter & getter
 public class LoginDTO {
 	private String id;
-	private String pwd;
+	private String pw;
 	private String name;
 	private double point;
 	
 	public LoginDTO() {
 		super();
 	}
-	public LoginDTO(String id, String pwd, String name, double point) {
+	public LoginDTO(String id, String pw, String name, double point) {
 		super();
 		this.id = id;
-		this.pwd = pwd;
+		this.pw = pw;
 		this.name = name;
 		this.point = point;
 	}
@@ -23,11 +23,11 @@ public class LoginDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getPwd() {
-		return pwd;
+	public String getPw() {
+		return pw;
 	}
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
+	public void setPw(String pw) {
+		this.pw = pw;
 	}
 	public String getName() {
 		return name;

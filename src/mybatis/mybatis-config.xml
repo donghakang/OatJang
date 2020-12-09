@@ -6,6 +6,7 @@
 	<properties resource="mybatis/config.properties"/>
 	<typeAliases>
 		<typeAlias type="com.login.dto.LoginDTO" alias="LoginDTO"/>
+		<typeAlias type="com.board.dto.BoardDTO" alias="BoardDTO"/>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -22,6 +23,7 @@
 	<mappers>
 		<mapper resource="mybatis/LoginMapper.xml"/> 
 		<!-- <mapper resource="mybatis/BoardMapper.xml"/> -->
+		<mapper resource="mybatis/BoardMapper.xml"/>
 	</mappers>
 </configuration>
 
