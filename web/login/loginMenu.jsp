@@ -52,10 +52,16 @@ a {
 </head>
 
 <body>
+<%
+	LoginDTO entity = (LoginDTO)session.getAttribute("loginComplete");
+
+%>
+
 	<nav id="menu">
 		<input type="button" class="material-icons" value="search" />
 		<!-- TODO: 회원가입, 마이페이지-->
 		<a href="/oatjang/login/register.jsp">회원가입</a>
+
 		<a href="">마이페이지</a>
 		<%-- <%
 		LoginDTO entity = (LoginDTO) session.getAttribute("logOK");
@@ -65,6 +71,7 @@ a {
 		<a href="/oatjang/board/boardInsert.jsp">글쓰기 예시</a>
 		<a href="/oatjang/login/login.jsp">로그인</a>
 		<a href="/oatjang/logout.do">로그아웃</a>
+		<a href="/oatjang/login/myPage.jsp">마이페이지</a>
 		<form name="sear">
 			<div class="wrap">
 				<div class="search">
@@ -76,5 +83,6 @@ a {
 				</div>
 			</div>
 		</form>
+
 	</nav>
 	<hr>

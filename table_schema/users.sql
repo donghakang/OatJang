@@ -10,14 +10,14 @@ drop table emp;
 
 
 create table users(
-U_ID      NUMBER(10) PRIMARY KEY,
-ID       VARCHAR2(10) unique,
-PW       VARCHAR2(10) not null,
-NAME     VARCHAR2(10) not null,
-NICKNAME VARCHAR2(10),
+USERID      NUMBER(10) PRIMARY KEY,
+ID       VARCHAR2(40) not null,
+PW       VARCHAR2(40) not null,
+NAME     VARCHAR2(40) not null,
+NICKNAME VARCHAR2(100),
 AGE      NUMBER(10),
 PHONE    VARCHAR2(20),
-ADDR     VARCHAR2(50));     
+ADDR     VARCHAR2(1000));     
 
 insert into users values (1, 'abcd', '1234', 'amy', 'bamy', 24, '01029028330', 'seoul');
 -- insert into users(id,pwd,name,point) values('admin','1111','어드민',35.34);

@@ -17,17 +17,17 @@ public class LoginService implements CommandAction {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 
-		// - TODO: only password returns null.
-		System.out.println(id + "      " + pw);
+		// System.out.println(id + " " + pw);
 		LoginDAO dao = new LoginDAO();
 		LoginDTO entity = dao.getLoginUser(id, pw);
 
 		if (entity != null) {
-			// 세션설정
+			// 로그인 성공 -> 세션설정
 			HttpSession session = request.getSession();
-			session.setAttribute("logOK", entity);
-			return "login/loginOK.jsp";
+			session.setAttribute("loginComplete", entity);
+			return "index.jsp";
 		} else {
+			// TODO: 로그인 실패 메시지를 표시한다.
 			return "login/loginFail.jsp";
 		}
 	}

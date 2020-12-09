@@ -9,4 +9,12 @@
 			FROM USERS WHERE ID=#{id} AND PW=#{pw}
 		]]>
 	</select>
+	
+	<insert id="RegisterUser" parameterType="LoginDTO">
+		<![CDATA[
+			INSERT INTO USERS
+			VALUES(1, #{id}, #{pw}, #{name}, #{nickname}, #{age}, #{phone}, #{addr})
+		]]>
+	</insert>
+
 </mapper>

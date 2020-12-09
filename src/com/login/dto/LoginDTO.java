@@ -3,7 +3,7 @@ package com.login.dto;
 //기본생성자, 인자4개받는 생성자, setter & getter
 public class LoginDTO {
 	/*
-	 * @param uid: user id sequence number
+	 * @param userid: user id sequence number
 	 *
 	 * @param id : user's id
 	 *
@@ -19,7 +19,7 @@ public class LoginDTO {
 	 *
 	 * @param addr : user's address.
 	 */
-	private int uid;
+	private int userid;
 	private String id;
 	private String pw;
 	private String name;
@@ -33,10 +33,10 @@ public class LoginDTO {
 		super();
 	}
 
-	public LoginDTO(int uid, String id, String pw, String name, String nickname,
-			int age, String phone, String addr) {
+	public LoginDTO(int userid, String id, String pw, String name,
+			String nickname, int age, String phone, String addr) {
 		super();
-		this.uid = uid;
+		this.userid = userid;
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
@@ -47,11 +47,11 @@ public class LoginDTO {
 	}
 
 	// - Setter & Getter
-	public int getUid() {
-		return uid;
+	public int getuserid() {
+		return userid;
 	}
-	public void setUid(int uid) {
-		this.uid = uid;
+	public void setuserid(int userid) {
+		this.userid = userid;
 	}
 	public String getId() {
 		return id;
@@ -94,6 +94,13 @@ public class LoginDTO {
 	}
 	public void setAddr(String addr) {
 		this.addr = addr;
+	}
+
+	@Override
+	public String toString() {
+		return "LoginDTO [userid=" + userid + ", id=" + id + ", pw=" + pw
+				+ ", name=" + name + ", nickname=" + nickname + ", age=" + age
+				+ ", phone=" + phone + ", addr=" + addr + "]";
 	}
 
 }

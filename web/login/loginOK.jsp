@@ -5,7 +5,7 @@
 <br /><br />
 
 <%
-	LoginDTO entity = (LoginDTO)session.getAttribute("logOK");
+	LoginDTO entity = (LoginDTO)session.getAttribute("loginComplete");
 	System.out.println(entity.getId());
 	System.out.println(entity.getName());
 	System.out.println(entity.getNickname());
