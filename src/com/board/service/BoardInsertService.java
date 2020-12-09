@@ -29,6 +29,7 @@ public class BoardInsertService implements CommandAction{
 		String file="";
 		FileItemFactory factory = new DiskFileItemFactory();
 	 	ServletFileUpload upload = new ServletFileUpload(factory);
+
 		BoardDTO dto = new BoardDTO();
 	 	try {
 	 		List items = upload.parseRequest(new ServletRequestContext(request));
@@ -43,7 +44,7 @@ public class BoardInsertService implements CommandAction{
 	 					path.mkdirs();
 	 				}
 
-	 				if(fileName!="") {	// 파일을 upload할 이름으로 ,를 통해 구분해서 db상에 저장하고 upload 
+	 				if(fileName!="") {	// 파일을 upload할 이름으로 ,를 통해 구분해서 db상에 저장하고 upload
 		 				File uploadfile = new File(path+"/"+fileName);
 		 				int n=0;
 	 					int place = fileName.indexOf('.');
@@ -57,15 +58,16 @@ public class BoardInsertService implements CommandAction{
 	 			}else {
 	 				String fileName = item.getFieldName();
 	 				if(fileName.equals("userid")) {
-	 				 	dto.setUserid(Integer.parseInt(item.getString()));
+	 				 	dto.setUserid(Integer.parseInt(item.getString("utf-8")));
 	 				}else if(fileName.equals("title")) {
-	 					dto.setTitle(item.getString());
+	 					dto.setTitle(item.getString("utf-8"));
+	 					System.out.println("title: "+item.getString());
 	 				}else if(fileName.equals("price")) {
-	 				 	dto.setPrice(Integer.parseInt(item.getString()));
+	 				 	dto.setPrice(Integer.parseInt(item.getString("utf-8")));
 	 				}else if(fileName.equals("description")) {
-	 				 	dto.setDescription(item.getString());
+	 				 	dto.setDescription(item.getString("utf-8"));
 	 				}else if(fileName.equals("category")) {
-	 				 	String category = item.getString();
+	 				 	String category = item.getString("utf-8");
 	 				 	int a;
 	 				 	if(category.equals("상의")) {
 	 				 		a=0;
@@ -84,7 +86,7 @@ public class BoardInsertService implements CommandAction{
 	 				}
 	 			}
 	 		}
-	 		
+
 	 	}catch(FileUploadException e) {
 	 		e.printStackTrace();
 	 	}catch(Exception e) {

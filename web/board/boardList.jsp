@@ -38,7 +38,12 @@
 	<tr>
 		<td align="center"><%= ob.getIid() %></td>
 		<td><img src="images/<%=imgName%>"></td>
+<<<<<<< HEAD
 		<td><a href="/oatjang/boardDelete.do?iid=<%=ob.getIid()%>&pg=<%=pg%>"><%=ob.getTitle() %></a></td>
+=======
+		<td><a href="/oatjang/boardView.do?iid=<%=ob.getIid()%>&pg=<%=pg%>"><%=ob.getTitle() %></a>
+		</td>
+>>>>>>> f7e0610cc3b2965c86e2a27029a36594e39fc751
 		<td align="center">작성자 </td>
 		<td align="center"><%=ob.getHit() %> </td>
 		<td align="center"><%=ob.getLogtime() %> </td>
@@ -53,7 +58,7 @@
 	<tr>
 		<td colspan="5" bgcolor="777777"></td>
 	</tr>
-	<tr>	
+	<tr>
 		<td colspan="5" align="center"><%= paging.getPagingHTML()%> </td>
 	</tr>
 </table>

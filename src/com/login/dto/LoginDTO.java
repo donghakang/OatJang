@@ -6,7 +6,7 @@ public class LoginDTO {
 	private String pw;
 	private String name;
 	private double point;
-	
+
 	public LoginDTO() {
 		super();
 	}
