@@ -8,17 +8,18 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
-function searchBoard()      
+function searchBoard()
 {
 	var searchentity = document.sear.searchentity.value
-	
-	/* alert(searchentity) */  
+
+	/* alert(searchentity) */
 	document.sear.action="/oatjang/boardSearch.do?searchentity="+searchentity
- 	  
+
 	document.sear.submit()
 }
 
 </script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
 p {
 	color: green;
@@ -52,6 +53,7 @@ a {
 
 <body>
 	<nav id="menu">
+		<input type="button" class="material-icons" value="search" />
 		<!-- TODO: 회원가입, 마이페이지-->
 		<a href="">회원가입</a>
 		<a href="">마이페이지</a>

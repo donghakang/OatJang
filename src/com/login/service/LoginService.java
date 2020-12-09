@@ -17,7 +17,7 @@ public class LoginService implements CommandAction {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 
-		System.out.println(id + "  " + pw);
+		System.out.println(id + "      " + pw);
 		LoginDAO dao = new LoginDAO();
 		LoginDTO entity = dao.getLoginUser(id, pw);
 

@@ -20,15 +20,16 @@ public class LoginDAO {
 			Reader reader = Resources.getResourceAsReader(resource);
 			System.out.println(reader);
 			factory = new SqlSessionFactoryBuilder().build(reader);
-			System.out.println("DD");
+
 		} catch (IOException e) {
-			System.out.println("EE");
 		}
 	}
 	// ----------------------------------------------------------------------
 	public LoginDTO getLoginUser(String id, String pw) {
 		SqlSession session = factory.openSession();
-		LoginDTO dto = new LoginDTO(id, pw, "", 0);
+		LoginDTO dto = new LoginDTO();
+		dto.setId(id);
+		dto.setPw(pw);
 		LoginDTO entity = session.selectOne("mybatis.LoginMapper.getLoginUser",
 				dto);
 		session.close();
