@@ -4,7 +4,9 @@
 <head>
     <meta charset="utf-8">
     <title>키워드로 장소검색하고 목록으로 표출하기</title>
-    <style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+   <style>
         * {
             margin: 0;
             padding: 0;
@@ -47,20 +49,44 @@
             transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
         }
 
-        #search_button {
+        .search_checkbox {
             position: absolute;
             display: flex;
             width: 45px;
             height: 45px;
             top: 15px;
             left: 330px;
-            z-index: 10;
 
             transform-origin: 0% 0%;
             transform: translate(0, 0);
             
             transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
         }
+
+        #search_image {
+            opacity: 0;
+            transition-property: transform;
+            transition-duration: 0.5s;
+            transition-timing-function: cubic-bezier(0.77,0.2,0.05,1.0);
+            font-size: 3.5em;
+            z-index: 11;
+        }
+
+        #close_image {
+            opacity: 1;
+            transition-property: transform;
+            transition-duration: 0.5s;
+            transition-timing-function: cubic-bezier(0.77,0.2,0.05,1.0);
+            font-size: 3.5em;
+            z-index: 11;
+        }
+        
+        #search_button {
+            opacity: 0;
+            z-index:12;
+        }
+
+
 
 
         .bg_white {
@@ -217,13 +243,24 @@
         #search_button:checked{
             transform: translate(-320px, 0);
         }
+
+        #search_button:checked~#search_image {
+            transform: translate(-320px, 0);
+            opacity: 1;
+        }
+        #search_button:checked~#close_image {
+            transform: translate(-320px, 0);
+            opacity: 0;
+        }
     </style>
 </head>
 
 <body>
     <div class="map_wrap">
-        <input id="search_button" type="checkbox" />
-        <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+        <input id="search_button" type="checkbox" class="search_checkbox"/>
+        <i class="fa fa-search search_checkbox" id="search_image"></i>
+        <i class="fa fa-close search_checkbox" id="close_image"></i>
+        <div id="map" style="width:100vw; height:100vh"></div>
 
         <div id="menu_wrap" class="bg_white">
             <div class="option">
