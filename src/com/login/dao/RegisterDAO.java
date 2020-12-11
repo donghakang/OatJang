@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import com.login.dto.AddressDTO;
 import com.login.dto.LoginDTO;
 
 public class RegisterDAO {
@@ -44,5 +45,28 @@ public class RegisterDAO {
 		}
 		return isInserted;
 
+	}
+
+	public boolean RegisterUser(LoginDTO loginDto, AddressDTO addressDto) {
+		SqlSession session = factory.openSession();
+		int n = 0;
+		int m = 0;
+		boolean isInserted = false;
+
+		try {
+			n = session.insert("mybatis.LoginMapper.InsertAddress", addressDto);
+			m = session.insert("mybatis.LoginMapper.RegisterUser", loginDto);
+			if (n != 0 && m != 0) {
+				isInserted = true;
+				session.commit();
+			}
+		} catch (Exception e) {
+			System.out.println("address: " + n + " \t " + "user: " + n);
+			e.printStackTrace();
+			session.rollback();
+		} finally {
+			session.close();
+		}
+		return isInserted;
 	}
 }
