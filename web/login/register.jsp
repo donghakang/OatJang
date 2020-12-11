@@ -88,7 +88,57 @@
 		// TODO: 본인인증
 		
 		// TODO: 주소 찾기
+		$('#searchAddress').on('click', function () {
+			var pop = window.open("./jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+		});
+		
 	});
+	
+	// 주소 가지고 오기
+	function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo,entX,entY,lat,lng){
+			// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
+			/* document.form.roadFullAddr.value = roadFullAddr;
+			document.form.roadAddrPart1.value = roadAddrPart1;
+			document.form.roadAddrPart2.value = roadAddrPart2;
+			document.form.addrDetail.value = addrDetail;
+			document.form.engAddr.value = engAddr;
+			document.form.jibunAddr.value = jibunAddr;
+			document.form.zipNo.value = zipNo;
+			document.form.admCd.value = admCd;
+			document.form.rnMgtSn.value = rnMgtSn;
+			document.form.bdMgtSn.value = bdMgtSn;
+			document.form.detBdNmList.value = detBdNmList;
+			document.form.bdNm.value = bdNm;
+			document.form.bdKdcd.value = bdKdcd;
+			document.form.siNm.value = siNm;
+			document.form.sggNm.value = sggNm;
+			document.form.emdNm.value = emdNm;
+			document.form.liNm.value = liNm;
+			document.form.rn.value = rn;
+			document.form.udrtYn.value = udrtYn;
+			document.form.buldMnnm.value = buldMnnm;
+			document.form.buldSlno.value = buldSlno;
+			document.form.mtYn.value = mtYn;
+			document.form.lnbrMnnm.value = lnbrMnnm;
+			document.form.lnbrSlno.value = lnbrSlno;
+			document.form.emdNo.value = emdNo;
+			document.form.entX.value = entX;
+			document.form.entY.value = entY; */
+			
+			document.getElementById('addr1').value = roadAddrPart1;
+			document.getElementById('addr2').value = addrDetail + ", " + roadAddrPart2;
+			
+			document.getElementById('roadFullAddr').value = roadFullAddr;
+			document.getElementById('roadAddrPart1').value = roadAddrPart1;
+			document.getElementById('roadAddrPart2').value = roadAddrPart2;
+			document.getElementById('addrDetail').value = addrDetail;
+			document.getElementById('lat').value = lat;
+			document.getElementById('lng').value = lng;
+			//document.form.addr2.value = e + ", " + n;
+			
+			/* console.log("Hello World");
+			console.log(n, e); */
+	}
 </script>
 </head>
 <body>
@@ -155,12 +205,17 @@
 			<tr>
 				<td>주소</td>
 				<td>
-					<input type="text" name="addr1">
-					<br>
-					<input type="text" name="addr2">
+					<input type="text" id="addr1" name="addr1">
+					<input type="text" id="addr2" name="addr2">
+					<input type="hidden" id="roadFullAddr" name="roadFullAddr"/>
+					<input type="hidden" id="roadAddrPart1" name="roadAddrPart1"/>
+					<input type="hidden" id="roadAddrPart2" name="roadAddrPart2"/>
+					<input type="hidden" id="addrDetail" name="addrDetail"/>					
+					<input type="hidden" id="lat" name="lat"/>
+					<input type="hidden" id="lng" name="lng"/>
 				</td>
 				<td>
-					<input type="button" value="주소 찾기">
+					<input type="button" id="searchAddress" value="주소 찾기">
 				</td>
 			</tr>
 			<tr>

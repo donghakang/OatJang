@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.login.dao.RegisterDAO;
+import com.login.dto.AddressDTO;
 import com.login.dto.LoginDTO;
 
 import controller.CommandAction;
@@ -22,23 +23,37 @@ public class RegisterService implements CommandAction {
 		String name = request.getParameter("name");
 		int age = Integer.parseInt(request.getParameter("age"));
 		String phone = request.getParameter("phone");
-		String addr = request.getParameter("addr1") + ", "
-				+ request.getParameter("addr2");
+		// String addr = request.getParameter("addr1") + ", "
+		// + request.getParameter("addr2");
 
-		LoginDTO dto = new LoginDTO();
-		dto.setId(id);
-		dto.setPw(pw);
-		dto.setNickname(nickname);
-		dto.setName(name);
-		dto.setAge(age);
-		dto.setPhone(phone);
-		dto.setAddr(addr);
+		String roadAddrPart1 = request.getParameter("roadAddrPart1");
+		String roadAddrPart2 = request.getParameter("roadAddrPart2");
+		String addrDetail = request.getParameter("addrDetail");
+		double lat = Double.parseDouble(request.getParameter("lat"));
+		double lng = Double.parseDouble(request.getParameter("lat"));
 
-		System.out.println(dto);
+		LoginDTO loginDto = new LoginDTO();
+		loginDto.setId(id);
+		loginDto.setPw(pw);
+		loginDto.setNickname(nickname);
+		loginDto.setName(name);
+		loginDto.setAge(age);
+		loginDto.setPhone(phone);
+
+		AddressDTO addressDto = new AddressDTO();
+		addressDto.setRoadAddrPart1(roadAddrPart1);
+		addressDto.setRoadAddrPart2(roadAddrPart2);
+		addressDto.setAddrDetail(addrDetail);
+		addressDto.setLat(lat);
+		addressDto.setLng(lng);
+
+		System.out.println(loginDto);
+		System.out.println("-----------------------------------------------");
+		System.out.println(addressDto);
 
 		RegisterDAO dao = new RegisterDAO();
 
-		if (dao.RegisterUser(dto)) {
+		if (dao.RegisterUser(loginDto, addressDto)) {
 			// TODO: 회원가입이 완료 되었습니다.
 			return "index.jsp";
 		} else {

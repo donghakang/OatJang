@@ -54,7 +54,6 @@ a {
 <body>
 <%
 	LoginDTO entity = (LoginDTO)session.getAttribute("loginComplete");
-
 %>
 
 	<nav id="menu">

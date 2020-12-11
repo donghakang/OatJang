@@ -5,6 +5,7 @@
 <configuration>
 	<properties resource="mybatis/config.properties"/>
 	<typeAliases>
+		<typeAlias type="com.login.dto.AddressDTO" alias="AddressDTO"/>
 		<typeAlias type="com.login.dto.LoginDTO" alias="LoginDTO"/>
 		<typeAlias type="com.board.dto.BoardDTO" alias="BoardDTO"/>
 		<typeAlias type="com.board.dto.ReplyDTO" alias="ReplyDTO"/>
