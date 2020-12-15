@@ -101,7 +101,7 @@ footer {
     top: 0;
     right: 0;
     align-items: center;
-    background-color: blue;
+    /* background-color: blue; */
     height: 8vh;
 
     transform-origin: 0% 0%;
