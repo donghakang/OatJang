@@ -26,7 +26,7 @@
         <div class="right container red topBotomBordersOut">
             <a href="#" alt="search">search</a>
             <a href="/oatjang/login/login.jsp" alt="login">login</a></li>
-            <a href="#" alt="join us">join us</a></li>
+            <a href="/oatjang/login/register.jsp" alt="join us">join us</a></li>
         </div>
     </header>
 

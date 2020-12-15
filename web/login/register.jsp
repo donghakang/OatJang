@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
 %>
@@ -7,11 +8,16 @@
 <meta charset="UTF-8" />
 <title>OatJang - 회원가입</title>
 <link rel="stylesheet" href="/oatjang/styles/style.css" />
+<link rel="stylesheet" href="/oatjang/styles/register.css" />
+
 <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
-	$(document).ready(function() {
-		// TODO: 아이디 중복확인
-		$('[name="id"]').keyup(function () {
+$(document).ready(function() {
+	var id_checker = false;				// id 확인
+	var pw1_checker = false;			// pw1 확인
+	var pw2_checker = false;			// pw2 확인
+
+	$('[name="id"]').keyup(function () {
 			var send = "id=" + $('[name="id"]').val();
 			console.log(send);
 			
@@ -22,23 +28,22 @@
 				data:send,
 				error:function() {
 					//TODO: fix the comment
-					console.log("what is the problem")
+					console.log("Problem Occurred While Checking Valid ID")
+					$('#id').css("border", "2px solid #ff0000");
+					// TODO: true
+					id_checker = true;
 				},
 				success:function(data) {
 					$('#idCheck').html(data);
+					$('#id').css("border", "2px solid #00ff00");
+					id_checker = true;
 				}
 			});
-			/* $.post(
-				"idCheck.jsp",
-				send,
-				function (data) {
-					$('#idCheck').html(data)
-					console.log("success")
-				},
-				); */
 			
 		});
 		
+		
+		// 비밀번호 강도와, 비밀번호 체크
 		$('#pw1, #pw2').keyup(function() {
 			var number = /([0-9])/;
             var alphabets = /([a-zA-Z])/;
@@ -51,15 +56,21 @@
 			var pwStatus = 0;
 			
 			if (pw1.length < 6) {
-				pwStrength.text("weak");	
+				// weak
 				pwStatus = 0;
+				$('#pw1').css("border", "2px solid #ff0000");
+				pw1_checker = false;
 			} else {
 				 if (pw1.match(number) && pw1.match(alphabets) && pw1.match(special_characters)) {
+					 // strong
 					 pwStatus = 2;
-					 pwStrength.text("strong");
+					 $('#pw1').css("border", "2px solid #00ff00");
+					 pw1_checker = true;
 				 } else {
+					 // medium
 					 pwStatus = 1;
-					 pwStrength.text("medium");
+					 $('#pw1').css("border", "2px solid #ff0000");
+					 pw1_checker = false;
 				 }
 			}
 			
@@ -70,77 +81,47 @@
 						'font-weight' : 'bold',
 						'color' : 'green'
 					});
+					$('#pw2').css("border", "2px solid #00ff00");
+					pw1_checker = true;
+					pw2_checker = true;
 				} else {
 					$("#pwCheck").text("비밀번호가 일치하지 않습니다. ").css({
 						'font-weight' : 'bold',
 						'color' : 'red'
 					});
+					$('#pw2').css("border", "2px solid #ff0000");
+					pw2_checker = false;
 				}
 			} else {
-				$("#pwCheck").text("비밀번호를 더 강하게 만들어 주세요").css({
+				$("#pwCheck").text("비밀번호에 영문, 숫자, 기호가 있어야해요").css({
 					'font-weight' : 'bold',
 					'color' : 'red'
 				});
+				pw1_checker = true;
+			}
+		});  // 비밀번호
+
+		
+		// 다음으로 넘어가기 위해 모든 필드가 작성 되었는지 여부 확인
+		$('#to_next_register').on('click', function() {
+			// TODO: change checker
+			// if (id_checker && pw1_checker && pw2_checker) {
+
+			if (true) {
+				$( 'body' ).load( "register2.jsp", function( response, status, xhr ) {
+				if ( status == "error" ) {
+					var msg = "Sorry but there was an error: ";
+				}
+			});
+			} else {
+				alert("정보를 입력/확인 해주세요")
 			}
 			
-			
-		});
-		
-		// TODO: 본인인증
-		
-		// TODO: 주소 찾기
-		$('#searchAddress').on('click', function () {
-			var pop = window.open("./jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
-		});
-		
 	});
-	
-	// 주소 가지고 오기
-	function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo,entX,entY,lat,lng){
-			// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
-			/* document.form.roadFullAddr.value = roadFullAddr;
-			document.form.roadAddrPart1.value = roadAddrPart1;
-			document.form.roadAddrPart2.value = roadAddrPart2;
-			document.form.addrDetail.value = addrDetail;
-			document.form.engAddr.value = engAddr;
-			document.form.jibunAddr.value = jibunAddr;
-			document.form.zipNo.value = zipNo;
-			document.form.admCd.value = admCd;
-			document.form.rnMgtSn.value = rnMgtSn;
-			document.form.bdMgtSn.value = bdMgtSn;
-			document.form.detBdNmList.value = detBdNmList;
-			document.form.bdNm.value = bdNm;
-			document.form.bdKdcd.value = bdKdcd;
-			document.form.siNm.value = siNm;
-			document.form.sggNm.value = sggNm;
-			document.form.emdNm.value = emdNm;
-			document.form.liNm.value = liNm;
-			document.form.rn.value = rn;
-			document.form.udrtYn.value = udrtYn;
-			document.form.buldMnnm.value = buldMnnm;
-			document.form.buldSlno.value = buldSlno;
-			document.form.mtYn.value = mtYn;
-			document.form.lnbrMnnm.value = lnbrMnnm;
-			document.form.lnbrSlno.value = lnbrSlno;
-			document.form.emdNo.value = emdNo;
-			document.form.entX.value = entX;
-			document.form.entY.value = entY; */
-			
-			document.getElementById('addr1').value = roadAddrPart1;
-			document.getElementById('addr2').value = addrDetail + ", " + roadAddrPart2;
-			
-			document.getElementById('roadFullAddr').value = roadFullAddr;
-			document.getElementById('roadAddrPart1').value = roadAddrPart1;
-			document.getElementById('roadAddrPart2').value = roadAddrPart2;
-			document.getElementById('addrDetail').value = addrDetail;
-			document.getElementById('lat').value = lat;
-			document.getElementById('lng').value = lng;
-			//document.form.addr2.value = e + ", " + n;
-			
-			/* console.log("Hello World");
-			console.log(n, e); */
-	}
+});
 </script>
+
+
 </head>
 <body class="container">
 	<header class="header1">
@@ -156,12 +137,56 @@
 
 		<div class="right container red topBotomBordersOut">
 			<a href="#" alt="search">search</a> <a
-				href="/oatjang/login/login.jsp" alt="login"
-			>login</a>
-			</li> <a href="#" alt="join us">join us</a>
+				href="/oatjang/login/login.jsp" alt="login">login</a>
+			</li> <a href="/oatjang/login/register.jsp" alt="join us">join us</a>
 			</li>
 		</div>
 	</header>
+
+
+    <div class="align">
+            <div class="login_image">
+                <div class="login_container">
+                <div class="grid">
+                    <div class="form login">
+        
+                        <div class="form__field">
+                            <input id="login__username" type="text" name="id" class="form__input" placeholder="Username"
+                                required>
+                            <span id="idCheck">이미 있는 아이디입니다.</span>
+                        </div>
+        
+
+                        <div class="form__field">
+                            <div class="form__field__password">
+                                <input id="pw1" type="password" class="form__input"
+                                    placeholder="Password" required>
+                            
+                                <input id="pw2" type="password" name="pw" class="form__input"
+                                    placeholder="Password " required>
+                            </div>
+                            <span id="pwCheck">이미 있는 아이디입니다.</span>
+                        </div>
+
+						<%-- 다음으로 버튼, 취소하기 버튼 --%>
+                        <div class="form__field">
+                            <input type="button" value="다음으로" id="to_next_register">
+							<a href="../index.jsp">취소하기</a>	
+                        </div>
+                    </div>
+                </div>        
+            </div>
+        </div>
+
+<script>
+
+
+
+</script>
+	</body>
+</html>
+
+<%-- 
 	<form action="/oatjang/register.do" method="post">
 		<table border="1" align="center" width="600">
 			<tr>
@@ -242,6 +267,4 @@
 				</td>
 			</tr>
 		</table>
-	</form>
-</body>
-</html>
+	</form>  --%>
