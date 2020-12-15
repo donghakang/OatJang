@@ -43,10 +43,13 @@ footer {
 .header1 {
     margin: 0;
     padding: 0.45em;
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
+
 
 /* 로고  */
 
@@ -55,25 +58,77 @@ footer {
     letter-spacing: 0.35rem;
     font-weight: bold;
     text-decoration: none;
-    /* background-color: red; */
 }
 
 .logo {
     list-style: none;
     margin: 0 30px;
+    float:left;
+
     text-transform: uppercase;
 }
 
-/* 헤더 2 메뉴 바  */
 .right {
+    z-index: 10;
     font-size: 0.8em;
     margin: 0 30px;
 
-    /* background-color: teal; */
+    position:relative;
+
 }
+
 .middle {
-    margin: 0 30px;
+    /* margin: 0 30px; */
 }
+
+.container_order {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+/* div 순서 */
+.header1 > .right {order: 3; } /* Will be displayed third  */
+.header1 > .middle {order: 1; } /* Will be displayed second */
+.header1 > .search {order: 2; } /* Will be displayed first  */
+
+
+/* 서치 */
+.search_engine{ 
+    z-index: 9;
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+    align-items: center;
+    background-color: blue;
+    height: 8vh;
+
+    transform-origin: 0% 0%;
+	transform: translate(0, 0);
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+}
+
+.search_engine input{
+    width: 20em;
+    padding: .4em;
+    font-size: 1rem;
+}
+.search_engine button {
+    font-size: 2rem;
+}
+
+#search_button:checked ~.search_engine{
+    display:flex;
+    transform: translate(-320px, 0);
+}
+
+#search_button:checked ~.middle {
+    opacity: 0;
+}
+
+/* 헤더 2 메뉴 바  */
+
 /* background-color:blue; */
 
 div.container a {
@@ -84,7 +139,6 @@ div.container a {
     margin: 0px 10px;
     padding: 5px;
     position: relative;
-    z-index: 0;
     cursor: pointer;
 }
 

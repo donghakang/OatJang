@@ -1,0 +1,73 @@
+<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%> -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>OatJang - 마이페이지</title>
+
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/myPage.css">
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+    
+</head>
+<body class="container">
+	<script>
+    	$(document).ready(function() {
+    		$('.navigation_bar').load( "login/NavigationBar.html", function( response, status, xhr ) {
+    			if ( status == "error" ) {
+    				var msg = "Sorry but there was an error: ";
+    			}
+    		});
+    	})
+    </script>
+    <div class="navigation_bar"></div>
+    <div class="my_page">
+        <h3>강동하님의 Page</h3>
+        <hr>
+
+        <table class="information_form">
+            <thead>
+                <tr class="information_select">
+                    <td>Username</td>
+                    <th>dkang</th>
+                </tr>
+            </thead>
+
+            <thead>
+                <tr class="information_select">
+                    <td>nickname</td>
+                    <th>이상한애</th>
+                </tr>
+            </thead>
+            <thead>
+                <tr class="information_select">
+                    <td>Birthday</td>
+                    <th>1995-06-02</th>
+                </tr>
+            </thead>
+            <thead>
+                <tr class="information_select">
+                    <td>Phone #</td>
+                    <th>01029028330</th>
+                </tr>
+            </thead>
+            <thead>
+                <tr class="information_select">
+                    <td>address</td>
+                    <th>서울시 광진구 ....</th>
+                </tr>
+            </thead>
+
+        </table>
+
+        <div class="info_btns">
+            <input type="button" value="회원정보수정">
+            <input type="button" value="취 소" onclick="location.href='/oatjang/index.jsp'">
+        </div>
+    </div>
+
+    
+</body>
+</html>

@@ -137,53 +137,57 @@ $(document).ready(function() {
 
 		<div class="right container red topBotomBordersOut">
 			<a href="#" alt="search">search</a> <a
-				href="/oatjang/login/login.jsp" alt="login">login</a>
+				href="/oatjang/login/login.jsp" alt="login"
+			>login</a>
 			</li> <a href="/oatjang/login/register.jsp" alt="join us">join us</a>
 			</li>
 		</div>
 	</header>
 
 
-    <div class="align">
-            <div class="login_image">
-                <div class="login_container">
-                <div class="grid">
-                    <div class="form login">
-        
-                        <div class="form__field">
-                            <input id="login__username" type="text" name="id" class="form__input" placeholder="Username"
-                                required>
-                            <span id="idCheck">이미 있는 아이디입니다.</span>
-                        </div>
-        
+	<div class="align">
+		<div class="login_image">
+			<div class="login_container">
+				<div class="grid">
+					<div class="form login">
 
-                        <div class="form__field">
-                            <div class="form__field__password">
-                                <input id="pw1" type="password" class="form__input"
-                                    placeholder="Password" required>
-                            
-                                <input id="pw2" type="password" name="pw" class="form__input"
-                                    placeholder="Password " required>
-                            </div>
-                            <span id="pwCheck">이미 있는 아이디입니다.</span>
-                        </div>
+						<div class="form__field">
+							<input id="login__username" type="text" name="id"
+								class="form__input" placeholder="Username" required
+							>
+							<span id="idCheck">이미 있는 아이디입니다.</span>
+						</div>
+
+
+						<div class="form__field">
+							<div class="form__field__password">
+								<input id="pw1" type="password" class="form__input"
+									placeholder="Password" required
+								>
+
+								<input id="pw2" type="password" name="pw" class="form__input"
+									placeholder="Password " required
+								>
+							</div>
+							<span id="pwCheck">이미 있는 아이디입니다.</span>
+						</div>
 
 						<%-- 다음으로 버튼, 취소하기 버튼 --%>
-                        <div class="form__field">
-                            <input type="button" value="다음으로" id="to_next_register">
-							<a href="../index.jsp">취소하기</a>	
-                        </div>
-                    </div>
-                </div>        
-            </div>
-        </div>
+						<div class="form__field">
+							<input type="button" value="다음으로" id="to_next_register">
+							<a href="../index.jsp">취소하기</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-<script>
+		<script>
 
 
 
 </script>
-	</body>
+</body>
 </html>
 
 <%-- 
