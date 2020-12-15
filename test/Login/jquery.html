@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>load demo</title>
+  <style>
+  body {
+    font-size: 12px;
+    font-family: Arial;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body>
+ 
+hello bitch
+<input type="button" value="next" id="clickthis">
+
+<div id="success" style="background-color: red;">Whoaaaa
+</div>
+
+
+<script>
+$('#clickthis').on('click', function() {
+  $( "#success" ).load( "jquery2.html", function( response, status, xhr ) {
+  if ( status == "error" ) {
+    var msg = "Sorry but there was an error: ";
+  }
+});
+})
+
+</script>
+
+
+ 
+</body>
+</html>

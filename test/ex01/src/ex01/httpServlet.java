@@ -86,6 +86,8 @@ public class httpServlet extends HttpServlet {
 		bid = "푸";
 		hit = 21;
 		String addr3 = "강변 스파랜드";
+		int addrId = 1;
+
 		coordX = 37.534772635848725;
 		coordY = 127.0917253422989;
 
