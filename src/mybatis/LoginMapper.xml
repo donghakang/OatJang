@@ -16,5 +16,23 @@
 			VALUES(1, #{id}, #{pw}, #{name}, #{nickname}, #{age}, #{phone}, #{addr})
 		]]>
 	</insert>
+	
+	<update id="mypageUpdate" parameterType="LoginDTO">
+		<![CDATA[
+			UPDATE USERS SET PW=#{pw}, NAME=#{name}, NICKNAME=#{nickname}, AGE=#{age}, PHONE=#{phone}, ADDR=#{addr} WHERE ID=#{id}
+		]]>
+	</update>
+	<select id="getUserPassword" parameterType="LoginDTO" resultType="LoginDTO">
+		<![CDATA[
+			SELECT PW 
+			FROM USERS WHERE ID=#{id} AND PHONE=#{phone}
+		]]>
+	</select>
+	<select id="getUserId" parameterType="LoginDTO" resultType="LoginDTO">
+		<![CDATA[
+			SELECT ID 
+			FROM USERS WHERE NAME=#{name} AND AGE=#{age}
+		]]>
+	</select>
 
 </mapper>

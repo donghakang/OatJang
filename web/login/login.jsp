@@ -24,6 +24,16 @@
 			<input type="reset" value="취&nbsp;&nbsp;소">
 		</td>
 	</tr>
+	<tr>
+		<td colspan="2" align="center">
+			<button type="button" onclick="location.href='findId.jsp'">아이디 찾기</button>
+		</td>
+	</tr>
+	<tr>	
+		<td colspan="2" align="center">
+			<button type="button" onclick="location.href='findPw.jsp'">비밀번호 찾기</button>
+		</td>
+	</tr>
 </table>
 </form>
 </body>
