@@ -22,7 +22,7 @@
 </head>
 
 <body class="container">
-	
+
 	<script>
    		$('.header1').load( "loginMenu.jsp", function( response, status, xhr ) {
    			if ( status == "error" ) {
@@ -34,12 +34,12 @@
 
 
     <div class="align">
-        
+
             <div class="login_image">
                 <div class="login_container">
                 <div class="grid">
                     <form action="https://httpbin.org/post" method="POST" class="form login">
-        
+
                         <div class="form__field">
                             <label for="login__username"><svg class="icon">
                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use>
@@ -47,7 +47,7 @@
                             <input id="login__username" type="text" name="id" class="form__input" placeholder="Username"
                                 required>
                         </div>
-        
+
                         <div class="form__field">
                             <label for="login__password"><svg class="icon">
                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lock"></use>
@@ -55,23 +55,24 @@
                             <input id="login__password" type="password" name="pw" class="form__input"
                                 placeholder="Password" required>
                         </div>
-        
+
                         <div class="form__field">
                             <input type="submit" value="Sign In">
                         </div>
-        
+
                     </form>
-        
+
                     <div class="register_password">
-                        <p class="text--center" id="find_id"><a href="#">아이디/비밀번호를 잊으셨나요?</a> </p>
+                      <%-- findId.jsp --> id 찾기, findPw.jsp-> pw 찾기 --%>
+                        <p class="text--center" id="find_id"><a href="findId.jsp">아이디/비밀번호를 잊으셨나요?</a> </p>
                         <p class="text--center" id="register_id"><a href="register.jsp">회원가입</a> </p>
                     </div>
-                </div>        
+                </div>
 
             </div>
         </div>
-        
-        
+
+
 
         <svg xmlns="http://www.w3.org/2000/svg" class="icons">
             <symbol id="arrow-right" viewBox="0 0 1792 1792">
@@ -89,6 +90,7 @@
         </svg>
 
     </div>
+
 </body>
 
 </html>

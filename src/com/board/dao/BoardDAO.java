@@ -12,7 +12,10 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.board.dto.BoardDTO;
 import com.board.dto.ReplyDTO;
+
 import com.login.dto.AddressDTO;
+import com.login.dto.LoginDTO;
+
 
 public class BoardDAO {
 	private static SqlSessionFactory factory;
@@ -57,6 +60,12 @@ public class BoardDAO {
 	public int getTotalArticle() {
 		SqlSession session = factory.openSession();
 		int n = session.selectOne("mybatis.BoardMapper.getTotalArticle");
+		session.close();
+		return n;
+	}
+	public int getTotalArticle2() {//검색 총 글수
+		SqlSession session = factory.openSession();
+		int n = session.selectOne("mybatis.BoardMapper.getTotalArticle2");
 		session.close();
 		return n;
 	}
@@ -268,4 +277,7 @@ public class BoardDAO {
 			session.close();
 		}
 	}
+
+
+
 }
