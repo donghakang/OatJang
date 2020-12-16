@@ -1,7 +1,7 @@
-import * as THREE from './node_modules/three/build/three.module.js';
-import {OBJLoader} from './node_modules/three/examples/jsm/loaders/OBJLoader.js'
+import * as THREE from './three/build/three.module.js';
+import {OBJLoader} from './three/examples/jsm/loaders/OBJLoader.js'
 
-// import { OBJLoader } from './jsm/loaders/OBJLoader.js';
+// import { OBJLoader } from './loaders/OBJLoader.js';
 
 let container;
 

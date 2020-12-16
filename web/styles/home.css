@@ -21,7 +21,6 @@
     text-align: center;
     height: 52vh;
     color: white;
-    background-color: green;
 }
 
 .canvas .description {
@@ -82,5 +81,8 @@
     color: #555;
     letter-spacing: 0.8rem;
     font-size: 2rem;
-    background-image: url("menu_item_map.png");
+}
+
+#maps:hover {
+	background-image: url("../image/menu_item_map.png");
 }
