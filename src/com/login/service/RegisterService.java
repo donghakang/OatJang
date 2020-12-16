@@ -17,11 +17,11 @@ public class RegisterService implements CommandAction {
 
 		request.setCharacterEncoding("UTF-8");
 
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
+		String id = request.getParameter("send_id");
+		String pw = request.getParameter("send_pw");
 		String nickname = request.getParameter("nickname");
 		String name = request.getParameter("name");
-		int age = Integer.parseInt(request.getParameter("age"));
+		int age = Integer.parseInt(request.getParameter("send_age"));
 		String phone = request.getParameter("phone");
 		// String addr = request.getParameter("addr1") + ", "
 		// + request.getParameter("addr2");

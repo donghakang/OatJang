@@ -1,4 +1,4 @@
-<%@page import="javax.naming.InitialContext"%>
+ <%@page import="javax.naming.InitialContext"%>
 <%@page import="javax.naming.Context"%>
 <%@page import="javax.sql.DataSource"%>
 <%@page import="java.sql.DriverManager"%>

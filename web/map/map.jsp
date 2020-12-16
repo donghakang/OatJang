@@ -10,10 +10,11 @@
 
 <head>
 <meta charset="utf-8">
-<title>키워드로 장소검색하고 목록으로 표출하기</title>
+<title>OatJang - 지도로 상품을 확인하세요</title>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 >
+<script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" href="styles/map.css">
 <style>
 .category, .category * {
@@ -80,6 +81,17 @@
 </head>
 
 <body>
+	<script>
+    	$(document).ready(function() {
+    		$('.navigation_bar').load( "login/loginMenu.jsp", function( response, status, xhr ) {
+    			if ( status == "error" ) {
+    				var msg = "Sorry but there was an error: ";
+    			}
+    		});
+    	})
+    </script>
+    <div class="navigation_bar"></div>
+
 	<div class="map_wrap">
 		<input id="search_button" type="checkbox" class="search_checkbox" />
 		<i class="fa fa-search search_checkbox" id="search_image"></i> <i

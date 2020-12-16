@@ -4,32 +4,23 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OatJang - 메인 페이지</title>
-    <link rel="stylesheet" href="/oatjang/styles/style.css">
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<link rel="stylesheet" href="/oatjang/styles/style.css">
     <link rel="stylesheet" href="/oatjang/styles/home.css">
 </head>
 <body class="container">
-    <header class="header1">
-        <h1 class="logo">
-            <a href="/oatjang/index.jsp">OatJang</a>
-        </h1>
-
-        <div class="middle container red topBotomBordersOut">
-            <a href="#" alt="all">all</a>
-            <a href="board.html" alt="community">community</a>
-            <a href="#" alt="deals">deals</a>
-            <a href="map.do" alt="maps">maps</a>
-            <a href="#" alt="service">service</a>
-        </div>
-
-        <div class="right container red topBotomBordersOut">
-            <a href="#" alt="search">search</a>
-            <a href="/oatjang/login/login.jsp" alt="login">login</a></li>
-            <a href="/oatjang/login/register.jsp" alt="join us">join us</a></li>
-        </div>
-    </header>
-
+   <script>
+    	$(document).ready(function() {
+    		$('.navigation_bar').load( "login/loginMenu.jsp", function( response, status, xhr ) {
+    			if ( status == "error" ) {
+    				var msg = "Sorry but there was an error: ";
+    			}
+    		});
+    	})
+    </script>
+    <div class="navigation_bar"></div>
+    
     <div class="canvas">
         <div id="renderCanvas"></div>
         <div class="description">
@@ -40,9 +31,9 @@
 
 
     <div class="menu">
-        <div class="menu_item" id="community"><p>Community</p></div>
-        <div class="menu_item" id="maps">Maps</div>
-        <div class="menu_item" id="deals">Deals</div>
+        <div class="menu_item" id="community" onclick="location.href='#'">Community</div>
+        <div class="menu_item" id="maps" onclick="location.href='map.do'">Maps</div>
+        <div class="menu_item" id="deals" onclick="location.href='#'">Deals</div>
     </div>
 
     <script type="module" src="/oatjang/lib/app.js"></script>

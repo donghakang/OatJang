@@ -8,6 +8,7 @@
         /* helpers/align.css */
 
         .align {
+        	width: 100vw;
             height: 92vh;
             margin: auto;
             display: flex;
@@ -130,6 +131,7 @@
         }
 
         .form a {
+        
             width:100%;
             text-align: center;
             /* text-decoration: none; */
@@ -253,6 +255,7 @@
         }
 
         .register_password {
+        	font-size: 0.875rem;
             display: flex;
             justify-content: space-between;
 

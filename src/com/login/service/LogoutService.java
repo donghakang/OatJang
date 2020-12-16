@@ -14,11 +14,11 @@ public class LogoutService implements CommandAction {
 	public String requestPro(HttpServletRequest request,
 			HttpServletResponse response) throws Throwable {
 		HttpSession session = request.getSession();
-		LoginDTO entity = (LoginDTO) session.getAttribute("logOK");
-
+		LoginDTO entity = (LoginDTO) session.getAttribute("loginComplete");
+		System.out.println("loginComplete : " +entity);
 		if (entity != null) {
-			session.removeAttribute("logOK"); // or session.invalidate();
-			return "index.html";
+			session.removeAttribute("loginComplete"); // or session.invalidate();
+			return "index.jsp";
 		}
 		return null;
 	}

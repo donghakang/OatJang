@@ -17,7 +17,7 @@ public class BoardListService implements CommandAction{
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		int pg = Integer.parseInt(request.getParameter("pg"));
-		
+	
 		int pageSize = 5;				// 페이지당 게시글 3개 원하면 바꾸면됨
 		int endNum = pg*pageSize;
 		int startNum = endNum-(pageSize-1);
@@ -29,7 +29,7 @@ public class BoardListService implements CommandAction{
 		BoardDAO dao = new BoardDAO();
 		List<BoardDTO> list= dao.getBoardList(map);
 		
-		BoardPaging paging = new BoardPaging(pg,3,pageSize);	// 페이지를 3페이지씩 보여줌
+		BoardPaging paging = new BoardPaging(pg,5,pageSize);	// 페이지를 3페이지씩 보여줌
 		paging.makePagingHTML();
 		
 		request.setAttribute("list", list);

@@ -11,30 +11,38 @@ import javax.servlet.http.HttpServletResponse;
 import com.board.dao.BoardDAO;
 import com.board.dto.BoardDTO;
 import com.board.dto.BoardPaging;
+import com.board.dto.SearchPaging;
 
 import controller.CommandAction;
 
 public class BoardSearchService implements CommandAction{
 
+	
+
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		request.setCharacterEncoding("UTF-8");
 		String searchentity="";
-		System.out.println("서치");
-		//int pg = Integer.parseInt(request.getParameter("pg"));  
-
-		int pageSize = 5; // 페이지당 게시글 3개 원하면 바꾸면됨
-		int endNum = pageSize; 
-		//int endNum = pg * pageSize;  //
+		System.out.println("서치 :" +searchentity);
+		int pg = Integer.parseInt(request.getParameter("pg"));
+		System.out.println("pg :" +pg);
+		
+//		int pg = 1;
+		
+		int pageSize = 5; // 페이지당 게시글 3개 원하면 바꾸면됨 
+		int endNum = pg * pageSize;  //
 		int startNum = endNum - (pageSize - 1);
 
 		Map<String, Object> map = new HashMap<>();
 		map.put("startNum", startNum);
 		map.put("endNum", endNum);
 		
+		System.out.println("startNum :" +startNum);
+		System.out.println("endNum :" +endNum);
 		
 		if(request.getParameter("searchentity") != "") {
 			searchentity = request.getParameter("searchentity");
+			searchentity = searchentity.toUpperCase();
 		}
 		//------------------------------------------------------------------
 		
@@ -63,19 +71,22 @@ public class BoardSearchService implements CommandAction{
 		//------------------------------------------------------------------
 		BoardDAO dao = new BoardDAO();
 		List<BoardDTO> list = dao.getBoardSearchByTitleAndCategoryAndDescription(map);
-		
-		BoardPaging paging = new BoardPaging(1,3,pageSize); // (1,3,pageSize)
+		int temp = list.size(); //검색한 글 갯수 가져오기
+		System.out.println("temp : " +temp);
+		System.out.println("pageSize : " +pageSize);
+		SearchPaging paging = new SearchPaging(pg,5,pageSize,temp); // (1,3,pageSize)
 		paging.makePagingHTML();  
 		
 			System.out.println("list :" +list);
 			
 			request.setAttribute("list", list);
-			request.setAttribute("pg", 1); //1
+			request.setAttribute("pg", pg); //1
 			request.setAttribute("paging", paging);
 			
 			
 			//검색을 하면 1페이지에 있는 것만 검색됨
-			return "board/boardList.jsp";
+			return "board/boardSearchList.jsp";
+//			return "board/boardList.jsp";
 //		return "boardList.do?pg=1";
 			
 	}

@@ -17,8 +17,8 @@ $(document).ready(function() {
 	var pw1_checker = false;			// pw1 확인
 	var pw2_checker = false;			// pw2 확인
 
-	$('[name="id"]').keyup(function () {
-			var send = "id=" + $('[name="id"]').val();
+	$('#id').keyup(function () {
+			var send = "id=" + $('#id').val();
 			console.log(send);
 			
 			$.ajax({
@@ -29,13 +29,13 @@ $(document).ready(function() {
 				error:function() {
 					//TODO: fix the comment
 					console.log("Problem Occurred While Checking Valid ID")
-					$('#id').css("border", "2px solid #ff0000");
+					/* $('#id').css("border", "2px solid #ff0000"); */
 					// TODO: true
 					id_checker = true;
 				},
 				success:function(data) {
 					$('#idCheck').html(data);
-					$('#id').css("border", "2px solid #00ff00");
+					/* $('#id').css("border", "2px solid #00ff00"); */
 					id_checker = true;
 				}
 			});
@@ -108,11 +108,17 @@ $(document).ready(function() {
 			// if (id_checker && pw1_checker && pw2_checker) {
 
 			if (true) {
-				$( 'body' ).load( "register2.jsp", function( response, status, xhr ) {
-				if ( status == "error" ) {
-					var msg = "Sorry but there was an error: ";
-				}
-			});
+				var send_id = $('[name="id"]').val();
+				var send_pw = $('[name="pw"]').val();
+				
+				
+				$( '.align' ).load( "register2.jsp", 
+						{ id: send_id, pw: send_pw } ,
+						function( response, status, xhr ) {
+							if ( status == "error" ) {
+								var msg = "Sorry but there was an error: ";
+							}
+						});
 			} else {
 				alert("정보를 입력/확인 해주세요")
 			}
@@ -123,27 +129,18 @@ $(document).ready(function() {
 
 
 </head>
+
 <body class="container">
-	<header class="header1">
-		<h1 class="logo">
-			<a href="/oatjang/index.jsp">OatJang</a>
-		</h1>
-
-		<div class="middle container red topBotomBordersOut">
-			<a href="#" alt="all">all</a> <a href="board.html" alt="community">community</a>
-			<a href="#" alt="deals">deals</a> <a href="maps.html" alt="maps">maps</a>
-			<a href="#" alt="service">service</a>
-		</div>
-
-		<div class="right container red topBotomBordersOut">
-			<a href="#" alt="search">search</a> <a
-				href="/oatjang/login/login.jsp" alt="login"
-			>login</a>
-			</li> <a href="/oatjang/login/register.jsp" alt="join us">join us</a>
-			</li>
-		</div>
-	</header>
-
+	<script>
+    	$(document).ready(function() {
+    		$('.navigation_bar').load( "./loginMenu.jsp", function( response, status, xhr ) {
+    			if ( status == "error" ) {
+    				var msg = "Sorry but there was an error: ";
+    			}
+    		});
+    	})
+    </script>
+	<div class="navigation_bar"></div>
 
 	<div class="align">
 		<div class="login_image">
@@ -152,10 +149,10 @@ $(document).ready(function() {
 					<div class="form login">
 
 						<div class="form__field">
-							<input id="login__username" type="text" name="id"
-								class="form__input" placeholder="Username" required
+							<input id="id" type="text" name="id" class="form__input"
+								placeholder="Username" required
 							>
-							<span id="idCheck">이미 있는 아이디입니다.</span>
+							<span id="idCheck">아이디를 입력하세요.</span>
 						</div>
 
 
@@ -169,7 +166,7 @@ $(document).ready(function() {
 									placeholder="Password " required
 								>
 							</div>
-							<span id="pwCheck">이미 있는 아이디입니다.</span>
+							<span id="pwCheck">비밀번호를 입력하세요.</span>
 						</div>
 
 						<%-- 다음으로 버튼, 취소하기 버튼 --%>
@@ -181,6 +178,9 @@ $(document).ready(function() {
 				</div>
 			</div>
 		</div>
+
+
+
 
 		<script>
 
