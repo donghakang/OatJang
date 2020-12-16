@@ -17,4 +17,4 @@ constraint fk_reply foreign key(iid) references item(iid) ON DELETE CASCADE);
 
 create sequence seq_reply increment by 1 start with 1 nocycle nocache;
 drop sequence seq_reply;
-commit
+--commit

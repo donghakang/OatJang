@@ -2,26 +2,44 @@
 
 select * from tab;
 select * from users;
-drop table users purge;
+drop table users;
 
-drop table emp;
 --primary key : unique + not null
-
-
-
 create table users(
-USERID      NUMBER(10) PRIMARY KEY,
-ID       VARCHAR2(40) not null,
-PW       VARCHAR2(40) not null,
-NAME     VARCHAR2(40) not null,
-NICKNAME VARCHAR2(100),
-AGE      NUMBER(10),
-PHONE    VARCHAR2(20),
-ADDR     VARCHAR2(1000));     
-
-insert into users values (1, 'abcd', '1234', 'amy', 'bamy', 24, '01029028330', 'seoul');
+userid number(10) primary key,
+id varchar(10) unique,
+pw varchar(10) not null,
+name varchar(10) not null,
+nickname varchar(10),
+age number(10),
+phone number(10),
+addrid number(10));
 -- insert into users(id,pwd,name,point) values('admin','1111','어드민',35.34);
 -- insert into users(id,pwd,name,point) values('abcd','1111','테스트',65.78);
 commit
 
+insert into users values(1,'abcd','1111','테스트','테스트',20,1111,0);
 select * from users;
+
+
+-- address
+create table address(
+addrid number,
+addr1 varchar(100),
+addr2 varchar(100),
+addr3 varchar(100),
+lat number,
+lng number
+)
+
+
+create sequence user_seq nocycle nocache;
+create sequence addr_seq nocycle nocache;
+
+drop table users;
+drop table address;
+drop sequence user_seq;
+drop sequence addr_seq;
+
+select * from users;
+select * from address;
