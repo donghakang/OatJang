@@ -1,6 +1,7 @@
 package com.board.dto;
 
 public class BoardDTO {
+	// Board info
 	private int iid; // 게시글 번호
 	private int userid; // 작성자 번호
 	private String title; // 게시글 제목
@@ -10,9 +11,18 @@ public class BoardDTO {
 	private int category; // 판매상품 카테고리
 	private int success; // 판매상황
 	private String bid; // 입찰자 -> 경매용
-	private int reply;  // 댓글수
-	private int hit;	// 조회수
-    private String logtime;	// 등록일
+	private int reply; // 댓글수
+	private int hit; // 조회수
+	private String logtime; // 등록일
+
+	private String addr1;
+	private String addr2;
+	private String addr3;
+	private double lat;
+	private double lng;
+
+	// Address info
+
 	public BoardDTO() {
 		super();
 	}
@@ -87,6 +97,39 @@ public class BoardDTO {
 	}
 	public void setBid(String bid) {
 		this.bid = bid;
+	}
+
+	// address
+
+	public double getLat() {
+		return lat;
+	}
+	public String getAddr1() {
+		return addr1;
+	}
+	public void setAddr1(String addr1) {
+		this.addr1 = addr1;
+	}
+	public String getAddr2() {
+		return addr2;
+	}
+	public void setAddr2(String addr2) {
+		this.addr2 = addr2;
+	}
+	public String getAddr3() {
+		return addr3;
+	}
+	public void setAddr3(String addr3) {
+		this.addr3 = addr3;
+	}
+	public void setLat(double lat) {
+		this.lat = lat;
+	}
+	public double getLng() {
+		return lng;
+	}
+	public void setLng(double lng) {
+		this.lng = lng;
 	}
 
 }

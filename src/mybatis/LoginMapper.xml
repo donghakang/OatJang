@@ -13,7 +13,7 @@
 	<insert id="InsertAddress" parameterType="AddressDTO">
 		<![CDATA[
 			INSERT INTO ADDRESS
-			VALUES(ADDR_SEQ.NEXTVAL, #{roadAddrPart1}, #{roadAddrPart2}, #{addrDetail}, #{lat}, #{lng})
+			VALUES(ADDR_SEQ.NEXTVAL, #{roadFullAddr}, #{roadAddrPart1}, #{roadAddrPart2}, #{addrDetail}, #{lat}, #{lng})
 		]]>
 	</insert>
 	

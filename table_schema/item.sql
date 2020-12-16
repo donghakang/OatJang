@@ -8,6 +8,7 @@ delete item;
 create table item(
     iid number(10) primary key,
     userid number(10),
+    addrid number(10),
     title varchar2(30) not null,
     price number(10) not null,
     images varchar2(500),

@@ -19,7 +19,7 @@
             <a href="#" alt="all">all</a>
             <a href="board.html" alt="community">community</a>
             <a href="#" alt="deals">deals</a>
-            <a href="maps.html" alt="maps">maps</a>
+            <a href="map.do" alt="map">maps</a>
             <a href="#" alt="service">service</a>
         </div>
 		<div>

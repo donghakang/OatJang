@@ -2,6 +2,7 @@ package com.login.dto;
 
 public class AddressDTO {
 	private int addrId;
+	private String roadFullAddr;
 	private String roadAddrPart1;
 	private String roadAddrPart2;
 	private String addrDetail;
@@ -16,6 +17,7 @@ public class AddressDTO {
 			String roadAddrPart2, String addrDetail, double lat, double lng) {
 		super();
 		this.addrId = addrId;
+		this.roadFullAddr = roadFullAddr;
 		this.roadAddrPart1 = roadAddrPart1;
 		this.roadAddrPart2 = roadAddrPart2;
 		this.addrDetail = addrDetail;
@@ -28,6 +30,13 @@ public class AddressDTO {
 	}
 	public void setAddrId(int addrId) {
 		this.addrId = addrId;
+	}
+	public String getRoadFullAddr() {
+		return roadFullAddr;
+	}
+
+	public void setRoadFullAddr(String roadFullAddr) {
+		this.roadFullAddr = roadFullAddr;
 	}
 	public String getRoadAddrPart1() {
 		return roadAddrPart1;
@@ -62,10 +71,10 @@ public class AddressDTO {
 
 	@Override
 	public String toString() {
-		return "AddressDTO [addrId=" + addrId + ", roadAddrPart1="
-				+ roadAddrPart1 + ", roadAddrPart2=" + roadAddrPart2
-				+ ", addrDetail=" + addrDetail + ", lat=" + lat + ", lng=" + lng
-				+ "]";
+		return "AddressDTO [addrId=" + addrId + ", roadFullAddr=" + roadFullAddr
+				+ ", roadAddrPart1=" + roadAddrPart1 + ", roadAddrPart2="
+				+ roadAddrPart2 + ", addrDetail=" + addrDetail + ", lat=" + lat
+				+ ", lng=" + lng + "]";
 	}
 
 }

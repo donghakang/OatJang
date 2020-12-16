@@ -26,6 +26,7 @@ public class RegisterService implements CommandAction {
 		// String addr = request.getParameter("addr1") + ", "
 		// + request.getParameter("addr2");
 
+		String roadFullAddr = request.getParameter("roadFullAddr");
 		String roadAddrPart1 = request.getParameter("roadAddrPart1");
 		String roadAddrPart2 = request.getParameter("roadAddrPart2");
 		String addrDetail = request.getParameter("addrDetail");
@@ -41,6 +42,7 @@ public class RegisterService implements CommandAction {
 		loginDto.setPhone(phone);
 
 		AddressDTO addressDto = new AddressDTO();
+		addressDto.setRoadFullAddr(roadFullAddr);
 		addressDto.setRoadAddrPart1(roadAddrPart1);
 		addressDto.setRoadAddrPart2(roadAddrPart2);
 		addressDto.setAddrDetail(addrDetail);

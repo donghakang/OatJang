@@ -6,7 +6,7 @@
 	<insert id="boardInsert" parameterType="BoardDTO">
       <![CDATA[
       		INSERT INTO ITEM
-      		VALUES(SEQ_ITEM.NEXTVAL,#{userid},#{title},#{price},#{images},#{description},#{category},#{success},NULL,0,0,SYSDATE)
+      		VALUES(SEQ_ITEM.NEXTVAL,#{userid}, ADDR_SEQ.CURRVAL, #{title},#{price},#{images},#{description},#{category},#{success},NULL,0,0,SYSDATE)
       ]]>
 	</insert>
 
@@ -122,4 +122,15 @@
 			DELETE FROM REPLY WHERE RID=#{rid} OR REF=#{rid}
 		]]>
    </update>
+   
+   
+   <!-- map -->
+   <select id="getAllBoardList" resultType="BoardDTO">
+      <![CDATA[
+         SELECT IID,USERID,TITLE,PRICE,IMAGES,DESCRIPTION,CATEGORY,SUCCESS,BID,REPLY,HIT,TO_CHAR(LOGTIME,'YYYY.MM.DD')AS LOGTIME,ADDR1, LAT , LNG
+         FROM ITEM
+         LEFT JOIN ADDRESS
+         ON ITEM.ADDRID = ADDRESS.ADDRID
+      ]]>
+   </select>
 </mapper>
