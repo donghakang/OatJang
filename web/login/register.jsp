@@ -17,8 +17,8 @@ $(document).ready(function() {
 	var pw1_checker = false;			// pw1 확인
 	var pw2_checker = false;			// pw2 확인
 
-	$('[name="id"]').keyup(function () {
-			var send = "id=" + $('[name="id"]').val();
+	$('#login__username').keyup(function () {
+			var send = "id=" + $('#login__username').val();
 			console.log(send);
 			
 			$.ajax({
@@ -108,6 +108,12 @@ $(document).ready(function() {
 			// if (id_checker && pw1_checker && pw2_checker) {
 
 			if (true) {
+				var send_id = $('[name="id"]').val();
+				var send_pw = $('[name="pw"]').val();
+	
+				$('#send_id').val(send_id);
+				$('#send_pw').val(send_pw);
+										
 				$( 'body' ).load( "register2.jsp", function( response, status, xhr ) {
 				if ( status == "error" ) {
 					var msg = "Sorry but there was an error: ";
@@ -123,27 +129,19 @@ $(document).ready(function() {
 
 
 </head>
+<input type="hidden" name="send_id" id="send_id" value=""/>
+<input type="hidden" name="send_pw" id="send_pw" value=""/>
 <body class="container">
-	<header class="header1">
-		<h1 class="logo">
-			<a href="/oatjang/index.jsp">OatJang</a>
-		</h1>
-
-		<div class="middle container red topBotomBordersOut">
-			<a href="#" alt="all">all</a> <a href="board.html" alt="community">community</a>
-			<a href="#" alt="deals">deals</a> <a href="maps.html" alt="maps">maps</a>
-			<a href="#" alt="service">service</a>
-		</div>
-
-		<div class="right container red topBotomBordersOut">
-			<a href="#" alt="search">search</a> <a
-				href="/oatjang/login/login.jsp" alt="login"
-			>login</a>
-			</li> <a href="/oatjang/login/register.jsp" alt="join us">join us</a>
-			</li>
-		</div>
-	</header>
-
+	    <script>
+    	$(document).ready(function() {
+    		$('.navigation_bar').load( "./loginMenu.jsp", function( response, status, xhr ) {
+    			if ( status == "error" ) {
+    				var msg = "Sorry but there was an error: ";
+    			}
+    		});
+    	})
+    </script>
+    <div class="navigation_bar"></div>
 
 	<div class="align">
 		<div class="login_image">
@@ -155,7 +153,7 @@ $(document).ready(function() {
 							<input id="login__username" type="text" name="id"
 								class="form__input" placeholder="Username" required
 							>
-							<span id="idCheck">이미 있는 아이디입니다.</span>
+							<span id="idCheck">아이디를 입력하세요.</span>
 						</div>
 
 
@@ -169,7 +167,7 @@ $(document).ready(function() {
 									placeholder="Password " required
 								>
 							</div>
-							<span id="pwCheck">이미 있는 아이디입니다.</span>
+							<span id="pwCheck">비밀번호를 입력하세요.</span>
 						</div>
 
 						<%-- 다음으로 버튼, 취소하기 버튼 --%>

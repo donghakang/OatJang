@@ -65,6 +65,20 @@
 			/* console.log("Hello World");
 			console.log(n, e); */
 	}
+	function replaceAll(str, searchStr, replaceStr) {
+		  return str.split(searchStr).join(replaceStr);
+	}
+	
+	
+	$('#to_next_register').on('click', function() {
+		var str = $('[name="age"]').val()		// 1995-06-02
+
+		var str_to_age = replaceAll(str, "-", "");
+	
+		
+		$('#send_age').val(str_to_age);
+		document.submitRegister.submit();
+	})
 </script>
 </head>
 <body class="container">
@@ -94,7 +108,7 @@
 		<div class="login_image">
 			<div class="login_container">
 				<div class="grid">
-					<form action="#" method="POST" class="form login">
+					<form action="/oatjang/register.do" name="submitRegister" method="POST" class="form login">
 
 
 						<div class="form__field form__field__first">
@@ -114,6 +128,7 @@
 							<input id="login__age" type="date" name="age" class="form__input"
 								required
 							>
+							<input type="hidden" id="send_age" name="send_age">
 						</div>
 
 						<div class="form__field">
@@ -147,7 +162,7 @@
 
 
 						<div class="form__field">
-							<input type="submit" value="다음으로" id="to_next_register">
+							<input type="button" value="다음으로" id="to_next_register">
 							<a href="#" id="to_previous_register">뒤로가기</a>
 						</div>
 

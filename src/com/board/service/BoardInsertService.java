@@ -43,6 +43,7 @@ public class BoardInsertService implements CommandAction {
 				if (!item.isFormField()) {
 					String fileName = item.getName();
 					File path = new File(realFolder);
+					System.out.println(realFolder);
 					if (!path.exists()) {
 						path.mkdirs();
 					}
