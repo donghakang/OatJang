@@ -61,7 +61,7 @@
 					<div class="register_password">
 						<%-- TODO: findId.jsp --> id 찾기, findPw.jsp-> pw 찾기 --%>
 						<p class="text--center" id="find_id">
-							<a href="findId.jsp">아이디/비밀번호를 잊으셨나요?</a>
+							<a href="findId.jsp">아이디</a>/<a href="findPw.jsp">비밀번호</a>를 잊으셨나요?
 						</p>
 						<p class="text--center" id="register_id">
 							<a href="register.jsp">회원가입</a>
