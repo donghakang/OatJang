@@ -61,7 +61,7 @@ public class RegisterDAO {
 				session.commit();
 			}
 		} catch (Exception e) {
-			System.out.println("address: " + n + " \t " + "user: " + n);
+			System.out.println("address: " + n + " \t " + "user: " + m);
 			e.printStackTrace();
 			session.rollback();
 		} finally {

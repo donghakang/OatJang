@@ -17,8 +17,8 @@ $(document).ready(function() {
 	var pw1_checker = false;			// pw1 확인
 	var pw2_checker = false;			// pw2 확인
 
-	$('#login__username').keyup(function () {
-			var send = "id=" + $('#login__username').val();
+	$('#id').keyup(function () {
+			var send = "id=" + $('#id').val();
 			console.log(send);
 			
 			$.ajax({
@@ -29,13 +29,13 @@ $(document).ready(function() {
 				error:function() {
 					//TODO: fix the comment
 					console.log("Problem Occurred While Checking Valid ID")
-					$('#id').css("border", "2px solid #ff0000");
+					/* $('#id').css("border", "2px solid #ff0000"); */
 					// TODO: true
 					id_checker = true;
 				},
 				success:function(data) {
 					$('#idCheck').html(data);
-					$('#id').css("border", "2px solid #00ff00");
+					/* $('#id').css("border", "2px solid #00ff00"); */
 					id_checker = true;
 				}
 			});
@@ -110,15 +110,15 @@ $(document).ready(function() {
 			if (true) {
 				var send_id = $('[name="id"]').val();
 				var send_pw = $('[name="pw"]').val();
-	
-				$('#send_id').val(send_id);
-				$('#send_pw').val(send_pw);
-										
-				$( 'body' ).load( "register2.jsp", function( response, status, xhr ) {
-				if ( status == "error" ) {
-					var msg = "Sorry but there was an error: ";
-				}
-			});
+				
+				
+				$( '.align' ).load( "register2.jsp", 
+						{ id: send_id, pw: send_pw } ,
+						function( response, status, xhr ) {
+							if ( status == "error" ) {
+								var msg = "Sorry but there was an error: ";
+							}
+						});
 			} else {
 				alert("정보를 입력/확인 해주세요")
 			}
@@ -129,10 +129,9 @@ $(document).ready(function() {
 
 
 </head>
-<input type="hidden" name="send_id" id="send_id" value=""/>
-<input type="hidden" name="send_pw" id="send_pw" value=""/>
+
 <body class="container">
-	    <script>
+	<script>
     	$(document).ready(function() {
     		$('.navigation_bar').load( "./loginMenu.jsp", function( response, status, xhr ) {
     			if ( status == "error" ) {
@@ -141,7 +140,7 @@ $(document).ready(function() {
     		});
     	})
     </script>
-    <div class="navigation_bar"></div>
+	<div class="navigation_bar"></div>
 
 	<div class="align">
 		<div class="login_image">
@@ -150,8 +149,8 @@ $(document).ready(function() {
 					<div class="form login">
 
 						<div class="form__field">
-							<input id="login__username" type="text" name="id"
-								class="form__input" placeholder="Username" required
+							<input id="id" type="text" name="id" class="form__input"
+								placeholder="Username" required
 							>
 							<span id="idCheck">아이디를 입력하세요.</span>
 						</div>
@@ -179,6 +178,9 @@ $(document).ready(function() {
 				</div>
 			</div>
 		</div>
+
+
+
 
 		<script>
 

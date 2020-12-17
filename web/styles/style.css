@@ -4,6 +4,7 @@
 * {
     padding: 0;
     margin: 0;
+    
 }
 
 *,
@@ -13,12 +14,11 @@
 }
 
 body {
-
     padding: 0;
     margin: 0;
     background-color: #2f303a;
     font-family: Poppins, sans-serif;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: white;
     min-height: 100vh;
 }
@@ -97,9 +97,10 @@ footer {
     top: 0;
     right: 0;
     align-items: center;
-    background-color: blue;
     height: 8vh;
 	opacity:0;
+
+	
     transform-origin: 0% 0%;
 	transform: translate(0, 0);
     transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
@@ -107,11 +108,24 @@ footer {
 
 .search_engine input{
     width: 20em;
-    padding: .4em;
+    padding: .4em .8em;
     font-size: 1rem;
+
+	outline: none;
+    border: none;
+	border-top-left-radius: .4rem;
+	border-bottom-left-radius: .4rem;
 }
 .search_engine button {
-    font-size: 2rem;
+    font-size: 1rem;
+    padding: .4em;
+    margin-left: -10px;
+    
+    outline: none;
+    border: none;
+    
+    border-top-right-radius: .4rem;
+	border-bottom-right-radius: .4rem;
 }
 
 #search_button:checked ~.search_engine{

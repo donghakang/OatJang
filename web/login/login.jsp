@@ -6,7 +6,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Document</title>
+<title>OatJang - 로그인 화면</title>
 
 <link rel="stylesheet" href="/oatjang/styles/login.css" />
 <link rel="stylesheet" href="/oatjang/styles/style.css">
@@ -31,10 +31,7 @@
 		<div class="login_image">
 			<div class="login_container">
 				<div class="grid">
-					<form action="https://httpbin.org/post" method="POST"
-						class="form login"
-					>
-
+					<form action="../login.do" method="POST" class="form login">
 						<div class="form__field">
 							<label for="login__username"><svg class="icon">
                                     <use
@@ -48,9 +45,7 @@
 
 						<div class="form__field">
 							<label for="login__password"><svg class="icon">
-                                    <use
-										xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lock"
-									></use>
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lock"></use>
                                 </svg><span class="hidden">Password</span></label>
 							<input id="login__password" type="password" name="pw"
 								class="form__input" placeholder="Password" required
@@ -64,7 +59,7 @@
 					</form>
 
 					<div class="register_password">
-						<%-- findId.jsp --> id 찾기, findPw.jsp-> pw 찾기 --%>
+						<%-- TODO: findId.jsp --> id 찾기, findPw.jsp-> pw 찾기 --%>
 						<p class="text--center" id="find_id">
 							<a href="findId.jsp">아이디/비밀번호를 잊으셨나요?</a>
 						</p>
