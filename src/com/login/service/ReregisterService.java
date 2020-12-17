@@ -26,7 +26,7 @@ public class ReregisterService implements CommandAction{
 		dto.setName(request.getParameter("name"));
 		dto.setAge(Integer.parseInt(request.getParameter("age")));
 		dto.setPhone(request.getParameter("phone"));
-		dto.setAddr(addr);
+		dto.setAddrId(Integer.parseInt(addr));
 		
 		System.out.println("id:" +dto.getId());
 		System.out.println("pw:" +dto.getPw());
@@ -34,7 +34,7 @@ public class ReregisterService implements CommandAction{
 		System.out.println("name:" +dto.getName());
 		System.out.println("age:" +dto.getAge());
 		System.out.println("phone:" +dto.getPhone());
-		System.out.println("addr:" +dto.getAddr());
+		System.out.println("addr:" +dto.getAddrId());
 		
 		LoginDAO dao = new LoginDAO();
 		

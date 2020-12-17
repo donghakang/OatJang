@@ -28,7 +28,7 @@ public class MypageUpdateService implements CommandAction{
 		dto.setName(request.getParameter("name"));
 		dto.setAge(Integer.parseInt(request.getParameter("age")));
 		dto.setPhone(request.getParameter("phone"));
-		dto.setAddr(request.getParameter("addr"));
+		dto.setAddrId(request.getParameter("addr"));
 		
 		
 		

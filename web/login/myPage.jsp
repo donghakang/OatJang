@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="com.login.dto.LoginDTO" %>
 <%@ include file="./loginMenu.jsp" %>
-
+<!-- getAddr ==> getAddrId 3개 빠꿈 -->
 
 <%
 	LoginDTO dto = (LoginDTO)session.getAttribute("loginComplete");
@@ -11,7 +11,7 @@
 		System.out.println(dto.getName());
 		System.out.println(dto.getNickname());
 		System.out.println(dto.getPhone());
-		System.out.println(dto.getAddr());
+		System.out.println(dto.getAddrId());
 		
 	}
 	
@@ -52,7 +52,7 @@
 			</tr>
 			<tr>
 				<td>주소</td>
-				<td><%=dto.getAddr()%></td>
+				<td><%=dto.getAddrId()%></td>
 			</tr>
 			<tr>
 				<td colspan="3" align="center">
@@ -64,7 +64,7 @@
 						<input type="hidden" name="name" value="<%=dto.getName()%>">
 						<input type="hidden" name="age" value="<%=dto.getAge()%>">
 						<input type="hidden" name="phone" value="<%=dto.getPhone()%>">
-						<input type="hidden" name="addr" value="<%=dto.getAddr()%>">
+						<input type="hidden" name="addr" value="<%=dto.getAddrId()%>">
 						<input type="submit" value="회원정보수정">
 						<input type="reset" value="취&nbsp;&nbsp;소">
 					</form>

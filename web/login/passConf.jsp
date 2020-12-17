@@ -27,7 +27,7 @@
 				<input type="hidden" name="name" value="<%=dto.getName()%>">
 				<input type="hidden" name="age" value="<%=dto.getAge()%>">
 				<input type="hidden" name="phone" value="<%=dto.getPhone()%>">
-				<input type="hidden" name="addr" value="<%=dto.getAddr()%>">
+				<input type="hidden" name="addr" value="<%=dto.getAddrId()%>">
 				<input type="submit" value="비밀번호 확인">
 				<input type="reset" value="취&nbsp;&nbsp;소">
 			
