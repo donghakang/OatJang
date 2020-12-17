@@ -83,6 +83,10 @@
     font-size: 2rem;
 }
 
+
+#community:hover{
+	background-image: url("../image/IMG_7270.JPG");
+}
 #maps:hover {
 	background-image: url("../image/menu_item_map.png");
 }

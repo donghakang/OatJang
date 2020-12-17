@@ -15,27 +15,34 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 >
 <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
-<link rel="stylesheet" href="styles/map.css">
+<link rel="stylesheet" href="/oatjang/styles/map.css">
 <style>
 .category, .category * {
 	margin: 0;
 	padding: 0;
 	color: #000;
+	border-radius: 0.2rem;
+	
 }
 
-.category {
+.category ul {
 	position: absolute;
-	overflow: hidden;
+	
+	display: flex;
+	justify-content: space-between;
+	
+
 	top: 10px;
 	right: 10px;
-	width: 350px;
-	height: 5vh;
+	width: 360px;
+	padding-top: 0.2rem;
+	padding-bottom:0.2rem;
 	z-index: 10;
-	border: 1px solid black;
-	font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
 	font-size: 12px;
 	text-align: center;
 	background-color: #fff;
+	
+	box-shadow: 2px 2px 2px gray;
 }
 
 .category .menu_selected {
@@ -58,32 +65,32 @@
 .category .ico_comm {
 	display: block;
 	margin: 0 auto 2px;
-	width: 22px;
+	width: 26px;
 	height: 26px;
-	background:
+	/* background:
 		url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png')
-		no-repeat;
+		no-repeat; */
+
+	border-radius: 13px;
 }
 
-.category .ico_coffee {
-	background-position: -10px 0;
+.category show_all_marker {
+	background-color: blue;
+	border-radius: 10px;
 }
 
-.category .ico_store {
-	background-position: -10px -36px;
-}
 
-.category .ico_carpark {
-	background-position: -10px -72px;
-}
+
+
+
+
 </style>
-
 </head>
 
 <body>
 	<script>
     	$(document).ready(function() {
-    		$('.navigation_bar').load( "login/loginMenu.jsp", function( response, status, xhr ) {
+    		$('.navigation_bar').load( "/oatjang/login/loginMenu.jsp", function( response, status, xhr ) {
     			if ( status == "error" ) {
     				var msg = "Sorry but there was an error: ";
     			}
@@ -116,28 +123,40 @@
 		</div>
 		<div class="category">
 			<ul>
-				<li id="show_all" onclick="filterCategory('all')"><span
-					class="ico_comm ico_coffee"
-				></span> 전체</li>
-				<li id="show_top" onclick="filterCategory('top')"><span
-					class="ico_comm ico_store"
-				></span> 상의</li>
-				<li id="show_bottom" onclick="filterCategory('bottom')"><span
-					class="ico_comm ico_carpark"
-				></span> 하의</li>
-				<li id="show_outer" onclick="filterCategory('outer')"><span
-					class="ico_comm ico_carpark"
-				></span> 아우터</li>
-				<li id="show_onepiece" onclick="filterCategory('onepiece')"><span
-					class="ico_comm ico_carpark"
-				></span> 원피스</li>
-				<li id="show_shoes" onclick="filterCategory('shoes')"><span
-					class="ico_comm ico_carpark"
-				></span> 신발</li>
-				<li id="show_accessory" onclick="filterCategory('accessory')"><span
-					class="ico_comm ico_carpark"
-				></span> 악세사리</li>
+				<li id="show_all" onclick="filterCategory('all')">
+				<!-- <span class="ico_comm ico_coffee"></span> -->
+				<div class="show_all_marker ico_comm">
+					
+				</div>전체</li>
+				<li id="show_top" onclick="filterCategory('top')">
+				<div class="show_shirt_marker ico_comm">
+					<img src="/oatjang/image/shirt.svg" alt="shirt" />
+				</div>상의</li>
+				<li id="show_bottom" onclick="filterCategory('bottom')">
+				<div class="show_bottom_marker ico_comm">
+					<img src="/oatjang/image/jeans.svg" alt="jeans" />	
+				</div>하의</li>
+				<li id="show_outer" onclick="filterCategory('outer')">
+				<div class="show_outer_marker ico_comm">
+					<img src="/oatjang/image/jacket.svg" alt="jacket" />
+				</div>아우터</li>
+				<li id="show_onepiece" onclick="filterCategory('onepiece')">
+				<div class="show_onepiece_marker ico_comm">
+					<img src="/oatjang/image/dress.svg" alt="dress" />
+				</div>원피스</li>
+				<li id="show_shoes" onclick="filterCategory('shoes')">
+				<div class="show_shoes_marker ico_comm">
+					<img src="/oatjang/image/shoe.svg" alt="shoe" />
+				</div>신발</li>
+				<li id="show_accessory" onclick="filterCategory('accessory')">
+				<div class="show_accessories_marker ico_comm">
+					<img src="/oatjang/image/accessories.svg" alt="accessories" />
+				</div>악세사리</li>
 			</ul>
+		</div>
+		
+		<div class="current_location" id="set_to_current_location">
+			<i class="fa fa-location-arrow"></i>
 		</div>
 	</div>
 
@@ -172,10 +191,9 @@
 		var markersAccessory = [];
 
 		//지도 기본 생성 ---------------------------------------------------------------------
-		
+		// 서울 특별시를 기본위치로 설정
 		var options = {
-			center : new kakao.maps.LatLng(37.53623519699613,
-					127.09128956725105),
+			center : new kakao.maps.LatLng(37.55560859228622, 126.98849634257502),
 			level : 5
 		};
 
@@ -255,7 +273,6 @@
 				items.push(item);
 			</c:forEach>
 			
-			console.log(items[0].hoverImage);
 			for (var i = 0; i < items.length; i++ ) {
 				var marker = new kakao.maps.Marker({
 					map: map, // 마커를 표시할 지도
@@ -461,6 +478,30 @@
 			//		- https://apis.map.kakao.com/web/sample/keywordList/
 		}
 
+		
+		
+		// 하단 오른쪽 버튼을 누르면, 현재 위치로 이동합니다.
+		$('#set_to_current_location').on('click', function () {
+			console.log("to current location");
+			
+			if (navigator.geolocation) {
+			    
+			    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+			    navigator.geolocation.getCurrentPosition(function(position) {
+			        
+			        var lat = position.coords.latitude, // 위도
+			            lon = position.coords.longitude; // 경도
+			        
+			        var locPosition = new kakao.maps.LatLng(lat, lon) // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+			        map.setCenter(locPosition);   
+			    });
+			    
+			} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+			    
+				alert("현재위치를 찾을 수 없습니다. \n위치 서비스가 켜져 있는지 확인해주세요 ㅠㅠ")
+				
+			}
+		});
 
 		
 	</script>

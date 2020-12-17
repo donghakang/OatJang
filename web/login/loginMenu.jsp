@@ -1,5 +1,7 @@
+<%@page import="com.login.dto.LoginDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
@@ -67,6 +69,10 @@
     </script>
 </head>
 
+<%
+LoginDTO dto = (LoginDTO)session.getAttribute("loginComplete");
+%> 
+
 <body class="container">
     <header class="header1">
         <h1 class="logo">
@@ -75,8 +81,21 @@
 
         <div id="right" class="right container red topBotomBordersOut">
             <a href="#" alt="search" id="search">search</a>
-            <a href="/oatjang/login/login.jsp" alt="login">login</a></li>
-            <a href="/oatjang/login/register.jsp" alt="join us">join us</a></li>
+			<%
+			// 로그인 세션이 없을시,
+			if (dto == null) {	
+			%>
+            	<a href="/oatjang/login/login.jsp" alt="login">login</a></li>
+            	<a href="/oatjang/login/register.jsp" alt="join us">join us</a></li>
+            <%
+            // 로그인 세션이 있고, 로그인이 완료 되었을때
+			} else {
+			%>	
+				<a href="#" alt="my page">my page</a></li>
+            	<a href="/oatjang/logout.do" alt="log out">log out</a></li>
+			<% 	
+			}
+            %>	
         </div>
         
 
