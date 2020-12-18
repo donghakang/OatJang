@@ -1,6 +1,7 @@
 package com.login.dto;
 
 public class AddressDTO {
+
 	private int addrId;
 	private String roadFullAddr;
 	private String roadAddrPart1;

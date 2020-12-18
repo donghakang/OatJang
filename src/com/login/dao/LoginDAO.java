@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import com.board.dto.BoardDTO;
+import com.login.dto.AddressDTO;
 import com.login.dto.LoginDTO;
 
 public class LoginDAO {
@@ -36,20 +36,20 @@ public class LoginDAO {
 		session.close();
 		return entity;
 	}
-	
-	//회원정보수정
+
+	// 회원정보수정
 	public void mypageUpdate(LoginDTO dto) {
 		SqlSession session = factory.openSession();
 		int n = 0;
 		try {
-			n = session.update("mybatis.LoginMapper.mypageUpdate",dto);
-			if(n>0) {
+			n = session.update("mybatis.LoginMapper.mypageUpdate", dto);
+			if (n > 0) {
 				session.commit();
 			}
-		}catch(Exception e) {
+		} catch (Exception e) {
 			session.rollback();
 			e.printStackTrace();
-		}finally {
+		} finally {
 			session.close();
 		}
 	}
@@ -60,12 +60,13 @@ public class LoginDAO {
 		LoginDTO dto = new LoginDTO();
 		dto.setId(id);
 		dto.setPhone(phone);
-		LoginDTO entity = session.selectOne("mybatis.LoginMapper.getUserPassword", dto);
+		LoginDTO entity = session
+				.selectOne("mybatis.LoginMapper.getUserPassword", dto);
 		session.close();
 
 		return entity;
 	}
-//name, age로 아이디 찾기
+	// name, age로 아이디 찾기
 	public LoginDTO findId(String name, int age) {
 		SqlSession session = factory.openSession();
 		LoginDTO dto = new LoginDTO();
@@ -76,5 +77,15 @@ public class LoginDAO {
 		session.close();
 		return entity;
 	}
-			
+
+	public AddressDTO getAddressInfo(int addrId) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		AddressDTO dto = session.selectOne("mybatis.LoginMapper.getAddressInfo",
+				addrId);
+		session.close();
+
+		return dto;
+	}
+
 }
