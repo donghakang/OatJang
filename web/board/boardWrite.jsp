@@ -9,7 +9,8 @@
 <link rel="stylesheet" href="/oatjang/styles/board.css">
 
 <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;900&family=Roboto&display=swap"
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;900&family=Roboto&display=swap"
 	rel="stylesheet">
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js">
@@ -21,9 +22,9 @@
 	$().ready(
 			function() {
 				$('.navigation_bar').load("/oatjang/login/loginMenu.jsp",
-				function(response, status, xhr) {
-					if (status == "error") {
-					var msg = "Sorry but there was an error: ";
+						function(response, status, xhr) {
+							if (status == "error") {
+								var msg = "Sorry but there was an error: ";
 							}
 						});
 				$("#input_img").on("change", handleImgFileSelect);
@@ -35,7 +36,7 @@
 	}
 
 	function subFileUploadAction() {
-		$("#input_img").trigger('click');
+		$("#input_imgs").trigger('click');
 	}
 
 	function handleImgFileSelect(e) {
@@ -110,25 +111,24 @@
 </head>
 
 <body>
+
 	<div class="navigation_bar"></div>
 	<form action="../boardInsert.do" method="post"
 		enctype="multipart/form-data">
-		<input type="hidden" name="userid" value="1" />
+		<input type="hidden" name="userid" value="${loginComplete.userId}" />
 		<!-- 임시로 1로 해둠 나중에 로그인 아디로 바꿔야함 -->
 
-		<h1 class="header">자유게시판</h1>
+		<h3 class="header">자유게시판</h3>
 
 		<div class="textbox">
-			<h2 class="textbox_1">글쓰기</h2>
 			<div class="div_title">
 				<input class="title" type="text" name="title" value=""
 					placeholder="제목을 입력하세요." />
 			</div>
 			<div class="div_intext">
-				<input type="hidden" name="price" value="-1" />
+				<textarea class="textinput" name="description" value=""
+					placeholder="내용을 입력하세요."></textarea>
 			</div>
-			<textarea class="textinput" name="description" value=""
-				placeholder="내용을 입력하세요."></textarea>
 		</div>
 
 
@@ -139,15 +139,15 @@
 					<div>
 						<h2>메인사진</h2>
 					</div>
-					<div class="input_wrap">
+					<div id="input_wrap">
 						<a href="javascript:" onclick="mainFileUploadAction();"
-							class="my_button">파일 업로드</a> <input type="file" class="input_img"
+							class="my_button">파일 업로드</a> <input type="file" id="input_img"
 							name="mainfile" hidden="true" />
 					</div>
 				</div>
 				<div>
-					<div class="imgs_wrap">
-						<img class="img" />
+					<div id="imgs_wrap" class="imgs_wrap">
+						<img id="img" />
 					</div>
 				</div>
 
@@ -157,16 +157,17 @@
 				<!-- 서브사진 -->
 				<div class="div_main">
 					<h2>서브사진</h2>
-					<div class="input_wraps">
+					<div id="input_wraps">
 						<a href="javascript:" onclick="subFileUploadAction();"
 							class="my_button">파일 업로드</a> <input type="file"
-							multiple="multiple" class="input_imgs" name="subfile[]"
+							multiple="multiple" id="input_imgs" name="subfile[]"
 							hidden="true" />
 					</div>
 				</div>
 				<div>
-					<div class="imgs_wraps">
-						<img class="imgs" />
+					<div id="imgs_wraps"
+					class="imgs_wraps">
+						<img id="imgs" />
 					</div>
 				</div>
 			</div>
