@@ -6,7 +6,47 @@
 	<select id="getLoginUser" parameterType="LoginDTO" resultType="LoginDTO">
 		<![CDATA[
 			SELECT * 
-			FROM USERS WHERE ID=#{id} AND PWD=#{pwd}
+			FROM USERS WHERE ID=#{id} AND PW=#{pw}
 		]]>
 	</select>
+	
+	<!-- <insert id="InsertAddress" parameterType="AddressDTO">
+		<![CDATA[
+			INSERT INTO ADDRESS
+			VALUES(ADDR_SEQ.NEXTVAL, #{roadAddrPart1}, #{roadAddrPart2}, #{addrDetail}, #{lat}, #{lng})
+		]]>
+	</insert> -->
+	
+	<insert id="InsertAddress" parameterType="AddressDTO">
+		<![CDATA[
+			INSERT INTO ADDRESS
+			VALUES(ADDR_SEQ.NEXTVAL,  #{roadAddrPart1}, #{roadAddrPart2}, #{addrDetail}, #{lat}, #{lng})
+		]]>
+	</insert>
+	
+	<insert id="RegisterUser" parameterType="LoginDTO">
+		<![CDATA[
+			INSERT INTO USERS
+			VALUES(USER_SEQ.NEXTVAL, #{id}, #{pw}, #{name}, #{nickname}, #{age}, #{phone}, ADDR_SEQ.CURRVAL)
+		]]>
+	</insert>
+	
+	<update id="mypageUpdate" parameterType="LoginDTO">
+		<![CDATA[
+			UPDATE USERS SET PW=#{pw}, NAME=#{name}, NICKNAME=#{nickname}, AGE=#{age}, PHONE=#{phone}, ADDR=#{addr} WHERE ID=#{id}
+		]]>
+	</update>
+	<select id="getUserPassword" parameterType="LoginDTO" resultType="LoginDTO">
+		<![CDATA[
+			SELECT PW 
+			FROM USERS WHERE ID=#{id} AND PHONE=#{phone}
+		]]>
+	</select>
+	<select id="getUserId" parameterType="LoginDTO" resultType="LoginDTO">
+		<![CDATA[
+			SELECT ID 
+			FROM USERS WHERE NAME=#{name} AND AGE=#{age}
+		]]>
+	</select>
+
 </mapper>

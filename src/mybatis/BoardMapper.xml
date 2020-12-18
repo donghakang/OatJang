@@ -1,49 +1,161 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mybatis.BoardMapper">
 	<insert id="boardInsert" parameterType="BoardDTO">
       <![CDATA[
-         INSERT INTO BOARD 
-         VALUES(SEQ_BOARD.NEXTVAL,#{id},#{name},#{email},#{subject},#{content},
-         SEQ_BOARD.CURRVAL,0,0,0,0,0,SYSDATE)
+      		INSERT INTO ITEM
+      		VALUES(SEQ_ITEM.NEXTVAL,#{userid}, ADDR_SEQ.CURRVAL, #{title},#{price},#{images},#{description},#{category},#{success},NULL,0,0,SYSDATE)
       ]]>
 	</insert>
-	
+	<!-- <insert id="boardInsert" parameterType="BoardDTO">
+      <![CDATA[
+      		INSERT INTO ITEM
+      		VALUES(SEQ_ITEM.NEXTVAL,#{userid},#{title},#{price},#{images},#{description},#{category},#{success},NULL,0,0,SYSDATE)
+      ]]>
+	</insert> -->
+
+	<insert id="replyInsert" parameterType="ReplyDTO">
+      <![CDATA[
+      		INSERT INTO REPLY
+      		VALUES(SEQ_REPLY.NEXTVAL,#{iid},#{nickname},#{content},SEQ_REPLY.CURRVAL,#{step},SYSDATE)
+      ]]>
+	</insert>
+
+	<insert id="subReplyInsert" parameterType="ReplyDTO">
+      <![CDATA[
+      		INSERT INTO REPLY
+      		VALUES(SEQ_REPLY.NEXTVAL,#{iid},#{nickname},#{content},#{ref},#{step},SYSDATE)
+      ]]>
+	</insert>
 	<select id="getBoardList" parameterType="hashmap" resultType="BoardDTO">
 		<![CDATA[
-         SELECT SEQ,ID,NAME,EMAIL,SUBJECT,CONTENT,
-                REF,LEV,STEP,PSEQ,REPLY,HIT,TO_CHAR(LOGTIME,'YYYY.MM.DD')AS LOGTIME 
-         FROM (SELECT ROWNUM RN, AA.* 
-               FROM (SELECT * FROM BOARD ORDER BY REF DESC,STEP ASC)AA)
+         SELECT IID,USERID,TITLE,PRICE,IMAGES,DESCRIPTION,CATEGORY,SUCCESS,BID,HIT,TO_CHAR(LOGTIME,'YYYY.MM.DD')AS LOGTIME
+         FROM (SELECT ROWNUM RN, AA.*
+               FROM (SELECT * FROM ITEM ORDER BY IID DESC)AA)
          WHERE RN>=#{startNum} AND RN<=#{endNum}
       ]]>
 	</select>
-	
-	<select id="getTotalArticle" resultType="java.lang.Integer">
+	<!-- <select id="getBoardList" parameterType="hashmap" resultType="BoardDTO">
 		<![CDATA[
-			SELECT COUNT(*) FROM BOARD
-		]]>
-		
+         SELECT IID,USERID,TITLE,PRICE,IMAGES,DESCRIPTION,CATEGORY,SUCCESS,BID,REPLY,HIT,TO_CHAR(LOGTIME,'YYYY.MM.DD')AS LOGTIME
+         FROM (SELECT ROWNUM RN, AA.*
+               FROM (SELECT * FROM ITEM ORDER BY IID DESC)AA)
+         WHERE RN>=#{startNum} AND RN<=#{endNum}
+      ]]>
+	</select> -->
+	<select id="getBoardSearchList" parameterType="hashmap" resultType="BoardDTO">
+		<![CDATA[
+         SELECT IID,USERID,TITLE,PRICE,IMAGES,DESCRIPTION,CATEGORY,SUCCESS,BID,HIT,TO_CHAR(LOGTIME,'YYYY.MM.DD')AS LOGTIME
+         FROM (SELECT ROWNUM RN, AA.*
+               FROM (SELECT * FROM ITEM ORDER BY IID DESC)AA 
+               WHERE (UPPER(TITLE) LIKE#{title}) OR (UPPER(CATEGORY) LIKE#{category}) OR (UPPER(DESCRIPTION) LIKE#{description}))
+         WHERE RN>=#{startNum} AND RN<=#{endNum}
+
+      ]]>
+	</select>
+	<select id="getboardSearchList" parameterType="hashmap" resultType="java.lang.Integer">
+		<![CDATA[
+         SELECT COUNT(*)
+         FROM ITEM
+         WHERE (UPPER(TITLE) LIKE#{title}) OR (UPPER(CATEGORY) LIKE#{category}) OR (UPPER(DESCRIPTION) LIKE#{description})
+      ]]>
 	</select>
 	
 	
+	
+	<select id="getReplyList" parameterType="java.lang.Integer" resultType="ReplyDTO">
+		<![CDATA[
+         SELECT *
+         FROM REPLY
+         WHERE IID=#{iid}
+         ORDER BY STEP
+      ]]>
+	</select>
+	<select id="getReply" parameterType="java.lang.Integer" resultType="ReplyDTO">
+		<![CDATA[
+         SELECT *
+         FROM REPLY
+         WHERE RID=#{rid}
+      ]]>
+	</select>
+	<select id="getReplyStep" resultType="java.lang.Integer">
+		<![CDATA[
+         SELECT STEP
+         FROM (SELECT STEP FROM REPLY ORDER BY STEP DESC)
+         WHERE ROWNUM=1
+      ]]>
+	</select>
+	<select id="getSubReplyStep" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		<![CDATA[
+         SELECT STEP
+         FROM (SELECT STEP FROM REPLY WHERE REF=#{ref} ORDER BY STEP DESC)
+         WHERE ROWNUM=1
+      ]]>
+	</select>
+
+	<select id="getTotalArticle" resultType="java.lang.Integer">
+		<![CDATA[
+			SELECT COUNT(*) FROM ITEM
+		]]>
+
+	</select>
+
+
 	<update id="updateHit" parameterType="java.lang.Integer">
 		<![CDATA[
 			UPDATE BOARD SET HIT=HIT+1 WHERE SEQ=#{seq}
 		]]>
 	</update>
-	
+
 	<select id="getBoard" parameterType="java.lang.Integer" resultType="BoardDTO">
 		<![CDATA[
-			SELECT * FROM BOARD WHERE SEQ=#{seq}
+			SELECT * FROM ITEM WHERE IID=#{iid}
 		]]>
 	</select>
-	
+
 	<update id="boardUpdate" parameterType="BoardDTO">
       <![CDATA[
-         UPDATE BOARD SET SUBJECT=#{subject},CONTENT=#{content},EMAIL=#{email} WHERE SEQ=#{seq}
+         UPDATE ITEM SET TITLE=#{title},PRICE=#{price},CATEGORY=#{category},DESCRIPTION=#{description} WHERE IID=#{iid}
       ]]>
    </update>
+   <update id="boardDelete" parameterType="java.lang.Integer">
+   		<![CDATA[
+			DELETE FROM ITEM WHERE IID=#{iid}
+		]]>
+   </update>
+
+   <update id="replyUpdateStep" parameterType="java.lang.Integer">
+   		<![CDATA[
+			UPDATE REPLY SET STEP=STEP+1 WHERE STEP>=#{step}
+		]]>
+   </update>
+   <update id="boardUpdateReply" parameterType="java.lang.Integer">
+   		<![CDATA[
+			UPDATE ITEM SET REPLY=(SELECT COUNT(*) FROM REPLY WHERE IID=#{iid}) WHERE IID=#{iid}
+		]]>
+   </update>
+
+   <update id="replyUpdate" parameterType="ReplyDTO">
+   		<![CDATA[
+			UPDATE REPLY SET CONTENT=#{content} WHERE RID=#{rid}
+		]]>
+   </update>
+   <update id="replyDelete" parameterType="java.lang.Integer">
+   		<![CDATA[
+			DELETE FROM REPLY WHERE RID=#{rid} OR REF=#{rid}
+		]]>
+   </update>
+
+
+   <!-- map -->
+   <select id="getAllBoardList" resultType="BoardDTO">
+      <![CDATA[
+         SELECT IID,USERID,TITLE,PRICE,IMAGES,DESCRIPTION,CATEGORY,SUCCESS,BID,REPLY,HIT,TO_CHAR(LOGTIME,'YYYY.MM.DD')AS LOGTIME,ADDR1, LAT , LNG
+         FROM ITEM
+         LEFT JOIN ADDRESS
+         ON ITEM.ADDRID = ADDRESS.ADDRID
+      ]]>
+   </select>
 </mapper>

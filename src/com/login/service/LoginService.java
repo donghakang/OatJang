@@ -15,18 +15,19 @@ public class LoginService implements CommandAction {
 	public String requestPro(HttpServletRequest request,
 			HttpServletResponse response) throws Throwable {
 		String id = request.getParameter("id");
-		String pwd = request.getParameter("pwd");
+		String pw = request.getParameter("pw");
 
-		System.out.println(id + "  " + pwd);
+		 System.out.println(id + " " + pw);
 		LoginDAO dao = new LoginDAO();
-		LoginDTO entity = dao.getLoginUser(id, pwd);
+		LoginDTO entity = dao.getLoginUser(id, pw);
 
 		if (entity != null) {
-			// 세션설정
+			// 로그인 성공 -> 세션설정
 			HttpSession session = request.getSession();
-			session.setAttribute("logOK", entity);
-			return "login/loginOK.jsp";
+			session.setAttribute("loginComplete", entity);
+			return "index.jsp";
 		} else {
+			// TODO: 로그인 실패 메시지를 표시한다.
 			return "login/loginFail.jsp";
 		}
 	}
