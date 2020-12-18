@@ -10,36 +10,29 @@
     <link rel="stylesheet" href="/oatjang/styles/login.css" />
     <link rel="stylesheet" href="/oatjang/styles/style.css">
     <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script>
+    
+    </head>
+
+<body class="container">
+
+	  <script>
     	$(document).ready(function() {
-    		$('.header1').load( "loginMenu.jsp", function( response, status, xhr ) {
+    		$('.navigation_bar').load( "./loginMenu.jsp", function( response, status, xhr ) {
     			if ( status == "error" ) {
     				var msg = "Sorry but there was an error: ";
     			}
     		});
     	})
     </script>
-</head>
-
-<body class="container">
-
-	<script>
-   		$('.header1').load( "loginMenu.jsp", function( response, status, xhr ) {
-   			if ( status == "error" ) {
-   				var msg = "Sorry but there was an error: ";
-   			}
-   		});
-    </script>
-    <header class="header1"></header>
-
+<div class="navigation_bar"></div>
 
     <div class="align">
 
             <div class="login_image">
                 <div class="login_container">
                 <div class="grid">
-                    <form action="https://httpbin.org/post" method="POST" class="form login">
-
+                    <!-- <form action="https://httpbin.org/post" method="POST" class="form login"> -->
+					<form action="/oatjang/login.do" method="POST" class="form login">		
                         <div class="form__field">
                             <label for="login__username"><svg class="icon">
                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use>

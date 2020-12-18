@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
@@ -46,13 +45,13 @@
                       		  </div>
 	<div class="form__field">
                             <label for="login__username"><svg class="icon">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lock"></use>
-                                </svg><span class="hidden">Phone</span></label>
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use>
+                                </svg><span class="hidden">PhoneNumber</span></label>
                             <input id="login__password" type="text" name="phone" class="form__input"
-                                placeholder="Phone" required>
+                                placeholder="Phone Number" required>
                         </div>
 	<div class="form__field">
-                            <input type="submit" value="Find Your PassWord">
+                            <input type="submit" value="Find Your PassWord!!">
                         </div>
                         </form>
 	<div class="register_password">
