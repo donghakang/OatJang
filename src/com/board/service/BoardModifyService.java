@@ -14,7 +14,7 @@ public class BoardModifyService implements CommandAction{
 		int iid = Integer.parseInt(request.getParameter("iid"));
 		int pg = Integer.parseInt(request.getParameter("pg"));
 		
-		BoardDAO dao = new BoardDAO();
+		BoardDAO dao = BoardDAO.getInstance();
 		BoardDTO dto = dao.getBoard(iid);
 		
 		request.setAttribute("dto", dto);

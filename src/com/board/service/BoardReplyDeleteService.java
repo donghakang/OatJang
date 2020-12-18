@@ -12,7 +12,7 @@ public class BoardReplyDeleteService implements CommandAction{
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		int iid = Integer.parseInt(request.getParameter("iid"));
 		int rid = Integer.parseInt(request.getParameter("rid"));
-		BoardDAO dao = new BoardDAO();
+		BoardDAO dao = BoardDAO.getInstance();
 		dao.replyDelete(rid,iid);
 		
 		return "boardView.do?iid="+iid;

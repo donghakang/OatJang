@@ -26,7 +26,7 @@ public class BoardListService implements CommandAction{
 		map.put("startNum", startNum);
 		map.put("endNum", endNum);
 		
-		BoardDAO dao = new BoardDAO();
+		BoardDAO dao = BoardDAO.getInstance();
 		List<BoardDTO> list= dao.getBoardList(map);
 		
 		BoardPaging paging = new BoardPaging(pg,5,pageSize);	// 페이지를 3페이지씩 보여줌

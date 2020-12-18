@@ -8,6 +8,7 @@ drop table reply purge;
 create table reply(
 rid NUMBER PRIMARY KEY,
 iid NUMBER,
+userid number(10) NOT NULL,
 nickname VARCHAR2(10) NOT NULL,
 content VARCHAR2(100),
 ref NUMBER NOT NULL,

@@ -31,7 +31,7 @@ public class RegisterService implements CommandAction {
 		String roadAddrPart2 = request.getParameter("roadAddrPart2");
 		String addrDetail = request.getParameter("addrDetail");
 		double lat = Double.parseDouble(request.getParameter("lat"));
-		double lng = Double.parseDouble(request.getParameter("lat"));
+		double lng = Double.parseDouble(request.getParameter("lng"));
 
 		LoginDTO loginDto = new LoginDTO();
 		loginDto.setId(id);

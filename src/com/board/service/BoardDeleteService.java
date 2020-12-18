@@ -16,7 +16,7 @@ public class BoardDeleteService implements CommandAction{
 		int pg = Integer.parseInt(request.getParameter("pg"));
 		int iid = Integer.parseInt(request.getParameter("iid"));
 
-		BoardDAO dao = new BoardDAO();
+		BoardDAO dao = BoardDAO.getInstance();
 		String imgNames = dao.deleteBoard(iid);
 		String[] images = imgNames.split(",");
 		File file = null;

@@ -40,9 +40,9 @@
 								</use>
 							</svg>
 						</label>
-						<%-- <input id="login__username" type="text" name="id" class="form__input" placeholder="<%=dto.getId()%>"
-                                required> --%>
-						 <p><%=dto.getId()%></p> 
+						 <input id="login__username" type="text" name="id" class="form__input" placeholder="<%=dto.getId()%>"
+                                required readonly> 
+						 
 
 						 
 					</div>

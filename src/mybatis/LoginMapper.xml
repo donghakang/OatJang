@@ -48,5 +48,13 @@
 			FROM USERS WHERE NAME=#{name} AND AGE=#{age}
 		]]>
 	</select>
+	
+	<!-- addr_id 를 이용하여, 주소 정보를 다 가져온다. -->
+	<select id="getAddressInfo" parameterType="java.lang.Integer" resultType="AddressDTO">
+		<![CDATA[
+			SELECT * 
+			FROM ADDRESS WHERE ADDRID=#{addrId}
+		]]>
+	</select>
 
 </mapper>

@@ -12,22 +12,24 @@ public class BoardReplyInsertService implements CommandAction{
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		request.setCharacterEncoding("UTF-8");
-		int ref = Integer.parseInt(request.getParameter("ref"));
 		int iid = Integer.parseInt(request.getParameter("iid"));
+		int ref = Integer.parseInt(request.getParameter("ref"));
 		int reply = Integer.parseInt(request.getParameter("reply"));
+		int userid = Integer.parseInt(request.getParameter("userid"));
 		String nickname = request.getParameter("nickname");
-		String content = request.getParameter("content");
+		String content = request.getParameter("comment");
 		ReplyDTO dto = new ReplyDTO();
 		dto.setIid(iid);
 		dto.setRef(ref);
 		dto.setNickname(nickname);
 		dto.setContent(content);
-		BoardDAO dao = new BoardDAO();
+		dto.setUserid(userid);
+		BoardDAO dao = BoardDAO.getInstance();
 		if(ref==0) {
 			dao.replyInsert(dto,reply);
 		}else {
 			dao.subReplyInsert(dto);
 		}
-		return "boardView.do";
+		return "board/boardView.jsp";
 	}
 }

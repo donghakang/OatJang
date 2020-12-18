@@ -82,12 +82,12 @@ LoginDTO dto = (LoginDTO)session.getAttribute("loginComplete");
             <a href="#" alt="search" id="search">search</a>
             
 			<!-- 로그인 세션이 없을시, -->
-			<c:if test="${empty dto }">
+			<c:if test="${ empty loginComplete }">
             	<a href="/oatjang/login/login.jsp" alt="login">login</a></li>
             	<a href="/oatjang/login/register.jsp" alt="join us">join us</a></li>
             </c:if>
-            <c:if test="${!empty dto}">
-				<a href="#" alt="my page">my page</a></li>
+            <c:if test="${ !empty loginComplete }">
+				<a href="/oatjang/myPage.do" alt="my page">my page</a></li>
             	<a href="/oatjang/logout.do" alt="log out">log out</a></li>
 			</c:if>
         </div>
@@ -95,8 +95,8 @@ LoginDTO dto = (LoginDTO)session.getAttribute("loginComplete");
 
         <div id="middle" class="middle container red topBotomBordersOut">
             <a href="#" alt="all">all</a>
-            <a href="/oatjang/boardList.do?pg=1" alt="community">community</a>
-            <a href="#" alt="deals">deals</a>
+            <a href="/oatjang/commuList.do?pg=1" alt="community">community</a>
+            <a href="/oatjang/boardList.do?pg=1" alt="deals">deals</a>
             <a href="/oatjang/map.do" alt="maps">maps</a>
             <a href="#" alt="service">service</a>
         </div>

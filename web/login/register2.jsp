@@ -120,7 +120,7 @@ System.out.println("pw: " + pw);
 <div class="login_image">
 	<div class="login_container">
 		<div class="grid">
-			<form action="register.do" name="submitRegister"
+			<form action="/oatjang/register.do" name="submitRegister"
 				method="POST" class="form login"
 			>
 				

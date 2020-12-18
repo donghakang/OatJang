@@ -16,7 +16,7 @@ public class BoardReplyUpdateService implements CommandAction{
 		int rid = Integer.parseInt(request.getParameter("rid"));
 		String content = request.getParameter("content");
 		
-		BoardDAO dao = new BoardDAO();
+		BoardDAO dao = BoardDAO.getInstance();
 		ReplyDTO dto = new ReplyDTO();
 		dto.setContent(content);
 		dto.setRid(rid);

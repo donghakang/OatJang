@@ -15,12 +15,16 @@ public class BoardViewService implements CommandAction{
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		int iid = Integer.parseInt(request.getParameter("iid"));
-		BoardDAO dao = new BoardDAO();
-		BoardDTO dto = dao.getBoard(iid);
-		List<ReplyDTO> list = dao.getReplyList(iid);
+		int pg = Integer.parseInt(request.getParameter("pg"));
 		
+		BoardDAO dao = BoardDAO.getInstance();
+		dao.upHit(iid);
+		BoardDTO dto = dao.getBoard(iid);
+		
+		String nickname= dao.getNickname(dto.getUserid());
 		request.setAttribute("dto", dto);
-		request.setAttribute("list", list);
+		request.setAttribute("nickname", nickname);
+		request.setAttribute("pg", pg);
 		return "board/boardView.jsp";
 	}
 }
