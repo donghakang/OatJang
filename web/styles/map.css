@@ -52,7 +52,6 @@
 	transition-timing-function: cubic-bezier(0.77, 0.2, 0.05, 1.0);
 	font-size: 3.5em;
 	z-index: 11;
-	box-shadow: 2px 2px 2px gray;
 }
 
 #close_image {
@@ -62,7 +61,7 @@
 	transition-timing-function: cubic-bezier(0.77, 0.2, 0.05, 1.0);
 	font-size: 3.5em;
 	z-index: 11;
-	box-shadow: 2px 2px 2px gray;
+
 }
 
 #search_button {

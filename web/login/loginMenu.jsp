@@ -7,7 +7,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OatJang - 메인 페이지</title>
     <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="/oatjang/styles/style.css">
@@ -81,27 +80,22 @@ LoginDTO dto = (LoginDTO)session.getAttribute("loginComplete");
 
         <div id="right" class="right container red topBotomBordersOut">
             <a href="#" alt="search" id="search">search</a>
-			<%
-			// 로그인 세션이 없을시,
-			if (dto == null) {	
-			%>
+            
+			<!-- 로그인 세션이 없을시, -->
+			<c:if test="${empty dto }">
             	<a href="/oatjang/login/login.jsp" alt="login">login</a></li>
             	<a href="/oatjang/login/register.jsp" alt="join us">join us</a></li>
-            <%
-            // 로그인 세션이 있고, 로그인이 완료 되었을때
-			} else {
-			%>	
+            </c:if>
+            <c:if test="${!empty dto}">
 				<a href="#" alt="my page">my page</a></li>
             	<a href="/oatjang/logout.do" alt="log out">log out</a></li>
-			<% 	
-			}
-            %>	
+			</c:if>
         </div>
         
 
         <div id="middle" class="middle container red topBotomBordersOut">
             <a href="#" alt="all">all</a>
-            <a href="board.html" alt="community">community</a>
+            <a href="/oatjang/boardList.do?pg=1" alt="community">community</a>
             <a href="#" alt="deals">deals</a>
             <a href="/oatjang/map.do" alt="maps">maps</a>
             <a href="#" alt="service">service</a>
