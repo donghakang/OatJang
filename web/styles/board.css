@@ -1,0 +1,192 @@
+/******************/
+/* board.css 전체  */
+/******************/
+
+/*board page*/
+
+.board {
+  width: 100%;
+  padding: 0.65rem;
+  text-align: center;
+}
+.textbox_1 {
+  padding-bottom: 10px;
+  text-align: center;
+}
+.menu {
+  background-color: rgb(194, 155, 117);
+}
+
+.board_nav {
+  background-color: rgb(194, 192, 192);
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+button {
+  border-color: rgb(131, 119, 119);
+  border-top: solid 1px;
+  border-bottom: solid 1px;
+  width: 60px;
+  height: 30px;
+  font-size: 20px;
+}
+.board_text {
+  width: 100%;
+  text-align: center;
+}
+
+/* 글쓰기 css */
+
+.textbox {
+  min-height: auto;
+  text-align: center;
+  padding: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+.div_intext {
+  min-height: auto;
+  text-align: left;
+  padding: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.textinput {
+  width: 60%;
+  padding: 10px;
+  margin: 5px 20%;
+  font-size: 1.2rem;
+  text-align: left;
+  background-color: transparent;
+}
+
+.box {
+  padding: 5px 10px;
+  margin: 5px 20%;
+  border-radius: 5px;
+}
+.title {
+  width: 60%;
+  height: 50px;
+  font-weight: bold;
+  font-size: 20px;
+  background-color: inherit;
+  text-align: left;
+}
+
+.bi {
+  min-height: 200px;
+}
+.bw {
+  min-height: 350px;
+}
+
+/* 사진추가  */
+
+.imgs_wrap {
+  display: flex;
+  flex-flow: row wrap;
+  /* width: 50%; */
+  border: 1px solid gray;
+  padding: 10px;
+  box-sizing: content-box;
+  margin-bottom: 20px;
+  overflow: auto;
+}
+
+.imgs_wraps {
+  display: flex;
+  flex-flow: row wrap;
+  /* width: 50%; */
+  border: 1px solid gray;
+  padding: 10px;
+  box-sizing: content-box;
+  margin-bottom: 20px;
+}
+
+.imgs_wrap .img_item {
+  width: 150px;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.imgs_wrap .img_item img {
+  width: 100%;
+}
+
+.imgs_wraps .img_item {
+  width: 150px;
+  padding: 10px;
+  border: 1px solid gray;
+  margin-right: 10px;
+}
+
+.imgs_wraps .img_item imgs {
+  width: 100%;
+}
+
+.div_main {
+  display: flex;
+  align-items: center;
+}
+
+.picture {
+  border: 1px;
+  width: 60%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  /* display:flex; */
+  /* justify-content: center;
+   text-align:center; */
+}
+
+.picturein {
+  padding: 8px;
+  width: 100%;
+}
+
+#rightbtn {
+  padding-right: 20px;
+}
+
+/* boardInsert  */
+
+.addressbox {
+  border: 1px solid gray;
+}
+.cate_h3 {
+  margin-bottom: 10px;
+}
+.category {
+
+  border: 1px solid gray;
+  padding: 10px;
+  margin: 5px 20%;
+}
+
+.box {
+  padding: 5px 10px;
+  margin: 5px 20%;
+
+}
+
+.title {
+  width: 60%;
+  height: 50px;
+  font-weight: bold;
+  font-size: 20px;
+  background-color: inherit;
+  text-align: left;
+}
+
+.price {
+  width: 60%;
+  height: 50px;
+  font-size: 16px;
+  background-color: inherit;
+  text-align: left;
+
+}
