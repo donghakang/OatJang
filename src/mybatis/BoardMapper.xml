@@ -48,12 +48,23 @@
 	<select id="getBoardSearchList" parameterType="hashmap" resultType="BoardDTO">
 		<![CDATA[
          SELECT IID,USERID,TITLE,PRICE,IMAGES,DESCRIPTION,CATEGORY,SUCCESS,BID,HIT,TO_CHAR(LOGTIME,'YYYY.MM.DD')AS LOGTIME
-         FROM (SELECT ROWNUM RN, AA.* 
-               FROM (SELECT * FROM ITEM ORDER BY IID DESC)AA)
-         WHERE (UPPER(TITLE) LIKE#{title}) OR (UPPER(CATEGORY) LIKE#{category}) OR (UPPER(DESCRIPTION) LIKE#{description})
+         FROM (SELECT ROWNUM RN, AA.*
+               FROM (SELECT * FROM ITEM ORDER BY IID DESC)AA 
+               WHERE (UPPER(TITLE) LIKE#{title}) OR (UPPER(CATEGORY) LIKE#{category}) OR (UPPER(DESCRIPTION) LIKE#{description}))
+         WHERE RN>=#{startNum} AND RN<=#{endNum}
 
       ]]>
 	</select>
+	<select id="getboardSearchList" parameterType="hashmap" resultType="java.lang.Integer">
+		<![CDATA[
+         SELECT COUNT(*)
+         FROM ITEM
+         WHERE (UPPER(TITLE) LIKE#{title}) OR (UPPER(CATEGORY) LIKE#{category}) OR (UPPER(DESCRIPTION) LIKE#{description})
+      ]]>
+	</select>
+	
+	
+	
 	<select id="getReplyList" parameterType="java.lang.Integer" resultType="ReplyDTO">
 		<![CDATA[
          SELECT *

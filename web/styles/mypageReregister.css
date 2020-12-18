@@ -1,5 +1,9 @@
+@charset "UTF-8";
 
         /* config.css */
+        #reRegister_table{
+        width:100%;
+        }
 
         :root {
             --baseColor: #606468;
@@ -11,7 +15,7 @@
             height: 92vh;
             margin: auto;
             display: flex;
-
+			color:black;
             place-items: center;
         }
         
@@ -91,6 +95,39 @@
             width: 1em;
         }
 
+        /* layout/base.css */
+/*
+        :root {
+            --htmlFontSize: .8rem;
+
+            --bodyBackgroundColor: #2c3338;
+            --bodyColor: var(--baseColor);
+            --bodyFontFamily: 'Open Sans';
+            --bodyFontFamilyFallback: sans-serif;
+            --bodyFontSize: 0.875rem;
+            --bodyFontWeight: 400;
+            --bodyLineHeight: 1.5;
+        }
+
+         * {
+            box-sizing: inherit;
+        }
+
+        html {
+            box-sizing: border-box;
+            height: 100%;
+        }
+
+        body {
+            background-color: var(--bodyBackgroundColor);
+            color: var(--bodyColor);
+            height: 100%;
+            line-height: var(--bodyLineHeight);
+            margin: 0;
+            min-height: 100vh;
+        }
+ */
+        /* modules/anchor.css */
 
         :root {
             --anchorColor: #eee;
@@ -227,7 +264,6 @@
         }
 
         .register_password {
-        	font-size: 0.875rem;
             display: flex;
             justify-content: space-between;
 
@@ -243,3 +279,82 @@
         #register_id:hover {
             opacity: 1;
         }
+
+
+.reRegister_txt p{
+		font-size: 20px;
+		text-align: center;
+	}
+	
+	
+	.login_list {
+		float: left;
+		width: 100%;
+		list-style: none;    /*   ul  태그 없애는 법 */
+	}
+	.login_list li{
+		line-height: 30px;
+	}
+	.login_list li span {
+		float: left;
+		display: inline-block;
+		width: 90px;
+		font-size: 15px;
+		line-height: 30px;
+	}
+	.login_list li:nth-child(2) span {
+		clear:both;
+	}
+	.login_list li input {
+		line-height: 20px;
+		float: left;
+	}	
+	
+	
+	.personal_list {
+		float: left;
+		width: 100%;
+		list-style: none;    /*   ul  태그 없애는 법 */
+	}
+	.personal_list li{
+		line-height: 30px;
+	}
+	.personal_list li span {
+		float: left;
+		display: inline-block;
+		width: 90px;
+		font-size: 15px;
+		line-height: 30px;
+	}
+	.personal_list li:nth-child(2) span {
+		clear:both;
+	}
+	.personal_list li input {
+		line-height: 20px;
+		float: left;
+	}	
+	
+	
+	.addr_list {
+		float: left;
+		width: 100%;
+		list-style: none;    /*   ul  태그 없애는 법 */
+	}
+	.addr_list li{
+		line-height: 30px;
+	}
+	.addr_list li span {
+		float: left;
+		display: inline-block;
+		width: 90px;
+		font-size: 15px;
+		line-height: 30px;
+	}
+	.addr_list li:nth-child(2) span {
+		clear:both;
+	}
+	.addr_list li input {
+		line-height: 20px;
+		float: left;
+	}	
+	

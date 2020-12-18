@@ -71,10 +71,11 @@ public class BoardSearchService implements CommandAction{
 		//------------------------------------------------------------------
 		BoardDAO dao = new BoardDAO();
 		List<BoardDTO> list = dao.getBoardSearchByTitleAndCategoryAndDescription(map);
-		int temp = list.size(); //검색한 글 갯수 가져오기
+		int temp = dao.getBoardSearchList(map); //검색한 글 갯수 가져오기
+		
 		System.out.println("temp : " +temp);
 		System.out.println("pageSize : " +pageSize);
-		SearchPaging paging = new SearchPaging(pg,5,pageSize,temp); // (1,3,pageSize)
+		SearchPaging paging = new SearchPaging(pg,5,pageSize,temp,searchentity); // (1,3,pageSize)
 		paging.makePagingHTML();  
 		
 			System.out.println("list :" +list);
@@ -82,7 +83,6 @@ public class BoardSearchService implements CommandAction{
 			request.setAttribute("list", list);
 			request.setAttribute("pg", pg); //1
 			request.setAttribute("paging", paging);
-			
 			
 			//검색을 하면 1페이지에 있는 것만 검색됨
 			return "board/boardSearchList.jsp";
