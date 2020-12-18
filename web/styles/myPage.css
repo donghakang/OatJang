@@ -57,3 +57,64 @@
     border-radius: .8rem;
     letter-spacing: .2rem;
 }
+
+
+
+
+/* myPageUpdate */
+.information_select_fix {
+    height: 3em;
+    padding-top: 3em;
+    border-bottom: 1px solid white;
+}
+
+
+.information_select_fix td {
+	width: 25%;
+	text-transform: uppercase;
+    /* background-color: #555; */
+    letter-spacing: .4rem;
+    font-size: 0.7em;
+} 
+
+
+.information_select_fix th {
+
+    text-align: left;
+    letter-spacing: .2rem;
+    font-weight: 100;
+}
+
+.information_select_fix input[type='text'],
+.information_select_fix input[type='password'] {
+	border-radius: .5rem;
+	width: 15rem;
+	border: 0;
+	outline: 0;
+	padding: .5rem;
+}
+
+.my_page .information_form_address {
+	
+	margin-top: 2em;
+    font-size: .875rem;
+    width: 100%;
+}
+
+.information_select_fix #select_roadAddrPart1{
+
+	width: 20rem;
+}
+.information_select_fix #select_roadAddrPart1 #searchAddress{
+	border-radius: 0.2rem;
+	margin-left: 1rem;
+	padding:0.5rem;
+	outline:0;
+	border:0;
+}
+
+.information_select_fix #select_roadAddrPart2 input[type='text']{
+	width: 21rem;
+}
+
+

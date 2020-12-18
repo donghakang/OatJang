@@ -13,7 +13,7 @@
   <body class="container">
   <script>
     	$(document).ready(function() {
-    		$('.navigation_bar').load( "./loginMenu.jsp", function( response, status, xhr ) {
+    		$('.navigation_bar').load( "/oatjang/login/loginMenu.jsp", function( response, status, xhr ) {
     			if ( status == "error" ) {
     				var msg = "Sorry but there was an error: ";
     			}
