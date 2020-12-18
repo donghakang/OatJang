@@ -55,7 +55,7 @@
 								</use>
 							</svg>
 						</label>
-						<input id="login__password" type="text" name="pwd" class="form__input" placeholder="Password"
+						<input id="login__password" type="password" name="pwd" class="form__input" placeholder="Password"
                                	 required>
                                
              		</div>
