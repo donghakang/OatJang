@@ -23,24 +23,7 @@ insert into users values(2,'corn202023@gmail.com','1111','이해민','HM',20,111
 select * from users;
 
 
--- address
-create table address(
-addrid number,
-addr1 varchar(100),
-addr2 varchar(100),
-addr3 varchar(100),
-lat number,
-lng number
-)
-
-
 create sequence user_seq nocycle nocache;
-create sequence addr_seq nocycle nocache;
-
+  
 drop table users;
-drop table address;
 drop sequence user_seq;
-drop sequence addr_seq;
-
-select * from users;
-select * from address;
