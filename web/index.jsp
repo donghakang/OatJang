@@ -6,11 +6,12 @@
     <meta charset="UTF-8">
     <title>OatJang - 메인 페이지</title>
     <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<link rel="stylesheet" href="/oatjang/styles/style.css">
+
+    <link rel="stylesheet" href="/oatjang/styles/style.css">
     <link rel="stylesheet" href="/oatjang/styles/home.css">
 </head>
 <body class="container">
-   <script>
+    <script>
     	$(document).ready(function() {
     		$('.navigation_bar').load( "login/loginMenu.jsp", function( response, status, xhr ) {
     			if ( status == "error" ) {
@@ -20,7 +21,6 @@
     	})
     </script>
     <div class="navigation_bar"></div>
-    
     <div class="canvas">
         <div id="renderCanvas"></div>
         <div class="description">

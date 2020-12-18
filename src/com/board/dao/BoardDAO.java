@@ -107,13 +107,14 @@ public class BoardDAO {
 
 	public List<BoardDTO> getBoardSearchByTitleAndCategoryAndDescription(
 			Map<String, Object> map) {
-		// System.out.println("dao넘어옴");
+		 System.out.println("dao: "+map.get("startNum"));
+		 System.out.println("dao: "+map.get("endNum"));
 		SqlSession session = factory.openSession();
 		System.out.println(map.get("title"));
 		List<BoardDTO> list = session
 				.selectList("mybatis.BoardMapper.getBoardSearchList", map);
 		session.close();
-		System.out.println("dao빠져나옴");
+		System.out.println("LIST갯수 : "+list.size());
 		return list;
 	}
 
@@ -276,6 +277,15 @@ public class BoardDAO {
 		} finally {
 			session.close();
 		}
+	}
+
+	public int getBoardSearchList(Map<String, Object> map) {
+		SqlSession session = factory.openSession();
+		int n = session.selectOne("mybatis.BoardMapper.getboardSearchList", map);
+		session.close();
+		System.out.println("n :"+n);
+		return n;
+		
 	}
 
 

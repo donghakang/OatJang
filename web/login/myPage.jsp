@@ -1,7 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="com.login.dto.LoginDTO" %>
-<%@ include file="./loginMenu.jsp" %>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+	<link rel="stylesheet" href="/oatjang/styles/login.css" />
+    <link rel="stylesheet" href="/oatjang/styles/style.css">
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+    </head>
+  <body class="container">
+  <script>
+    	$(document).ready(function() {
+    		$('.navigation_bar').load( "./loginMenu.jsp", function( response, status, xhr ) {
+    			if ( status == "error" ) {
+    				var msg = "Sorry but there was an error: ";
+    			}
+    		});
+    	})
+    </script>
+    <div class="navigation_bar"></div>
+<!-- getAddr ==> getAddrId 3개 빠꿈 -->
 
 <%
 	LoginDTO dto = (LoginDTO)session.getAttribute("loginComplete");
@@ -11,8 +30,8 @@
 		System.out.println(dto.getName());
 		System.out.println(dto.getNickname());
 		System.out.println(dto.getPhone());
-		System.out.println(dto.getAddr());
-		
+		System.out.println(dto.getAddrId());
+		System.out.println(dto.getAge());
 	}
 	
 	int passLength = dto.getPw().length();
@@ -52,7 +71,7 @@
 			</tr>
 			<tr>
 				<td>주소</td>
-				<td><%=dto.getAddr()%></td>
+				<td><%=dto.getAddrId()%></td>
 			</tr>
 			<tr>
 				<td colspan="3" align="center">
@@ -64,7 +83,7 @@
 						<input type="hidden" name="name" value="<%=dto.getName()%>">
 						<input type="hidden" name="age" value="<%=dto.getAge()%>">
 						<input type="hidden" name="phone" value="<%=dto.getPhone()%>">
-						<input type="hidden" name="addr" value="<%=dto.getAddr()%>">
+						<input type="hidden" name="addr" value="<%=dto.getAddrId()%>">
 						<input type="submit" value="회원정보수정">
 						<input type="reset" value="취&nbsp;&nbsp;소">
 					</form>
