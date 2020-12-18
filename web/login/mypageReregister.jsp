@@ -2,26 +2,17 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.login.dto.LoginDTO" %>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
- <link rel="stylesheet" href="/oatjang/styles/mypageReregister.css">
+<meta charset="UTF-8">
+<title>Oatjang - 마이페이지수정</title>
+<!-- <link rel="stylesheet" href="/oatjang/styles/mypageReregister.css"> -->
+<link rel="stylesheet" href="/oatjang/styles/myPage.css" />
+<link rel="stylesheet" href="/oatjang/styles/style.css">
 
-    <link rel="stylesheet" href="/oatjang/styles/style.css">
 <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-</head>
-<body class="container" id="mypageReregister_container">
 <script>
 	$(document).ready(function() {
-		$('.navigation_bar').load( "./loginMenu.jsp", function( response, status, xhr ) {
-			if ( status == "error" ) {
-				var msg = "Sorry but there was an error: ";
-			}
-		});
-		
 		
 		$('#pw1, #pw2').keyup(function() {
 			var number = /([0-9])/;
@@ -76,13 +67,114 @@
 	});
 	
 </script>
+
+
+</head>
+
+<body class="container">
+<script>
+    	$(document).ready(function() {
+    		$('.navigation_bar').load( "/oatjang/login/loginMenu.jsp", function( response, status, xhr ) {
+    			if ( status == "error" ) {
+    				var msg = "Sorry but there was an error: ";
+    			}
+    		});
+    	})
+    </script>
 <div class="navigation_bar"></div>
+<%
+	LoginDTO dto = (LoginDTO)session.getAttribute("loginComplete");
 
+	if (dto != null) {
+		System.out.println(dto.getId());
+		System.out.println(dto.getName());
+		System.out.println(dto.getNickname());
+		System.out.println(dto.getPhone());
+		System.out.println(dto.getAddrId());
+		System.out.println(dto.getAge());
+	}
+%>
 
-
- 
 <form action="/oatjang/reRegister.do" method="post">
- <div class="align" id="mypageReregister_align">
+<div class="my_page">
+	<h3>로그인 정보</h3>
+	<hr>
+	<table class="information_form">
+		<thead>
+        	<tr class="information_select">
+            	<td>Username</td>
+                <th><%=dto.getId()%></th>
+                <td>아이디는 수정할 수 없습니다</td>
+            </tr>
+    	</thead>
+    	<thead>
+        	<tr class="information_select">
+            	<td>Password</td>
+                <th><input type="password" id="pw1" value="<%=request.getParameter("pw")%>"></th>
+                <td><span id="pwStrength"></span></td>
+            </tr>
+    	</thead>
+    	<thead>
+        	<tr class="information_select">
+            	<td>Password Check</td>
+                <th><input type="password" id="pw2" name="pw" value="<%=request.getParameter("pw")%>"></th>
+                <td><span id="pwCheck">비밀번호가 일치합니다. </span></td>
+            </tr>
+    	</thead>
+    </table>
+    <h3>회원 정보</h3>
+	<hr>
+    <table class="information_form">
+    	<thead>
+        	<tr class="information_select">
+            	<td>Nickname</td>
+                <th><input type="text" name="nickname" value="<%=request.getParameter("nickname")%>"></th>
+                <td><span id="nicknameCheck">이미 사용중인 닉네임 입니다.</span></td>
+            </tr>
+    	</thead>
+    	<thead>
+        	<tr class="information_select">
+            	<td>name</td>
+                <th><input type="text" name="name" value="<%=request.getParameter("name")%>"></th>       
+            </tr>
+    	</thead>
+    	<thead>
+        	<tr class="information_select">
+            	<td>Birthday</td>
+                <th><input type="text" name="age" value="<%=request.getParameter("age")%>"></th>       
+            </tr>
+    	</thead>
+    	<thead>
+        	<tr class="information_select">
+            	<td>Phone #</td>
+                <th><input type="text" name="phone" value="<%=request.getParameter("phone")%>"></th>       
+            </tr>
+    	</thead>
+    </table>
+    <h3>주소 정보</h3>
+	<hr>
+	<table class="information_form">
+	</table>
+	
+	
+	<div class="info_btns">
+		<input type="hidden" name="id" value="<%=dto.getId()%>">
+		<input type="hidden" name="pw" value="<%=dto.getPw()%>">
+		<input type="hidden" name="nickname" value="<%=dto.getNickname()%>">
+		<input type="hidden" name="name" value="<%=dto.getName()%>">
+		<input type="hidden" name="age" value="<%=dto.getAge()%>">
+		<input type="hidden" name="phone" value="<%=dto.getPhone()%>">
+				<%-- <input type="hidden" name="addr" value="<%=dto.getAddrId()%>"> --%>
+		<input type="submit" value="회원정보수정">
+		<input type="button" value="취 소" onclick="location.href='/oatjang/index.jsp'">
+	</div>
+	
+	
+</div>
+</form>
+</body>
+</html>
+ <%-- <div class="align" id="mypageReregister_align">
 		<div class="login_image">
 			<div class="login_container">
 			<div class="grid">
@@ -165,7 +257,7 @@
 					<input type="reset" value="취&nbsp;&nbsp;소">
 				</td>
 			</tr>
-		</table>
+		</table> --%>
 				<%-- <ul class="login_list">
 					<li>로그인 정보</li>
 					<li>
@@ -217,14 +309,14 @@
 				</ul>
 					<input type="submit" value="회원정보 수정">
 					<input type="reset" value="취&nbsp;&nbsp;소"> --%>
-			</div>
+<!-- 			</div>
 		</div>
 	</div>
 	</div>
 	</form>
 
 </body>
-</html>
+</html> -->
 
 <%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

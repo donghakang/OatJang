@@ -6,18 +6,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Document</title> 
-<%
-		LoginDTO dto = (LoginDTO) request.getAttribute("entity");
-%>
+
 <link rel="stylesheet" href="/oatjang/styles/login.css" />
 <link rel="stylesheet" href="/oatjang/styles/style.css">
 <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
-
 </head>
 <body class="container">
 	<script>
     	$(document).ready(function() {
-    		$('.navigation_bar').load( "./loginMenu.jsp", function( response, status, xhr ) {
+    		$('.navigation_bar').load( "./login/loginMenu.jsp", function( response, status, xhr ) {
     			if ( status == "error" ) {
     				var msg = "Sorry but there was an error: ";
     			}
@@ -25,6 +22,9 @@
     	})
     </script>
 <div class="navigation_bar"></div>
+<%
+		LoginDTO dto = (LoginDTO) request.getAttribute("entity");
+%>
 	<div class="align">
 		<div class="login_image">
 			<div class="login_container">

@@ -8,25 +8,21 @@
 <link rel="stylesheet" href="/oatjang/styles/login.css" />
     <link rel="stylesheet" href="/oatjang/styles/style.css">
     <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script>
+    </head>
+    <body class="container">
+  
+
+  
+  <script>
     	$(document).ready(function() {
-    		$('.header1').load( "loginMenu.jsp", function( response, status, xhr ) {
+    		$('.navigation_bar').load( "./loginMenu.jsp", function( response, status, xhr ) {
     			if ( status == "error" ) {
     				var msg = "Sorry but there was an error: ";
     			}
     		});
     	})
     </script>
-</head>
-  <body class="container">
-  <script>
-   		$('.header1').load( "loginMenu.jsp", function( response, status, xhr ) {
-   			if ( status == "error" ) {
-   				var msg = "Sorry but there was an error: ";
-   			}
-   		});
-    </script>
-    <header class="header1"></header>
+   <div class="navigation_bar"></div>
     
     
 	<div class="align">
