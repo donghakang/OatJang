@@ -8,25 +8,26 @@ import com.login.dto.LoginDTO;
 
 import controller.CommandAction;
 
-public class FindIdService implements CommandAction{
+public class FindIdService implements CommandAction {
 
 	@Override
-	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+	public String requestPro(HttpServletRequest request,
+			HttpServletResponse response) throws Throwable {
 		request.setCharacterEncoding("UTF-8");
 
 		String name = request.getParameter("name");
 		int age = Integer.parseInt(request.getParameter("age"));
-		
-		
+
 		LoginDAO dao = new LoginDAO();
-		
+
+		System.out.println(name + ", " + age);
 		LoginDTO entity = dao.findId(name, age);
-		
-		if(entity != null) {
+
+		if (entity != null) {
 			request.setAttribute("entity", entity);
 			return "/login/findId2.jsp";
-		}else {
-			
+		} else {
+
 		}
 		return "/login/loginFail.jsp";
 	}
