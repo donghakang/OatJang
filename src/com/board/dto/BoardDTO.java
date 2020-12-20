@@ -15,9 +15,9 @@ public class BoardDTO {
 	private int hit; // 조회수
 	private String logtime; // 등록일
 
-	private String addr1;
-	private String addr2;
-	private String addr3;
+	private String roadAddrPart1;
+	private String roadAddrPart2;
+	private String roadAddrPart3;
 	private double lat;
 	private double lng;
 
@@ -100,27 +100,26 @@ public class BoardDTO {
 	}
 
 	// address
-
+	public String getRoadAddrPart1() {
+		return roadAddrPart1;
+	}
+	public void setRoadAddrPart1(String roadAddrPart1) {
+		this.roadAddrPart1 = roadAddrPart1;
+	}
+	public String getRoadAddrPart2() {
+		return roadAddrPart2;
+	}
+	public void setRoadAddrPart2(String roadAddrPart2) {
+		this.roadAddrPart2 = roadAddrPart2;
+	}
+	public String getRoadAddrPart3() {
+		return roadAddrPart3;
+	}
+	public void setRoadAddrPart3(String roadAddrPart3) {
+		this.roadAddrPart3 = roadAddrPart3;
+	}
 	public double getLat() {
 		return lat;
-	}
-	public String getAddr1() {
-		return addr1;
-	}
-	public void setAddr1(String addr1) {
-		this.addr1 = addr1;
-	}
-	public String getAddr2() {
-		return addr2;
-	}
-	public void setAddr2(String addr2) {
-		this.addr2 = addr2;
-	}
-	public String getAddr3() {
-		return addr3;
-	}
-	public void setAddr3(String addr3) {
-		this.addr3 = addr3;
 	}
 	public void setLat(double lat) {
 		this.lat = lat;

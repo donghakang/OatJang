@@ -19,12 +19,16 @@ public class MapListService implements CommandAction {
 
 		List<BoardDTO> items = mapDao.getList();
 
-		request.setAttribute("t", "TITLE");
 		request.setAttribute("itemList", items);
 
-		System.out
-				.println(items.get(0).getLat() + ", " + items.get(0).getLng());
-		System.out.println("HELLOWORLD");
+		// TODO: 이부분은 확인으로 넣은 부분이기 때문에, 나중에 지운다.
+		if (items.size() > 0) {
+			System.out.println(
+					items.get(0).getLat() + ", " + items.get(0).getLng());
+		} else {
+			System.out.println("아직은 BoardDTO에 물건이 등록되지 않았습니다. ");
+		}
+
 		return "map/map.jsp";
 	}
 
