@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.login.dto.LoginDTO" %>
+<%@page import="com.login.dto.AddressDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -104,7 +105,7 @@
 <div class="navigation_bar"></div>
 <%
 	LoginDTO dto = (LoginDTO)session.getAttribute("loginComplete");
-
+	AddressDTO addr_dto = (AddressDTO)request.getAttribute("addressEntity");
 	if (dto != null) {
 		System.out.println(dto.getId());
 		System.out.println(dto.getName());
@@ -179,36 +180,37 @@
             	<td rowspan="2">address</td>
                 <th id="select_roadAddrPart1">
                 <input id="addr1" type="text" name="addr1" class="form__input"
-							placeholder="주소" required readonly>
+					   placeholder="주소" value="<%=addr_dto.getRoadAddrPart1()%>" required readonly>
                	<button id="searchAddress" name="search_btn" type="button">
 					<i class='fa fa-search'></i>
-				</th>
+			</th>
             </tr>
             <tr class="information_select_fix">
                 <th id="select_roadAddrPart2"><input id="addr2" type="text" name="addr2" class="form__input"
-						placeholder="상세 주소" required readonly
-					></th>
+						placeholder="상세 주소" value="<%=addr_dto.getAddrDetail()%> <%=addr_dto.getRoadAddrPart2()%>" required readonly></th>
             </tr>
-            <input type="hidden" id="roadFullAddr" name="roadFullAddr" />
-					<input type="hidden" id="roadAddrPart1" name="roadAddrPart1" />
-					<input type="hidden" id="roadAddrPart2" name="roadAddrPart2" />
-					<input type="hidden" id="addrDetail" name="addrDetail" />
-					<input type="hidden" id="lat" name="lat" />
-					<input type="hidden" id="lng" name="lng" />
-            
+            <input type="hidden" name="addrId" value="<%=dto.getAddrId()%>">
+          	<input type="hidden" id="roadFullAddr" name="roadFullAddr" />
+			<input type="hidden" id="roadAddrPart1" name="roadAddrPart1" />
+			<input type="hidden" id="roadAddrPart2" name="roadAddrPart2" />
+			<input type="hidden" id="addrDetail" name="addrDetail" />
+			<input type="hidden" id="lat" name="lat" />
+			<input type="hidden" id="lng" name="lng" />
+          
     	</thead>
 	</table>
 	
 	
 	<div class="info_btns">
 	
-		<input type="hidden" name="id" value="<%=dto.getId()%>">
+<%-- 		<input type="hidden" name="id" value="<%=dto.getId()%>">
 		<input type="hidden" name="pw" value="<%=dto.getPw()%>">
 		<input type="hidden" name="nickname" value="<%=dto.getNickname()%>">
 		<input type="hidden" name="name" value="<%=dto.getName()%>">
 		<input type="hidden" name="age" value="<%=dto.getAge()%>">
 		<input type="hidden" name="phone" value="<%=dto.getPhone()%>">
-				<%-- <input type="hidden" name="addr" value="<%=dto.getAddrId()%>"> --%>
+		 --%>
+				
 		<input type="submit" value="회원정보수정">
 		<input type="button" value="취 소" onclick="location.href='/oatjang/index.jsp'">
 	</div>

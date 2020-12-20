@@ -240,7 +240,7 @@
 
 
 		//포지션 생성 ---------------------------------------------------------------------
-
+	
 			<c:forEach items="${itemList}" var="item">
 				var addr = '${item.addr1}'
 				var iid = ${item.iid}
