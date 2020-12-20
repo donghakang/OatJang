@@ -32,6 +32,7 @@ public class MypageUpdateService implements CommandAction {
 		dto.setAge(Integer.parseInt(request.getParameter("age")));
 		dto.setPhone(request.getParameter("phone"));
 		dto.setAddrId(Integer.parseInt(request.getParameter("addr")));
+<<<<<<< HEAD
 
 		System.out.println(dto);
 
@@ -60,6 +61,22 @@ public class MypageUpdateService implements CommandAction {
 			return "/login/passConf.jsp";
 		}
 
+=======
+		
+		if(request.getParameter("pwd") != ""&&request.getParameter("pwd").equals(dto.getPw())) {
+			pwd = request.getParameter("pwd");
+			pwd = pwd.toUpperCase();
+		
+			LoginDAO dao = new LoginDAO();
+			AddressDTO addr_dto = dao.getAddressInfo(dto.getAddrId());
+			request.setAttribute("addressEntity", addr_dto);
+			request.setAttribute("loginUserEntity", dto);
+			
+			return "login/mypageReregister.jsp";
+		}else {
+			return "login/passConfFail.jsp";
+		}	
+>>>>>>> aa991cc... adbc
 	}
 
 }

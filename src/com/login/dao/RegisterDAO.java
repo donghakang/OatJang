@@ -69,4 +69,30 @@ public class RegisterDAO {
 		}
 		return isInserted;
 	}
+
+	
+	
+	public boolean mypageUpdate(LoginDTO loginDto, AddressDTO addressDto) {
+		SqlSession session = factory.openSession();
+		int n = 0;
+		int m = 0;
+		boolean isInserted = false;
+		
+		try {
+			n = session.update("mybatis.LoginMapper.UpdateAddress", addressDto);
+			m = session.update("mybatis.LoginMapper.UpdateRegisterUser", loginDto);
+			if (n != 0 && m != 0) {
+				isInserted = true;
+				session.commit();
+			}
+		} catch (Exception e) {
+			System.out.println("address: " + n + " \t " + "user: " + m);
+			e.printStackTrace();
+			session.rollback();
+		} finally {
+			session.close();
+		}
+		return isInserted;
+		
+	}
 }

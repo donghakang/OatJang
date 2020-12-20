@@ -17,68 +17,6 @@
 <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" href="/oatjang/styles/map.css">
 <style>
-.category, .category * {
-	margin: 0;
-	padding: 0;
-	color: #000;
-	border-radius: 0.2rem;
-	
-}
-
-.category ul {
-	position: absolute;
-	
-	display: flex;
-	justify-content: space-between;
-	
-
-	top: 10px;
-	right: 10px;
-	width: 360px;
-	padding-top: 0.2rem;
-	padding-bottom:0.2rem;
-	z-index: 10;
-	font-size: 12px;
-	text-align: center;
-	background-color: #fff;
-	
-	box-shadow: 2px 2px 2px gray;
-}
-
-.category .menu_selected {
-	background: #FF5F4A;
-	color: #fff;
-	border-left: 1px solid #915B2F;
-	border-right: 1px solid #915B2F;
-	margin: 0 -1px;
-}
-
-.category li {
-	list-style: none;
-	float: left;
-	width: 50px;
-	height: 45px;
-	padding-top: 5px;
-	cursor: pointer;
-}
-
-.category .ico_comm {
-	display: block;
-	margin: 0 auto 2px;
-	width: 26px;
-	height: 26px;
-	/* background:
-		url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png')
-		no-repeat; */
-
-	border-radius: 13px;
-}
-
-.category show_all_marker {
-	background-color: blue;
-	border-radius: 10px;
-}
-
 
 
 
@@ -100,11 +38,17 @@
     <div class="navigation_bar"></div>
 
 	<div class="map_wrap">
-		<input id="search_button" type="checkbox" class="search_checkbox" />
-		<i class="fa fa-search search_checkbox" id="search_image"></i> <i
-			class="fa fa-close search_checkbox" id="close_image"
-		></i>
-		<div id="map" style="width: 100vw; height: 100vh"></div>
+		<div id="map"></div>
+		
+	
+		<input type="checkbox" id="search_button" />
+
+		<div class="search_images">
+			<i class="fa fa-close search_checkbox" id="close_image"></i>
+			<i class="fa fa-search search_checkbox" id="search_image"></i>
+		</div>
+		<!-- <i class="fa fa-search search_checkbox" id="search_image"></i>-->
+		
 
 		<div id="menu_wrap" class="bg_white">
 			<div class="option">
@@ -121,13 +65,15 @@
 			<div id="pagination"></div>
 
 		</div>
+
 		<div class="category">
 			<ul>
 				<li id="show_all" onclick="filterCategory('all')">
-				<!-- <span class="ico_comm ico_coffee"></span> -->
+	
 				<div class="show_all_marker ico_comm">
-					
+		
 				</div>전체</li>
+				
 				<li id="show_top" onclick="filterCategory('top')">
 				<div class="show_shirt_marker ico_comm">
 					<img src="/oatjang/image/shirt.svg" alt="shirt" />
@@ -154,7 +100,7 @@
 				</div>악세사리</li>
 			</ul>
 		</div>
-		
+
 		<div class="current_location" id="set_to_current_location">
 			<i class="fa fa-location-arrow"></i>
 		</div>
@@ -240,7 +186,7 @@
 
 
 		//포지션 생성 ---------------------------------------------------------------------
-	
+
 			<c:forEach items="${itemList}" var="item">
 				var addr = '${item.addr1}'
 				var iid = ${item.iid}
@@ -310,9 +256,7 @@
 			}
 
 			
-			// 키워드로 장소를 검색한 후, 지도 위치를 장소 가운데에 놓습니다.
-			searchPlaces();
-			
+			// 키워드로 장소를 검색한 후, 지도 위치를 장소 가운데에 놓습니다.			
 			
 			
 			// function들 ------------------------------------------
