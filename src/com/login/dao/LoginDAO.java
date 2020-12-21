@@ -38,11 +38,27 @@ public class LoginDAO {
 	}
 
 	// 회원정보수정
-	public void mypageUpdate(LoginDTO dto) {
+	public void updateUser(LoginDTO dto) {
 		SqlSession session = factory.openSession();
 		int n = 0;
 		try {
-			n = session.update("mybatis.LoginMapper.mypageUpdate", dto);
+			n = session.update("mybatis.LoginMapper.updateUser", dto);
+			if (n > 0) {
+				session.commit();
+			}
+		} catch (Exception e) {
+			session.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+	}
+
+	public void updateAddress(AddressDTO addr_dto) {
+		SqlSession session = factory.openSession();
+		int n = 0;
+		try {
+			n = session.update("mybatis.LoginMapper.updateAddress", addr_dto);
 			if (n > 0) {
 				session.commit();
 			}

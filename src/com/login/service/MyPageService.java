@@ -29,6 +29,7 @@ public class MyPageService implements CommandAction {
 
 			return "/login/myPage.jsp";
 		} else {
+			// TODO: 마이페이지로 아이디를 가져올수 없다는메시지를 보낸다.
 			System.out.println(
 					"ERROR: cannot cast address information by address Id");
 

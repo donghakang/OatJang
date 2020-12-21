@@ -1,3 +1,7 @@
+<!-- 
+로그인 후, 마이페이지에서 회원수정을 누를때, 비밀번호를 확인하는 페이지.
+ -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="com.login.dto.LoginDTO" %>
@@ -19,7 +23,7 @@
 
 	<script>
     	$(document).ready(function() {
-    		$('.navigation_bar').load( "./loginMenu.jsp", function( response, status, xhr ) {
+    		$('.navigation_bar').load( "/oatjang/login/loginMenu.jsp", function( response, status, xhr ) {
     			if ( status == "error" ) {
     				var msg = "Sorry but there was an error: ";
     			}
@@ -55,7 +59,7 @@
 								</use>
 							</svg>
 						</label>
-						<input id="login__password" type="text" name="pwd" class="form__input" placeholder="Password"
+						<input id="login__password" type="password" name="pwd" class="form__input" placeholder="Password"
                                	 required>
                                
              		</div>
@@ -64,13 +68,13 @@
              		<input type="submit" value="Sign In">
             	 </div>
             	 
-            	 		<input type="hidden" name="id" value="<%=dto.getId()%>">
-						<input type="hidden" name="pw" value="<%=dto.getPw()%>">
-						<input type="hidden" name="nickname" value="<%=dto.getNickname()%>">
-						<input type="hidden" name="name" value="<%=dto.getName()%>">
-						<input type="hidden" name="age" value="<%=dto.getAge()%>">
-						<input type="hidden" name="phone" value="<%=dto.getPhone()%>">
-						<input type="hidden" name="addr" value="<%=dto.getAddrId()%>"> 
+          	 	<input type="hidden" name="id" value="<%=dto.getId()%>">
+				<input type="hidden" name="pw" value="<%=dto.getPw()%>">
+				<input type="hidden" name="nickname" value="<%=dto.getNickname()%>">
+				<input type="hidden" name="name" value="<%=dto.getName()%>">
+				<input type="hidden" name="age" value="<%=dto.getAge()%>">
+				<input type="hidden" name="phone" value="<%=dto.getPhone()%>">
+				<input type="hidden" name="addr" value="<%=dto.getAddrId()%>"> 
         	</form>  	 
 		</div>
 	</div>
