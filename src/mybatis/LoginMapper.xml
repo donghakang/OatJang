@@ -31,11 +31,29 @@
 		]]>
 	</insert>
 	
-	<update id="mypageUpdate" parameterType="LoginDTO">
+	<update id="UpdateAddress" parameterType="AddressDTO">
+		<![CDATA[
+			UPDATE ADDRESS SET ROADADDRPART1=#{roadAddrPart1}, ROADADDRPART2=#{roadAddrPart2}, ADDRDETAIL=#{addrDetail}, LAT=#{lat}, LNG=#{lng}) WHERE ADDRID=#{addrId}
+		]]>
+	</update>
+	
+	<update id="UpdateRegisterUser" parameterType="LoginDTO">
+		<![CDATA[
+			UPDATE USERS SET
+			PW=#{pw}, NAME=#{name}, NICKNAME=#{nickname}, AGE=#{age}, PHONE=#{phone}, WHERE ID=#{id}
+		]]>
+	</update>
+	
+	
+	
+	
+	
+	
+	<!-- <update id="mypageUpdate" parameterType="LoginDTO">
 		<![CDATA[
 			UPDATE USERS SET PW=#{pw}, NAME=#{name}, NICKNAME=#{nickname}, AGE=#{age}, PHONE=#{phone}, ADDR=#{addr} WHERE ID=#{id}
 		]]>
-	</update>
+	</update> -->
 	<select id="getUserPassword" parameterType="LoginDTO" resultType="LoginDTO">
 		<![CDATA[
 			SELECT PW 

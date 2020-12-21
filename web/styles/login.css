@@ -14,11 +14,15 @@
 
             place-items: center;
         }
-        
 
-        /* helpers/grid.css */
-
-        :root {
+		h3 {
+			margin-top: 0;
+			text-transform: uppercase;
+			font-size: 30px;
+			text-align: center;
+		}
+/* helpers/grid.css */
+		:root {
             --gridMaxWidth: 20rem;
             --gridWidth: 100%;
         }

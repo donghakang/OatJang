@@ -53,7 +53,7 @@
 	<div class="register_password">
                       <%-- findId.jsp --> id 찾기, findPw.jsp-> pw 찾기 --%>
                        <!--  <p class="text--center" id="find_id"><a href="findId.jsp">아이디 찾기</a> </p> -->
-                        <p class="text--center" id="register_id"><a href="index.jsp">취소</a> </p>
+                        <p class="text--center" id="register_id"><a href="../index.jsp">취소</a> </p>
                     </div>
 				</div>
 				
