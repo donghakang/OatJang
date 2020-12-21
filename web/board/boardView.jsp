@@ -234,7 +234,7 @@
             	</c:if>
             </div>
             <div class="article_address">
-            	거래장소 : ${dto.addr1 }
+            	거래장소 : ${dto.roadAddrPart1 }
             </div>
          </div>
       </div>

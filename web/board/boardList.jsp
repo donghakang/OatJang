@@ -39,7 +39,7 @@
 			<td>조회수</td>
 		</thead>
 		<c:forEach items="${list }" var="ob">
-			<tbody class="board_text">
+			<tbody  onclick="location.href='/oatjang/boardView.do?iid=${ob.iid}&pg=${pg }'" class="board_text">
 				<td>${ob.iid}</td>
 				<td>${ob.title }</td>
 				<td>${ob.nickname }</td>
