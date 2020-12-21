@@ -280,7 +280,7 @@
 </div>
 
 
-<form id=commentListForm" name="commentListForm" method="post">
+<form id="commentListForm" name="commentListForm" method="post">
       <div id="comment_list">
    
       </div>
@@ -300,6 +300,7 @@
 	});
 
 	function fn_comment(){
+		console.log("fn_comment");
 		$.ajax({
 			type:'POST',
 			url:"<c:url value='/replyInsert.do'/>",
@@ -322,16 +323,12 @@
 			url:"<c:url value='/replyList.do'/>",
 			data:iid,
 			success:function(data){
-				var html="";
 				if(data!=null){
 			        $("#comment_list").html(data);
-				}else{
-		            html += "<div>";
-		            html += "<div><table class='table'><h6><strong>등록된 댓글이 없습니다.</strong></h6>";
-		            html += "</table></div>";
-		            html += "</div>";
-			        $("#comment_list").html(html);
 				}
+			},
+			error: function(data) {
+				console.log("something is wrong")
 			}
 		});
  	}
@@ -357,10 +354,11 @@
  		$("#replyUpdate"+rid).hide();
  	}
  	function updateReply2(rid){
+ 		var send= "rid="+rid+"&iid="+$("#iid").val()+"&content="+$("#updateContent"+rid).val();
 		$.ajax({
 			type:'GET',
 			url:"<c:url value='/replyUpdate.do'/>",
-			data:$("#replyUpdateForm"+rid).serialize(),
+			data:send,
 			success:function(){
 				getCommentList();
 			}
@@ -378,7 +376,11 @@
  		$("#reReplyInsert"+rid).hide();
  	}
  	function insertReReply(rid){
-  		var send = "reply="+${dto.reply}+"&nickname="+$("#nickname").val()+"&iid="+${dto.iid}+"&ref="+$("#replyRef"+rid).val()+"&comment="+$("#comment"+rid).val();
+ 		var userid = $("#userid").val();
+ 		if(!userid){
+ 			userid = 0;
+ 		}
+  		var send = "userid="+userid+"&reply="+${dto.reply}+"&nickname="+$("#nickname").val()+"&iid="+${dto.iid}+"&ref="+$("#replyRef"+rid).val()+"&comment="+$("#comment"+rid).val();
 		$.ajax({
 			type:'GET',
 			url:"<c:url value='/replyInsert.do'/>",

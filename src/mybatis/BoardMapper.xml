@@ -19,14 +19,14 @@
 	<insert id="replyInsert" parameterType="ReplyDTO">
       <![CDATA[
       		INSERT INTO REPLY
-      		VALUES(SEQ_REPLY.NEXTVAL,#{iid},#{nickname},#{content},SEQ_REPLY.CURRVAL,#{step},SYSDATE)
+      		VALUES(SEQ_REPLY.NEXTVAL,#{iid},#{userid},#{nickname},#{content},SEQ_REPLY.CURRVAL,#{step},SYSDATE)
       ]]>
 	</insert>
 
 	<insert id="subReplyInsert" parameterType="ReplyDTO">
       <![CDATA[
       		INSERT INTO REPLY
-      		VALUES(SEQ_REPLY.NEXTVAL,#{iid},#{nickname},#{content},#{ref},#{step},SYSDATE)
+      		VALUES(SEQ_REPLY.NEXTVAL,#{userid},#{iid},#{nickname},#{content},#{ref},#{step},SYSDATE)
       ]]>
 	</insert>
 	<select id="getBoardList" parameterType="hashmap" resultType="BoardDTO">
@@ -113,7 +113,8 @@
 			SELECT IID,USERID,TITLE,PRICE,IMAGES,DESCRIPTION,CATEGORY,SUCCESS,BID,REPLY,HIT,TO_CHAR(LOGTIME,'YYYY.MM.DD')AS LOGTIME,ROADADDRPART1,ROADADDRPART2,ADDRDETAIL, LAT , LNG
 	         FROM ITEM
 	         LEFT JOIN ADDRESS
-	         ON ITEM.ADDRID = ADDRESS.ADDRID AND IID=#{iid}
+	         ON ITEM.ADDRID = ADDRESS.ADDRID
+	         WHERE IID=#{iid}
 		]]>
 	</select>
 	<select id="getNickname" parameterType="java.lang.Integer" resultType="java.lang.String">

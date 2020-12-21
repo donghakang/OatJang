@@ -8,9 +8,10 @@ import com.board.dto.ReplyDTO;
 
 import controller.CommandAction;
 
-public class BoardReplyInsertService implements CommandAction{
+public class BoardReplyInsertService implements CommandAction {
 	@Override
-	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+	public String requestPro(HttpServletRequest request,
+			HttpServletResponse response) throws Throwable {
 		request.setCharacterEncoding("UTF-8");
 		int iid = Integer.parseInt(request.getParameter("iid"));
 		int ref = Integer.parseInt(request.getParameter("ref"));
@@ -25,9 +26,9 @@ public class BoardReplyInsertService implements CommandAction{
 		dto.setContent(content);
 		dto.setUserid(userid);
 		BoardDAO dao = BoardDAO.getInstance();
-		if(ref==0) {
-			dao.replyInsert(dto,reply);
-		}else {
+		if (ref == 0) {
+			dao.replyInsert(dto, reply);
+		} else {
 			dao.subReplyInsert(dto);
 		}
 		return "board/boardView.jsp";
