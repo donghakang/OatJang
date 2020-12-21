@@ -14,7 +14,7 @@ public class BoardDTO {
 	private int reply; // 댓글수
 	private int hit; // 조회수
 	private String logtime; // 등록일
-
+	private String nickname;
 	private String roadAddrPart1;
 	private String roadAddrPart2;
 	private String roadAddrPart3;
@@ -37,6 +37,12 @@ public class BoardDTO {
 	}
 	public void setHit(int hit) {
 		this.hit = hit;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 	public String getLogtime() {
 		return logtime;

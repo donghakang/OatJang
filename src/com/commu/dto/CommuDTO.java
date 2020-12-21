@@ -11,6 +11,7 @@ public class CommuDTO {
 	private int reply; // 댓글수
 	private int hit; // 조회수
 	private String logtime; // 등록일
+	private String nickname;
 
 	// Address info
 
@@ -64,6 +65,12 @@ public class CommuDTO {
 	}
 	public void setImages(String images) {
 		this.images = images;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 	public String getDescription() {
 		return description;
