@@ -28,3 +28,13 @@ create sequence seq_item increment by 1 start with 1 nocycle nocache;
 select * from item;
 drop sequence seq_item;
 delete item;
+
+
+SELECT IID,USERID,TITLE,PRICE,IMAGES,DESCRIPTION,CATEGORY,SUCCESS,BID,REPLY,HIT,TO_CHAR(LOGTIME,'YYYY.MM.DD')AS LOGTIME,ROADADDRPART1,ROADADDRPART2,ADDRDETAIL, LAT , LNG
+	         FROM ITEM
+	         LEFT JOIN ADDRESS
+	         ON ITEM.ADDRID = ADDRESS.ADDRID AND IID=2
+	        
+SELECT * FROM ITEM 
+		 left join address
+		 on item.addrid = address.addrid where iid=2

@@ -55,7 +55,7 @@
 	<insert id="replyInsert" parameterType="CommuReplyDTO">
       <![CDATA[
       		INSERT INTO COMMUREPLY
-      		VALUES(SEQ_COMMUREPLY.NEXTVAL,#{iid},#{nickname},#{content},SEQ_COMMUREPLY.CURRVAL,#{step},SYSDATE)
+      		VALUES(SEQ_COMMUREPLY.NEXTVAL,#{iid},#{userid},#{nickname},#{content},SEQ_COMMUREPLY.CURRVAL,#{step},SYSDATE)
       ]]>
 	</insert>
 	<update id="commuUpdateReply" parameterType="java.lang.Integer">
@@ -78,7 +78,7 @@
    <insert id="subReplyInsert" parameterType="CommuReplyDTO">
       <![CDATA[
       		INSERT INTO COMMUREPLY
-      		VALUES(SEQ_COMMUREPLY.NEXTVAL,#{iid},#{nickname},#{content},#{ref},#{step},SYSDATE)
+      		VALUES(SEQ_COMMUREPLY.NEXTVAL,#{iid},#{userid},#{nickname},#{content},#{ref},#{step},SYSDATE)
       ]]>
 	</insert>
 	<update id="replyUpdate" parameterType="CommuReplyDTO">

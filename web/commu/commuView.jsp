@@ -326,10 +326,11 @@
  		$("#replyUpdate"+rid).hide();
  	}
  	function updateReply2(rid){
-		$.ajax({
+ 		var send= "rid="+rid+"&iid="+$("#iid").val()+"&content="+$("#updateContent"+rid).val();
+ 		$.ajax({
 			type:'GET',
 			url:"<c:url value='/commuReplyUpdate.do'/>",
-			data:$("#replyUpdateForm"+rid).serialize(),
+			data:send,
 			success:function(){
 				getCommentList();
 			}
