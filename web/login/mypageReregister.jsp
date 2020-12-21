@@ -13,18 +13,18 @@
 <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 	$(document).ready(function() {
-		
+
 		$('#pw1, #pw2').keyup(function() {
 			var number = /([0-9])/;
             var alphabets = /([a-zA-Z])/;
             var special_characters = /([~,!,@,#,$,%,^,&,*,-,_,+,=,?,>,<])/;
-			
+
 			var pw1 = $("#pw1").val();
 			var pw2 = $("#pw2").val();
 			var pwStrength = $("#pwStrength");
 			var pwCheck = $("#pwCheck");
 			var pwStatus = 0;
-			
+
 			if (pw1.length < 6) {
 				pwStrength.text("weak")
 						  .css({'color': 'red'})
@@ -39,8 +39,8 @@
 					 pwStrength.text("medium").css({'color': 'yellow'})
 				 }
 			}
-			
-			
+
+
 			if (pwStatus == 2) {
 				if (pw1 == pw2) {
 					$("#pwCheck").text("비밀번호가 일치합니다.").css({
@@ -59,25 +59,25 @@
 					'color' : 'red'
 				});
 			}
-			
-			
+
+
 		});
-		
+
 		// TODO: 본인인증
-		
+
 		// TODO: 주소 찾기
 		$('#searchAddress').on('click', function () {
-			var pop = window.open("/oatjang/login/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+			var pop = window.open("/oatjang/login/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes");
 		});
-		
-		
+
+
 	});
 	// 주소 가지고 오기
 	function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo,entX,entY,lat,lng){
-		
+
 		document.getElementById('addr1').value = roadAddrPart1;
 		document.getElementById('addr2').value = addrDetail + ", " + roadAddrPart2;
-		
+
 		document.getElementById('roadFullAddr').value = roadFullAddr;
 		document.getElementById('roadAddrPart1').value = roadAddrPart1;
 		document.getElementById('roadAddrPart2').value = roadAddrPart2;
@@ -85,7 +85,7 @@
 		document.getElementById('lat').value = lat;
 		document.getElementById('lng').value = lng;
 	}
-	
+
 </script>
 
 
@@ -114,7 +114,7 @@
 		<thead>
         	<tr class="information_select_fix">
             	<td>Username</td>
-                <th><%=dto.getId()%></th>
+                <th><%=dto.getId()%><input type="hidden" id="id"  name="id" value="<%=dto.getId()%>"></th>
                 <td>아이디는 수정할 수 없습니다</td>
             </tr>
     	</thead>
@@ -146,86 +146,52 @@
     	<thead>
         	<tr class="information_select_fix">
             	<td>name</td>
-                <th><input type="text" name="name" value="<%=request.getParameter("name")%>"></th>       
+                <th><input type="text" name="name" value="<%=request.getParameter("name")%>"></th>
             </tr>
     	</thead>
     	<thead>
         	<tr class="information_select_fix">
             	<td>Birthday</td>
-                <th><input type="text" name="age" value="<%=request.getParameter("age")%>"></th>       
+                <th><input type="text" name="age" value="<%=request.getParameter("age")%>"></th>
             </tr>
     	</thead>
     	<thead>
         	<tr class="information_select_fix">
             	<td>Phone #</td>
-                <th><input type="text" name="phone" value="<%=request.getParameter("phone")%>"></th>       
+                <th><input type="text" name="phone" value="<%=request.getParameter("phone")%>"></th>
             </tr>
     	</thead>
     </table>
     <h3>주소 정보</h3>
 	<hr>
-<<<<<<< HEAD
 	<table class="information_form_address">
-=======
-	 <table class="information_form_address">
->>>>>>> aa991cc... adbc
     	<thead>
         	<tr class="information_select_fix">
             	<td rowspan="2">address</td>
                 <th id="select_roadAddrPart1">
                 <input id="addr1" type="text" name="addr1" class="form__input"
 					   placeholder="주소" value="<%=addr_dto.getRoadAddrPart1()%>" required readonly>
-<<<<<<< HEAD
-               	<button id="searchAddress" name="search_btn" type="button">
-					<i class='fa fa-search'></i>
-			</th>
-=======
-               	<button id="searchAddress" name="search_btn"></button>
-					<i class='fa fa-search'></i>
+               	<input type="button" id="searchAddress" name="search_btn" value="검색"></input>
+
 				</th>
->>>>>>> aa991cc... adbc
             </tr>
             <tr class="information_select_fix">
                 <th id="select_roadAddrPart2"><input id="addr2" type="text" name="addr2" class="form__input"
 						placeholder="상세 주소" value="<%=addr_dto.getAddrDetail()%> <%=addr_dto.getRoadAddrPart2()%>" required readonly></th>
             </tr>
-<<<<<<< HEAD
             <input type="hidden" name="addrId" value="<%=dto.getAddrId()%>">
-          	<input type="hidden" id="roadFullAddr" name="roadFullAddr" />
+          	<input type="hidden" id="roadFullAddr" name="roadFullAddr" value="<%=addr_dto.getRoadFullAddr()%>"/>
 			<input type="hidden" id="roadAddrPart1" name="roadAddrPart1" />
 			<input type="hidden" id="roadAddrPart2" name="roadAddrPart2" />
 			<input type="hidden" id="addrDetail" name="addrDetail" />
 			<input type="hidden" id="lat" name="lat" />
 			<input type="hidden" id="lng" name="lng" />
-          
+
     	</thead>
 	</table>
-	
-	
-=======
-    	</thead>
-	</table> 
->>>>>>> aa991cc... adbc
+
+
 	<div class="info_btns">
-	
-<%-- 		<input type="hidden" name="id" value="<%=dto.getId()%>">
-		<input type="hidden" name="pw" value="<%=dto.getPw()%>">
-		<input type="hidden" name="nickname" value="<%=dto.getNickname()%>">
-		<input type="hidden" name="name" value="<%=dto.getName()%>">
-		<input type="hidden" name="age" value="<%=dto.getAge()%>">
-		<input type="hidden" name="phone" value="<%=dto.getPhone()%>">
-<<<<<<< HEAD
-		 --%>
-				
-=======
-		<input type="hidden" name="addr" value="<%=dto.getAddrId()%>"> 
-		<input type="hidden" name="roadFullAddr" value="<%=addr_dto.getRoadFullAddr()%>"> 
-		<input type="hidden" name="roadAddrPart1" value="<%=addr_dto.getRoadAddrPart1()%>">
-		<input type="hidden" name="roadAddrPart2" value="<%=addr_dto.getRoadAddrPart2()%>">
-		<input type="hidden" name="addrDetail" value="<%=addr_dto.getAddrDetail()%>">
-		<input type="hidden" name="lat" value="<%=addr_dto.getLat()%>">
-		<input type="hidden" name="lng" value="<%=addr_dto.getLng()%>">
->>>>>>> aa991cc... adbc
 		<input type="submit" value="회원정보수정">
 		<input type="button" value="취 소" onclick="location.href='/oatjang/index.jsp'">
 	</div>
@@ -233,5 +199,6 @@
 </form>
 </body>
 </html>
- 
 
+
+<%--  value="<%=addr_dto.getRoadFullAddr%>"  --%>
