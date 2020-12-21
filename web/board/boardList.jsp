@@ -2,7 +2,10 @@
 <%@page import="com.board.dto.BoardDTO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link rel="stylesheet" href="/oatjang/styles/board.css">
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,53 +13,30 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-	List<BoardDTO> list = (List<BoardDTO>)request.getAttribute("list");
-	int pg = (Integer)request.getAttribute("pg");
-	BoardPaging paging = (BoardPaging)request.getAttribute("paging");
-%>
-<table>
-	<tr>
-		<td colspan="5" bgcolor="777777"></td>
-	</tr>
-	<tr>
-		<th width="100">글번호</th>
-		<th width="300">사진</th>
-		<th width="300">제목</th>
-		<th width="100">작성자</th>
-		<th width="100">조회수</th>
-		<th width="100">작성일</th>
-	</tr>
-	<tr>
-		<td colspan="5" bgcolor="777777"></td>
-	</tr>
-<%
-	if(list!=null){
-		for(BoardDTO ob:list){
-			String imgName = ob.getImages().split(",")[0];
-%>
-	<tr>
-		<td align="center"><%= ob.getIid() %></td>
-		<td><img src="images/<%=imgName%>"></td>
-		<td><a href="/oatjang/boardView.do?iid=<%=ob.getIid()%>&pg=<%=pg%>"><%=ob.getTitle() %></a>
-		</td>
-		<td align="center">작성자 </td>
-		<td align="center"><%=ob.getHit() %> </td>
-		<td align="center"><%=ob.getLogtime() %> </td>
-	</tr>
-	<tr>
-		<td colspan="5" bgcolor="cccccc"></td>
-	</tr>
-<%
-		} // end for
-	}	//end if
-%>
-	<tr>
-		<td colspan="5" bgcolor="777777"></td>
-	</tr>
-	<tr>
-		<td colspan="5" align="center"><%= paging.getPagingHTML()%> </td>
-	</tr>
-</table>
+	<div class="board_nav ">
+		<input type="button" href="board_writing.html" class="masterBtn"
+			value="목록" /> <input type="button" onclick="location.href='/oatjang/board/boardWrite.jsp'"
+			class="masterBtn" value="글 작성" />
+	</div>
+	<table class="board">
+		<thead class="board menu">
+			<td>번호</td>
+			<td>제목</td>
+			<td>이름</td>
+			<td>작성날짜</td>
+			<td>조회수</td>
+		</thead>
+		<c:forEach items="${list }" var="ob">
+			<tbody class="board_text">
+				<td>${ob.iid}</td>
+				<td>${ob.title }</td>
+				<td>${ob.nickname }</td>
+				<td>${ob.logtime }</td>
+				<td>${ob.hit }</td>
+			</tbody>
+		</c:forEach>
+		<td colspan="5" align="center">${paging.getPagingHTML()}</td>
+	</table>
+</body>
 </body>
 </html>
