@@ -1,21 +1,19 @@
-package com.board.service;
+package com.commu.service;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.board.dao.BoardDAO;
-import com.board.dto.BoardDTO;
-import com.board.dto.BoardPaging;
-import com.board.dto.SearchPaging;
+import com.commu.dao.CommuDAO;
+import com.commu.dto.CommuDTO;
+import com.commu.dto.CommuSearchPaging;
 
 import controller.CommandAction;
 
-public class BoardSearchService implements CommandAction{
+public class CommuSearchService implements CommandAction{
 
 	
 
@@ -69,13 +67,13 @@ public class BoardSearchService implements CommandAction{
 		System.out.println(map.get("description"));
 		
 		//------------------------------------------------------------------
-		BoardDAO dao = BoardDAO.getInstance();
-		List<BoardDTO> list = dao.getBoardSearchByTitleAndCategoryAndDescription(map);
+		CommuDAO dao = CommuDAO.getInstance();
+		List<CommuDTO> list = dao.getBoardSearchByTitleAndCategoryAndDescription(map);
 		int temp = dao.getBoardSearchList(map); //검색한 글 갯수 가져오기
 		
 		System.out.println("temp : " +temp);
 		System.out.println("pageSize : " +pageSize);
-		SearchPaging paging = new SearchPaging(pg,5,pageSize,temp,searchentity); // (1,3,pageSize)
+		CommuSearchPaging paging = new CommuSearchPaging(pg,5,pageSize,temp,searchentity); // (1,3,pageSize)
 		paging.makePagingHTML();  
 		
 			System.out.println("list :" +list);
@@ -85,7 +83,7 @@ public class BoardSearchService implements CommandAction{
 			request.setAttribute("paging", paging);
 			
 			//검색을 하면 1페이지에 있는 것만 검색됨
-			return "board/boardSearchList.jsp";
+			return "commu/commuSearchList.jsp";
 //			return "board/boardList.jsp";
 //		return "boardList.do?pg=1";
 			

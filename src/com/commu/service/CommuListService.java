@@ -1,4 +1,4 @@
-package com.board.service;
+package com.commu.service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -7,13 +7,12 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.board.dao.BoardDAO;
-import com.board.dto.BoardDTO;
-import com.board.dto.BoardPaging;
+import com.commu.dao.CommuDAO;
+import com.commu.dto.CommuDTO;
 
 import controller.CommandAction;
 
-public class BoardListService implements CommandAction{
+public class CommuListService implements CommandAction{
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		int pg = Integer.parseInt(request.getParameter("pg"));
@@ -26,16 +25,16 @@ public class BoardListService implements CommandAction{
 		map.put("startNum", startNum);
 		map.put("endNum", endNum);
 		
-		BoardDAO dao = BoardDAO.getInstance();
-		List<BoardDTO> list= dao.getBoardList(map);
+		CommuDAO dao = CommuDAO.getInstance();
+		List<CommuDTO> list= dao.getCommuList(map);
 		
-		BoardPaging paging = new BoardPaging(pg,5,pageSize);	// 페이지를 3페이지씩 보여줌
+		CommuPaging paging = new CommuPaging(pg,5,pageSize);	// 페이지를 3페이지씩 보여줌
 		paging.makePagingHTML();
 		
 		request.setAttribute("list", list);
 		request.setAttribute("pg", pg);
 		request.setAttribute("paging", paging);
 		
-		return "board/boardList.jsp";
+		return "commu/commuList.jsp";
 	}
 }

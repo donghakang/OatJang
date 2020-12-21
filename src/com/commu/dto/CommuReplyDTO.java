@@ -1,6 +1,6 @@
-package com.board.dto;
+package com.commu.dto;
 
-public class ReplyDTO {
+public class CommuReplyDTO {
 	private int rid;
 	private int iid;
 	private int userid;

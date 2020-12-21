@@ -99,22 +99,28 @@
 		<![CDATA[
 			SELECT COUNT(*) FROM ITEM
 		]]>
-
 	</select>
 
 
 	<update id="updateHit" parameterType="java.lang.Integer">
 		<![CDATA[
-			UPDATE BOARD SET HIT=HIT+1 WHERE SEQ=#{seq}
+			UPDATE ITEM SET HIT=HIT+1 WHERE IID=#{iid}
 		]]>
 	</update>
 
 	<select id="getBoard" parameterType="java.lang.Integer" resultType="BoardDTO">
 		<![CDATA[
-			SELECT * FROM ITEM WHERE IID=#{iid}
+			SELECT IID,USERID,TITLE,PRICE,IMAGES,DESCRIPTION,CATEGORY,SUCCESS,BID,REPLY,HIT,TO_CHAR(LOGTIME,'YYYY.MM.DD')AS LOGTIME,ADDR1, LAT , LNG
+	         FROM ITEM
+	         LEFT JOIN ADDRESS
+	         ON ITEM.ADDRID = ADDRESS.ADDRID AND IID=#{iid}
 		]]>
 	</select>
-
+	<select id="getNickname" parameterType="java.lang.Integer" resultType="java.lang.String">
+		<![CDATA[
+			SELECT NICKNAME FROM USERS WHERE USERID=#{userid}
+		]]>
+	</select>
 	<update id="boardUpdate" parameterType="BoardDTO">
       <![CDATA[
          UPDATE ITEM SET TITLE=#{title},PRICE=#{price},CATEGORY=#{category},DESCRIPTION=#{description} WHERE IID=#{iid}
@@ -147,7 +153,11 @@
 			DELETE FROM REPLY WHERE RID=#{rid} OR REF=#{rid}
 		]]>
    </update>
-
+   <update id="boardComplete" parameterType="java.lang.Integer">
+   		<![CDATA[
+			UPDATE ITEM SET SUCCESS=2 WHERE IID=#{iid}
+		]]>
+   </update>
 
    <!-- map -->
    <select id="getAllBoardList" resultType="BoardDTO">

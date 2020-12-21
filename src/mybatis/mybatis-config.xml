@@ -9,6 +9,9 @@
 		<typeAlias type="com.login.dto.LoginDTO" alias="LoginDTO"/>
 		<typeAlias type="com.board.dto.BoardDTO" alias="BoardDTO"/>
 		<typeAlias type="com.board.dto.ReplyDTO" alias="ReplyDTO"/>
+		<typeAlias type="com.commu.dto.CommuDTO" alias="CommuDTO"/>
+		<typeAlias type="com.commu.dto.CommuReplyDTO" alias="CommuReplyDTO"/>
+		
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -26,5 +29,6 @@
 		<mapper resource="mybatis/LoginMapper.xml"/>
 		<!-- <mapper resource="mybatis/BoardMapper.xml"/> -->
 		<mapper resource="mybatis/BoardMapper.xml"/>
+		<mapper resource="mybatis/CommuMapper.xml"/>
 	</mappers>
 </configuration>

@@ -1,4 +1,4 @@
-package com.board.service;
+package com.commu.service;
 
 import java.io.File;
 
@@ -6,17 +6,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.board.dao.BoardDAO;
+import com.commu.dao.CommuDAO;
 
 import controller.CommandAction;
 
-public class BoardDeleteService implements CommandAction{
+public class CommuDeleteService implements CommandAction{
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		String realFolder= request.getSession().getServletContext().getRealPath("/images");
 		int pg = Integer.parseInt(request.getParameter("pg"));
 		int iid = Integer.parseInt(request.getParameter("iid"));
 
-		BoardDAO dao = BoardDAO.getInstance();
+		CommuDAO dao = CommuDAO.getInstance();
 		String imgNames = dao.deleteBoard(iid);
 		String[] images = imgNames.split(",");
 		File file = null;
@@ -26,6 +27,6 @@ public class BoardDeleteService implements CommandAction{
 				file.delete();
 			}
 		}
-		return "boardList.do?pg="+pg;
+		return "commuList.do?pg="+pg;
 	}
 }

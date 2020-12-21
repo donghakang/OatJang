@@ -1,4 +1,4 @@
-package com.board.service;
+package com.commu.service;
 
 import java.io.File;
 import java.util.Iterator;
@@ -14,13 +14,12 @@ import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
 
-import com.board.dao.BoardDAO;
-import com.board.dto.BoardDTO;
-import com.login.dto.AddressDTO;
+import com.commu.dao.CommuDAO;
+import com.commu.dto.CommuDTO;
 
 import controller.CommandAction;
 
-public class BoardInsertService implements CommandAction {
+public class CommuInsertService implements CommandAction {
 	@Override
 	public String requestPro(HttpServletRequest request,
 			HttpServletResponse response) throws Throwable {
@@ -31,8 +30,7 @@ public class BoardInsertService implements CommandAction {
 		FileItemFactory factory = new DiskFileItemFactory();
 		ServletFileUpload upload = new ServletFileUpload(factory);
 
-		BoardDTO dto = new BoardDTO();
-		AddressDTO addr_dto = new AddressDTO();
+		CommuDTO dto = new CommuDTO();
 		try {
 			List items = upload
 					.parseRequest(new ServletRequestContext(request));
@@ -71,39 +69,8 @@ public class BoardInsertService implements CommandAction {
 					} else if (fileName.equals("title")) {
 						dto.setTitle(item.getString("utf-8"));
 						System.out.println("title: " + item.getString());
-					} else if (fileName.equals("price")) {
-						dto.setPrice(Integer.parseInt(item.getString("utf-8")));
 					} else if (fileName.equals("description")) {
 						dto.setDescription(item.getString("utf-8"));
-					} else if (fileName.equals("category")) {
-						String category = item.getString("utf-8");
-						int a;
-						if (category.equals("상의")) {
-							a = 0;
-						} else if (category.equals("하의")) {
-							a = 1;
-						} else if (category.equals("아우터")) {
-							a = 2;
-						} else if (category.equals("원피스")) {
-							a = 3;
-						} else if (category.equals("신발")) {
-							a = 4;
-						} else {
-							a = 5;
-						}
-						dto.setCategory(a);
-					} else if (fileName.equals("roadFullAddr")) {
-						addr_dto.setRoadFullAddr(item.getString("utf-8"));
-					} else if (fileName.equals("roadAddrPart1")) {
-						addr_dto.setRoadAddrPart1(item.getString("utf-8"));
-					} else if (fileName.equals("roadAddrPart2")) {
-						addr_dto.setRoadAddrPart2(item.getString("utf-8"));
-					} else if (fileName.equals("addrDetail")) {
-						addr_dto.setAddrDetail(item.getString("utf-8"));
-					} else if (fileName.equals("lat")) {
-						addr_dto.setLat(Double.parseDouble(item.getString()));
-					} else if (fileName.equals("lng")) {
-						addr_dto.setLng(Double.parseDouble(item.getString()));
 					}
 				}
 			}
@@ -115,11 +82,11 @@ public class BoardInsertService implements CommandAction {
 			e.printStackTrace();
 		}
 
-		dto.setSuccess(0);
 		dto.setImages(file);
 
-		BoardDAO dao = BoardDAO.getInstance();
-		dao.boardInsert(dto, addr_dto);
-		return "boardList.do?pg=1";
+		CommuDAO dao = CommuDAO.getInstance();
+		dao.commuInsert(dto);
+		
+		return "CommuList.do?pg=1";
 	}
 }

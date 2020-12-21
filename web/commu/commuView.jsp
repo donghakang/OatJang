@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -211,36 +210,11 @@
                <!-- 작성일 + 조회수 -->
                ${dto.logtime } 조회 ${dto.hit }
             </div>
-            <!-- 카테고리 css 필요 -->
-            <div class="article_category">
-            	카테고리 : 
-            	<c:if test="${dto.category == 0}">
-            	상의
-            	</c:if>
-            	<c:if test="${dto.category == 1}">
-            	하의
-            	</c:if>
-            	<c:if test="${dto.category == 2}">
-            	아우터
-            	</c:if>
-            	<c:if test="${dto.category == 3}">
-            	원피스
-            	</c:if>
-            	<c:if test="${dto.category == 4}">
-            	신발
-            	</c:if>
-            	<c:if test="${dto.category == 5}">
-            	악세사리
-            	</c:if>
-            </div>
-            <div class="article_address">
-            	거래장소 : ${dto.addr1 }
-            </div>
          </div>
       </div>
    </div>
    <div class="article_container">
-   	  <!-- 사진 css 필요 -->
+      <!-- 사진 css 필요 -->
    	  <div class="article_fictures">
    	  	<c:forEach var="ob" items="${fn:split(dto.images,',')}">
    	  		<img src="/oatjang/images/${ob }"/>
@@ -248,18 +222,13 @@
    	  </div>
       <!-- 내용 -->
       ${dto.description }
-      <!-- 가격 css 필요 -->
-      <div class="article_price">
-      가격:${dto.price }
-      </div>
    </div>
 </div>
 <div class="CommentBox">
-      <button onclick="location.href='/oatjang/boardList.do?pg=${pg }'" class="boardTag">목록</button>
+      <button onclick="location.href='/oatjang/commuList.do?pg=${pg }'" class="boardTag">목록</button>
    <c:if test="${loginComplete.userId == dto.userid}">
-      <button onclick="location.href='/oatjang/boardModify.do?iid=${dto.iid }&pg=${pg }'" class="boardTag">수정</button>
-      <button onclick="location.href='/oatjang/boardDelete.do?iid=${dto.iid }&pg=${pg }'" class="boardTag">삭제</button>
-   	  <button onclick="loaction.href='/oatjang/boardComplete.do?iid=${dto.iid}&pg=${pg }'" class="boardTag">거래완료</button>
+      <button onclick="location.href='/oatjang/commuModify.do?iid=${dto.iid }&pg=${pg }'" class="boardTag">수정</button>
+      <button onclick="location.href='/oatjang/commuDelete.do?iid=${dto.iid }&pg=${pg }'" class="boardTag">삭제</button>
    </c:if>
    <div class="comment_option">
       <h3 class="comment_title">댓글&nbsp;<span id="cCnt"></span></h3>
@@ -302,7 +271,7 @@
 	function fn_comment(){
 		$.ajax({
 			type:'POST',
-			url:"<c:url value='/replyInsert.do'/>",
+			url:"<c:url value='/commuReplyInsert.do'/>",
 			data:$("#commentForm").serialize(),
 			success:function(){
 				getCommentList();
@@ -319,7 +288,7 @@
  		var iid = "iid="+$("#iid").val()+"&userid="+userid;
 		$.ajax({
 			type:'GET',
-			url:"<c:url value='/replyList.do'/>",
+			url:"<c:url value='/commuReplyList.do'/>",
 			data:iid,
 			success:function(data){
 				var html="";
@@ -339,7 +308,7 @@
  		var sendRid = "rid="+rid+"&iid="+$("#iid").val();
 		$.ajax({
 			type:'GET',
-			url:"<c:url value='/replyDelete.do'/>",
+			url:"<c:url value='/commuReplyDelete.do'/>",
 			data:sendRid,
 			success:function(){
 				getCommentList();
@@ -359,7 +328,7 @@
  	function updateReply2(rid){
 		$.ajax({
 			type:'GET',
-			url:"<c:url value='/replyUpdate.do'/>",
+			url:"<c:url value='/commuReplyUpdate.do'/>",
 			data:$("#replyUpdateForm"+rid).serialize(),
 			success:function(){
 				getCommentList();
@@ -381,7 +350,7 @@
   		var send = "reply="+${dto.reply}+"&nickname="+$("#nickname").val()+"&iid="+${dto.iid}+"&ref="+$("#replyRef"+rid).val()+"&comment="+$("#comment"+rid).val();
 		$.ajax({
 			type:'GET',
-			url:"<c:url value='/replyInsert.do'/>",
+			url:"<c:url value='/commuReplyInsert.do'/>",
 			data:send,
 			success:function(){
 				getCommentList();

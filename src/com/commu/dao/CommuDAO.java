@@ -1,4 +1,4 @@
-package com.board.dao;
+package com.commu.dao;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -12,14 +12,13 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.board.dto.BoardDTO;
 import com.board.dto.ReplyDTO;
+import com.commu.dto.CommuDTO;
+import com.commu.dto.CommuReplyDTO;
 
-import com.login.dto.AddressDTO;
-import com.login.dto.LoginDTO;
 
-
-public class BoardDAO {
+public class CommuDAO {
 	private static SqlSessionFactory factory;
-	private static BoardDAO instance;
+	private static CommuDAO instance;
 	static {
 		try {
 			String resource = "mybatis/mybatis-config.xml";
@@ -30,15 +29,21 @@ public class BoardDAO {
 		} catch (IOException e) {
 		}
 	}
-	public void boardInsert(BoardDTO dto, AddressDTO addr_dto) {
+	public static CommuDAO getInstance() {
+		if (instance == null) {
+			synchronized (CommuDAO.class) {
+				instance = new CommuDAO();
+			}
+		}
+		return instance;
+	}
+	public void commuInsert(CommuDTO dto) {
 		SqlSession session = factory.openSession();
 		int n = 0;
-		int m = 0;
 		try {
-			m = session.insert("mybatis.LoginMapper.InsertAddress", addr_dto);
-			n = session.insert("mybatis.BoardMapper.boardInsert", dto);
+			n = session.insert("mybatis.CommuMapper.commuInsert", dto);
 
-			if (n > 0 && m > 0) {
+			if (n > 0) {
 				session.commit();
 			}
 		} catch (Exception e) {
@@ -48,44 +53,45 @@ public class BoardDAO {
 			session.close();
 		}
 	}
-
-	public static BoardDAO getInstance() {
-		if (instance == null) {
-			synchronized (BoardDAO.class) {
-				instance = new BoardDAO();
-			}
-		}
-		return instance;
-	}
-	public int getTotalArticle() {
+	public List<CommuDTO> getCommuList(Map<String, Integer> map) {
 		SqlSession session = factory.openSession();
-		int n = session.selectOne("mybatis.BoardMapper.getTotalArticle");
+		List<CommuDTO> list = session
+				.selectList("mybatis.CommuMapper.getCommuList", map);
 		session.close();
-		return n;
-	}
-	public int getTotalArticle2() {//검색 총 글수
-		SqlSession session = factory.openSession();
-		int n = session.selectOne("mybatis.BoardMapper.getTotalArticle2");
-		session.close();
-		return n;
-	}
-	public List<BoardDTO> getBoardList(Map<String, Integer> map) {
-		SqlSession session = factory.openSession();
-		List<BoardDTO> list = session
-				.selectList("mybatis.BoardMapper.getBoardList", map);
-		session.close();
+		
 		return list;
+	}
+	public CommuDTO getCommu(int iid) {
+		SqlSession session = factory.openSession();
+		CommuDTO dto = session.selectOne("mybatis.CommuMapper.getCommu", iid);
+		session.close();
+		return dto;
+	}
+	public void commuUpdate(CommuDTO dto) {
+		SqlSession session = factory.openSession();
+		int n = 0;
+		try {
+			n = session.update("mybatis.CommuMapper.commuUpdate", dto);
+			if (n > 0) {
+				session.commit();
+			}
+		} catch (Exception e) {
+			session.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
 	}
 	public String deleteBoard(int iid) {
 		SqlSession session = factory.openSession();
-		BoardDTO dto = session.selectOne("mybatis.BoardMapper.getBoard", iid);
+		CommuDTO dto = session.selectOne("mybatis.CommuMapper.getCommu", iid);
 		String imgNames = dto.getImages();
 		session.close();
 
 		session = factory.openSession();
 		int n = 0;
 		try {
-			n = session.update("mybatis.BoardMapper.boardDelete", iid);
+			n = session.update("mybatis.CommuMapper.commuDelete", iid);
 			if (n > 0) {
 				session.commit();
 			}
@@ -98,61 +104,32 @@ public class BoardDAO {
 
 		return imgNames;
 	}
-	public BoardDTO getBoard(int iid) {
-		SqlSession session = factory.openSession();
-		BoardDTO dto = session.selectOne("mybatis.BoardMapper.getBoard", iid);
-		session.close();
-		return dto;
-	}
-
-	public List<BoardDTO> getBoardSearchByTitleAndCategoryAndDescription(
-			Map<String, Object> map) {
-		 System.out.println("dao: "+map.get("startNum"));
-		 System.out.println("dao: "+map.get("endNum"));
-		SqlSession session = factory.openSession();
-		System.out.println(map.get("title"));
-		List<BoardDTO> list = session
-				.selectList("mybatis.BoardMapper.getBoardSearchList", map);
-		session.close();
-		System.out.println("LIST갯수 : "+list.size());
-		return list;
-	}
-
-	public void boardUpdate(BoardDTO dto) {
+	public void upHit(int iid) {
 		SqlSession session = factory.openSession();
 		int n = 0;
 		try {
-			n = session.update("mybatis.BoardMapper.boardUpdate", dto);
-			if (n > 0) {
+			n = session.update("mybatis.CommuMapper.updateHit", iid);
+			if (n > 0)
 				session.commit();
-			}
 		} catch (Exception e) {
-			session.rollback();
 			e.printStackTrace();
+			session.rollback();
 		} finally {
 			session.close();
 		}
+		
 	}
-	public List<ReplyDTO> getReplyList(int iid) {
+	public List<CommuReplyDTO> getReplyList(int iid) {
 		SqlSession session = factory.openSession();
-		List<ReplyDTO> list = session
-				.selectList("mybatis.BoardMapper.getReplyList", iid);
+		List<CommuReplyDTO> list = session
+				.selectList("mybatis.CommuMapper.getReplyList", iid);
 		session.close();
 		return list;
 	}
-
-	public ReplyDTO getReply(int rid) {
-		SqlSession session = factory.openSession();
-		ReplyDTO dto = session.selectOne("mybatis.BoardMapper.getReply", rid);
-		session.close();
-		return dto;
-	}
-
-	public void replyInsert(ReplyDTO dto, int reply) {
-		// 댓글이 있는지 확인하고 있으면 전체 댓글중 step이 가장 큰걸 가져오고 아니면 1
+	public void replyInsert(CommuReplyDTO dto, int reply) {
 		SqlSession session = factory.openSession();
 		if (reply != 0) {
-			int step = session.selectOne("mybatis.BoardMapper.getReplyStep");
+			int step = session.selectOne("mybatis.CommuMapper.getReplyStep");
 			session.close();
 			dto.setStep(step + 1);
 			session = factory.openSession();
@@ -162,7 +139,7 @@ public class BoardDAO {
 		// 댓글 입력
 		int n;
 		try {
-			n = session.insert("mybatis.BoardMapper.replyInsert", dto);
+			n = session.insert("mybatis.CommuMapper.replyInsert", dto);
 			if (n > 0) {
 				session.commit();
 			}
@@ -176,7 +153,7 @@ public class BoardDAO {
 		session = factory.openSession();
 		n = 0;
 		try {
-			n = session.update("mybatis.BoardMapper.boardUpdateReply",
+			n = session.update("mybatis.CommuMapper.commuUpdateReply",
 					dto.getIid());
 			if (n > 0)
 				session.commit();
@@ -187,10 +164,10 @@ public class BoardDAO {
 			session.close();
 		}
 	}
-	public void subReplyInsert(ReplyDTO dto) {
+	public void subReplyInsert(CommuReplyDTO dto) {
 		// 부모 댓글의 가장 큰 step 가져오기
 		SqlSession session = factory.openSession();
-		int step = session.selectOne("mybatis.BoardMapper.getSubReplyStep",
+		int step = session.selectOne("mybatis.CommuMapper.getSubReplyStep",
 				dto.getRef());
 		session.close();
 		dto.setStep(step + 1);
@@ -198,7 +175,7 @@ public class BoardDAO {
 		int n = 0;
 		session = factory.openSession();
 		try {
-			n = session.update("mybatis.BoardMapper.replyUpdateStep",
+			n = session.update("mybatis.CommuMapper.replyUpdateStep",
 					dto.getStep());
 			if (n > 0)
 				session.commit();
@@ -212,7 +189,7 @@ public class BoardDAO {
 		session = factory.openSession();
 		n = 0;
 		try {
-			n = session.insert("mybatis.BoardMapper.subReplyInsert", dto);
+			n = session.insert("mybatis.CommuMapper.subReplyInsert", dto);
 			if (n > 0)
 				session.commit();
 		} catch (Exception e) {
@@ -225,7 +202,7 @@ public class BoardDAO {
 		session = factory.openSession();
 		n = 0;
 		try {
-			n = session.update("mybatis.BoardMapper.boardUpdateReply",
+			n = session.update("mybatis.CommuMapper.commuUpdateReply",
 					dto.getIid());
 			if (n > 0)
 				session.commit();
@@ -236,11 +213,11 @@ public class BoardDAO {
 			session.close();
 		}
 	}
-	public void replyUpdate(ReplyDTO dto) {
+	public void replyUpdate(CommuReplyDTO dto) {
 		SqlSession session = factory.openSession();
 		int n = 0;
 		try {
-			n = session.update("mybatis.BoardMapper.replyUpdate", dto);
+			n = session.update("mybatis.CommuMapper.replyUpdate", dto);
 			if (n > 0)
 				session.commit();
 		} catch (Exception e) {
@@ -254,7 +231,7 @@ public class BoardDAO {
 		SqlSession session = factory.openSession();
 		int n = 0;
 		try {
-			n = session.update("mybatis.BoardMapper.replyDelete", rid);
+			n = session.update("mybatis.CommuMapper.replyDelete", rid);
 			if (n > 0) {
 				session.commit();
 			}
@@ -268,7 +245,7 @@ public class BoardDAO {
 		session = factory.openSession();
 		n = 0;
 		try {
-			n = session.update("mybatis.BoardMapper.boardUpdateReply", iid);
+			n = session.update("mybatis.CommuMapper.commuUpdateReply", iid);
 			if (n > 0)
 				session.commit();
 		} catch (Exception e) {
@@ -278,32 +255,27 @@ public class BoardDAO {
 			session.close();
 		}
 	}
+	public int getTotalArticle() {
+		SqlSession session = factory.openSession();
+		int n = session.selectOne("mybatis.CommuMapper.getTotalArticle");
+		session.close();
+		return n;
+	}
+	public List<CommuDTO> getBoardSearchByTitleAndCategoryAndDescription(Map<String, Object> map) {
+		SqlSession session = factory.openSession();
+		List<CommuDTO> list = session
+				.selectList("mybatis.CommuMapper.getCommuSearchList", map);
+		session.close();
 
+		return list;
+	}
 	public int getBoardSearchList(Map<String, Object> map) {
 		SqlSession session = factory.openSession();
-		int n = session.selectOne("mybatis.BoardMapper.getboardSearchList", map);
+		int n = session.selectOne("mybatis.CommuMapper.getCommuSearchListCount", map);
 		session.close();
-		System.out.println("n :"+n);
+
 		return n;
-		
 	}
-
-
-	public void upHit(int iid) {
-		SqlSession session = factory.openSession();
-		int n = 0;
-		try {
-			n = session.update("mybatis.BoardMapper.updateHit", iid);
-			if (n > 0)
-				session.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			session.rollback();
-		} finally {
-			session.close();
-		}
-	}
-
 	public String getNickname(int userid) {
 		SqlSession session = factory.openSession();
 		String nickname = session.selectOne("mybatis.BoardMapper.getNickname", userid);
@@ -311,20 +283,4 @@ public class BoardDAO {
 
 		return nickname;
 	}
-
-	public void boardComplete(int iid) {
-		SqlSession session = factory.openSession();
-		int n = 0;
-		try {
-			n = session.update("mybatis.BoardMapper.boardComplete", iid);
-			if (n > 0)
-				session.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			session.rollback();
-		} finally {
-			session.close();
-		}
-	}
-
 }

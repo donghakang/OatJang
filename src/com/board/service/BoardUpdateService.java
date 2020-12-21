@@ -36,7 +36,7 @@ public class BoardUpdateService implements CommandAction{
 		dto.setCategory(a);
 		dto.setDescription(request.getParameter("description"));
 
-		BoardDAO dao = new BoardDAO();
+		BoardDAO dao = BoardDAO.getInstance();
 		dao.boardUpdate(dto);
 
 		return "boardList.do?pg="+pg;
