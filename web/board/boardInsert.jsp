@@ -136,9 +136,9 @@
 						return;
 					}
 
-					sel_files.push(f);
 					var reader = new FileReader();
 					reader.onload = function(e) {
+						sel_files.push(f);
 						var html = "<a href=\"javascript:void(0);\" onclick=\"deleteImagesAction("
 								+ index
 								+ ")\" id=\"img_id_"
@@ -164,42 +164,66 @@
 		var img_id = "#img_id_" + index;
 		$(img_id).remove();
 	}
+	function checkCondition(){
+		if($(".title").val()===''){
+			alert("제목을 입력하세요");
+			$(".title").focus();
+			return;
+		}
+		if($(".price").val()===''){
+			alert("가격을 입력하세요");
+			$(".price").focus();
+			return;
+		}
+		if($("#category").val()==='분류' || $("#category").val()==='-------'){
+			alert("카테고리를 정하세요");
+			$("#category").focus();
+			return;
+		}
+		if($("#input_img").val()===''){
+			alert("메인사진을 정하세요");
+			return;
+		}
+		if($("#addr1").val()===''){
+			alert("거래장소를 정하세요");
+			return;
+		}
+		$("#boardInsertForm").submit();
+	}
 </script>
 </head>
 <body>
 
 	<div class="navigation_bar"></div>
-	<div>
-		<form action="../boardInsert.do" method="post"
-			enctype="multipart/form-data">
-			<input type="hidden" name="userid" value="1" />
+		<form action="../boardInsert.do" id="boardInsertForm" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="userid" value="${loginComplete.userId }" />
 			<!-- 임시로 1로 해둠 나중에 로그인 아디로 바꿔야함 -->
 			<div class="textbox">
 				<!-- 제목,가격,카테고리,설명 -->
 				<div class="div_title">
 					<input class="box title" type="text" name="title" value=""
-						placeholder="제목을 입력하세요." /> <br> <input class="box price"
-						type="text" name="price" value="" placeholder="가격을 입력하세요." />
+						placeholder="제목을 입력하세요." /> <br> 
+					<div class="div_category">
+                  		<input class="price" type="text" name="price" value="" placeholder="가격을 입력하세요." />
+                  		<select class="category" name="category" id="category" >
+		                     <option value="분류">분류</option>
+		                     <option value="-------">-------</option>
+		                     <option value="상의">상의</option>
+		                     <option value="하의">하의</option>
+		                     <option value="아우터">아우터</option>
+		                     <option value="원피스">원피스</option>
+		                     <option value="악세사리">악세사리</option>
+		                     <option value="신발">신발</option>
+                  		</select>
+               		</div>	
 				</div>
 			</div>
 
 			<!-- 설명칸  -->
 			<div class="div_intext">
-				<div class="category">
-					<h3 class="cate_h3">카테고리를 선택하세요.</h3>
-					<div>
-						<input type="checkbox" name="category" value="상의" /> 상의 <input
-							type="checkbox" name="category" value="하의" /> 하의 <input
-							type="checkbox" name="category" value="아우터" /> 아우터 <input
-							type="checkbox" name="category" value="원피스" /> 원피스 <input
-							type="checkbox" name="category" value="신발" /> 신발 <input
-							type="checkbox" name="category" value="악세사리" /> 악세사리<br>
-					</div>
-				</div>
 				<textarea class="textinput bi" name="description" value=""
 					placeholder="내용을 입력하세요."></textarea>
 			</div>
-	</div>
 
 
 
@@ -263,7 +287,7 @@
 				<input class="go_btn masterBtn" type="submit" value="이전으로" />
 			</div>
 			<div>
-				<input class="back_btn masterBtn" type="submit" value="게시하기" />
+				<input class="back_btn masterBtn" type="button" onclick="checkCondition()" value="게시하기" />
 			</div>
 		</div>
 	</div>

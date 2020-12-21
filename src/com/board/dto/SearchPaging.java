@@ -44,11 +44,11 @@ public class SearchPaging {
 		for(int i=startPage;i<=endPage;i++){
 			if(currentPage==i){
 				pagingHTML.append("<a href='/oatjang/boardSearch.do?searchentity="+searchentity+"&pg="
-			                     +i+"'><font color=red>["+ i+ "]</font></a>");
+			                     +i+"' id='a_back'>"+ i+ "</a>");
 			
 			}else{
 				pagingHTML.append("<a href='/oatjang/boardSearch.do?searchentity="+searchentity+"&pg="
-			                      +i+"'>["+i+"]</a>");
+			                      +i+"'>"+i+"</a>");
 			}
 		}
 				

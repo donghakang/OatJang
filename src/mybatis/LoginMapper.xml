@@ -47,7 +47,8 @@
 =======
 	<update id="UpdateAddress" parameterType="AddressDTO">
 		<![CDATA[
-			UPDATE ADDRESS SET ROADADDRPART1=#{roadAddrPart1}, ROADADDRPART2=#{roadAddrPart2}, ADDRDETAIL=#{addrDetail}, LAT=#{lat}, LNG=#{lng}) WHERE ADDRID=#{addrId}
+			UPDATE ADDRESS SET 
+			ROADADDRPART1=#{roadAddrPart1}, ROADADDRPART2=#{roadAddrPart2}, ADDRDETAIL=#{addrDetail}, LAT=#{lat}, LNG=#{lng}) WHERE ADDRID=#{addrId}
 		]]>
 	</update>
 	

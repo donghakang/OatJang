@@ -119,7 +119,59 @@
    </form>
 </div>
 
-<script>
+				<c:if test="${loginComplete.userId == dto.userid}">
+						<button
+							onclick="location.href='/oatjang/boardComplete.do?iid=${dto.iid}&pg=${pg }'"
+							class="boardTag"
+						>거래완료</button>
+						<button
+							onclick="location.href='/oatjang/boardDelete.do?iid=${dto.iid }&pg=${pg }'"
+							class="boardTag"
+						>삭제</button>
+						<button
+							onclick="location.href='/oatjang/boardModify.do?iid=${dto.iid }&pg=${pg }'"
+							class="boardTag"
+						>수정</button>
+						<c:if test="${dto.success !=2 }">
+						
+						</c:if>
+					</c:if>
+
+			</div>
+		</div>
+
+		<div class="comment_option">
+			<h3 class="comment_title">
+				댓글
+			</h3>
+		</div>
+		<input type="hidden" id="checkSuccess" value="${dto.success }"/>
+		<div class="comment_textarea">
+			<form id="commentForm" name="commentForm" method="post">
+				<div class="reply_area">
+					<textarea style="width: 740px;" rows="3" cols="30" id="comment"
+						name="comment" placeholder="댓글을 입력하세요"
+					></textarea>
+					<input type="button" value="등록" id="reply_btn"
+						onclick="fn_comment()"
+					>
+				</div>
+				<input type="hidden" name="ref" value="0" />
+				<input type="hidden" id="iid" name="iid" value="${dto.iid }" />
+				<input type="hidden" name="reply" value="${dto.reply }" />
+				<input type="hidden" id="userid" name="userid"
+					value="${loginComplete.userId }"/>
+				<input type="hidden" id="nickname" name="nickname"
+					value="${loginComplete.nickname}"/>
+			</form>
+		</div>
+		<form id="commentListForm" name="commentListForm" method="post">
+			<div id="comment_list"></div>
+		</form>
+	</div>
+
+
+	<script>
 	$(document).ready(function(){
  		getCommentList();
  		$("#comment").on('click',function(){
@@ -180,7 +232,8 @@
  	function updateReply(rid){
  		$("#replyContent"+rid).hide();
  		$("#replyUpdate"+rid).show();
- 		
+ 		$("#updateContent"+rid).focus();
+
  	}
  	function closeUpdate(rid){
  		$("#replyContent"+rid).show();
@@ -204,6 +257,7 @@
  			location.href="/oatjang/login/login.jsp";
  		}
  		$("#reReplyInsert"+rid).show();
+ 		$("#comment"+rid).focus();
  	}
  	function closeReReply(rid){
  		$("#reReplyInsert"+rid).hide();
@@ -213,7 +267,7 @@
  		if(!userid){
  			userid = 0;
  		}
-  		var send = "userid="+userid+"&reply="+$("#reply").val()+"&nickname="+$("#nickname").val()+"&iid="+${dto.iid}+"&ref="+$("#replyRef"+rid).val()+"&comment="+$("#comment"+rid).val();
+  		var send = "userid="+userid+"&reply="+$("#reply").val()+"&nickname="+$("#nickname").val()+"&iid="+$("#iid").val()+"&ref="+$("#replyRef"+rid).val()+"&comment="+$("#comment"+rid).val();
 		$.ajax({
 			type:'GET',
 			url:"<c:url value='/replyInsert.do'/>",

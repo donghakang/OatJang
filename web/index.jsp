@@ -31,9 +31,9 @@
 
 
     <div class="menu">
-        <div class="menu_item" id="community" onclick="location.href='#'">Community</div>
+        <div class="menu_item" id="community" onclick="location.href='commuList.do?pg=1'">Community</div>
         <div class="menu_item" id="maps" onclick="location.href='map.do'">Maps</div>
-        <div class="menu_item" id="deals" onclick="location.href='#'">Deals</div>
+        <div class="menu_item" id="deals" onclick="location.href='boardList.do?pg=1'">Deals</div>
     </div>
 
     <script type="module" src="/oatjang/lib/app.js"></script>
