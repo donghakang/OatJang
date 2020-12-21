@@ -1,3 +1,7 @@
+<!-- 
+로그인 후, 마이페이지에서 회원수정을 누를때, 비밀번호를 확인하는 페이지.
+ -->
+
 <%@page import="com.login.dto.AddressDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -10,6 +14,7 @@
 <%
 		request.setCharacterEncoding("UTF-8");
 		LoginDTO dto = (LoginDTO) session.getAttribute("loginComplete");
+		AddressDTO addr_dto = (AddressDTO)request.getAttribute("addressEntity");
 		
 		String roadFullAddr = request.getParameter("roadFullAddr");
 		String roadAddrPart1 = request.getParameter("roadAddrPart1");
@@ -26,7 +31,7 @@
 <body class="container">
 	<script>
     	$(document).ready(function() {
-    		$('.navigation_bar').load( "./loginMenu.jsp", function( response, status, xhr ) {
+    		$('.navigation_bar').load( "/oatjang/login/loginMenu.jsp", function( response, status, xhr ) {
     			if ( status == "error" ) {
     				var msg = "Sorry but there was an error: ";
     			}
@@ -46,7 +51,7 @@
 								</use>
 							</svg>
 						</label>
-						 <input id="login__username" type="text" name="id" class="form__input" placeholder="<%=dto.getId()%>"
+						 <input id="login__username" type="text" name="id" class="form__input" placeholder="<%=dto.getId()%> " value="<%=dto.getId()%>"
                                 required readonly> 
 					</div>
 					<div class="form__field">
@@ -56,26 +61,21 @@
 								</use>
 							</svg>
 						</label>
-						<input id="login__password" type="text" name="pwd" class="form__input" placeholder="Password"
+						<input id="login__password" type="password" name="pwd" class="form__input" placeholder="Password"
                                	 required>
              		</div>
            	 	 <div class="form__field">
            	 	 
              		<input type="submit" value="Sign In">
             	 </div>
-            	 	<input type="hidden" name="id" value="<%=dto.getId()%>">
-					<input type="hidden" name="pw" value="<%=dto.getPw()%>">
-					<input type="hidden" name="nickname" value="<%=dto.getNickname()%>">
-					<input type="hidden" name="name" value="<%=dto.getName()%>">
-					<input type="hidden" name="age" value="<%=dto.getAge()%>">
-					<input type="hidden" name="phone" value="<%=dto.getPhone()%>">
-					<input type="hidden" name="addr" value="<%=dto.getAddrId()%>">
-					<input type="hidden" id="roadFullAddr" name="roadFullAddr" />
-					<input type="hidden" name="roadAddrPart1" name="roadAddrPart1" />
-					<input type="hidden" name="roadAddrPart2" name="roadAddrPart2" />
-					<input type="hidden" name="addrDetail" name="addrDetail" />
-					<input type="hidden" name="lat" name="lat" />
-					<input type="hidden" name="lng" name="lng" />
+            	 
+          	 	<input type="hidden" name="id" value="<%=dto.getId()%>">
+				<input type="hidden" name="pw" value="<%=dto.getPw()%>">
+				<input type="hidden" name="nickname" value="<%=dto.getNickname()%>">
+				<input type="hidden" name="name" value="<%=dto.getName()%>">
+				<input type="hidden" name="age" value="<%=dto.getAge()%>">
+				<input type="hidden" name="phone" value="<%=dto.getPhone()%>">
+				<input type="hidden" name="addr" value="<%=dto.getAddrId()%>"> 
         	</form>  	 
 		</div>
 	</div>

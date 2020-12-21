@@ -289,5 +289,42 @@ public class BoardDAO {
 	}
 
 
+	public void upHit(int iid) {
+		SqlSession session = factory.openSession();
+		int n = 0;
+		try {
+			n = session.update("mybatis.BoardMapper.updateHit", iid);
+			if (n > 0)
+				session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.rollback();
+		} finally {
+			session.close();
+		}
+	}
+
+	public String getNickname(int userid) {
+		SqlSession session = factory.openSession();
+		String nickname = session.selectOne("mybatis.BoardMapper.getNickname", userid);
+		session.close();
+
+		return nickname;
+	}
+
+	public void boardComplete(int iid) {
+		SqlSession session = factory.openSession();
+		int n = 0;
+		try {
+			n = session.update("mybatis.BoardMapper.boardComplete", iid);
+			if (n > 0)
+				session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.rollback();
+		} finally {
+			session.close();
+		}
+	}
 
 }

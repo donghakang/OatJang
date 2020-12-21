@@ -92,6 +92,8 @@ public class BoardInsertService implements CommandAction {
 							a = 5;
 						}
 						dto.setCategory(a);
+					} else if (fileName.equals("roadFullAddr")) {
+						addr_dto.setRoadFullAddr(item.getString("utf-8"));
 					} else if (fileName.equals("roadAddrPart1")) {
 						addr_dto.setRoadAddrPart1(item.getString("utf-8"));
 					} else if (fileName.equals("roadAddrPart2")) {
@@ -116,7 +118,7 @@ public class BoardInsertService implements CommandAction {
 		dto.setSuccess(0);
 		dto.setImages(file);
 
-		BoardDAO dao = new BoardDAO();
+		BoardDAO dao = BoardDAO.getInstance();
 		dao.boardInsert(dto, addr_dto);
 		return "boardList.do?pg=1";
 	}

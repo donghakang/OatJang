@@ -95,8 +95,8 @@ LoginDTO dto = (LoginDTO)session.getAttribute("loginComplete");
 
         <div id="middle" class="middle container red topBotomBordersOut">
             <a href="#" alt="all">all</a>
-            <a href="/oatjang/boardList.do?pg=1" alt="community">community</a>
-            <a href="#" alt="deals">deals</a>
+            <a href="/oatjang/commuList.do?pg=1" alt="community">community</a>
+            <a href="/oatjang/boardList.do?pg=1" alt="deals">deals</a>
             <a href="/oatjang/map.do" alt="maps">maps</a>
             <a href="#" alt="service">service</a>
         </div>

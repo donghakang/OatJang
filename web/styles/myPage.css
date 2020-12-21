@@ -44,6 +44,7 @@
 
 .info_btns{
     margin-top: 5em;
+    margin-bottom: 5em;
     text-align: center;
 }
 
@@ -115,3 +116,5 @@
 .information_select_fix #select_roadAddrPart2 input[type='text']{
 	width: 21rem;
 }
+
+

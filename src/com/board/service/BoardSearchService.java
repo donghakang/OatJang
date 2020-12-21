@@ -69,7 +69,7 @@ public class BoardSearchService implements CommandAction{
 		System.out.println(map.get("description"));
 		
 		//------------------------------------------------------------------
-		BoardDAO dao = new BoardDAO();
+		BoardDAO dao = BoardDAO.getInstance();
 		List<BoardDTO> list = dao.getBoardSearchByTitleAndCategoryAndDescription(map);
 		int temp = dao.getBoardSearchList(map); //검색한 글 갯수 가져오기
 		

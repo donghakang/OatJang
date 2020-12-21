@@ -3,6 +3,7 @@ package com.board.dto;
 public class ReplyDTO {
 	private int rid;
 	private int iid;
+	private int userid;
 	private String nickname;
 	private String content;
 	private int ref;
@@ -37,6 +38,12 @@ public class ReplyDTO {
 	}
 	public void setRef(int ref) {
 		this.ref = ref;
+	}	
+	public int getUserid() {
+		return userid;
+	}
+	public void setUserid(int userid) {
+		this.userid = userid;
 	}
 	public int getStep() {
 		return step;
