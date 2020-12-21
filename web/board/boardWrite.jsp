@@ -122,15 +122,15 @@
 
 		<div class="textbox">
 			<div class="div_title">
-				<input class="title" type="text" name="title" value=""
+				<input class="title box" type="text" name="title" value=""
 					placeholder="제목을 입력하세요." />
 			</div>
 			<div class="div_intext">
-				<textarea class="textinput" name="description" value=""
+				<textarea class="textinput bw" name="description" value=""
 					placeholder="내용을 입력하세요."></textarea>
 			</div>
 		</div>
-
+		</div>
 
 		<div class="picture">
 			<!--  메인사진 -->
@@ -165,8 +165,7 @@
 					</div>
 				</div>
 				<div>
-					<div id="imgs_wraps"
-					class="imgs_wraps">
+					<div id="imgs_wraps" class="imgs_wraps">
 						<img id="imgs" />
 					</div>
 				</div>
