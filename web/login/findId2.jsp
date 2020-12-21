@@ -29,19 +29,22 @@
 		<div class="login_image">
 			<div class="login_container">
 				<div class="grid">
+				<form  class="form login" action="/oatjang/login/login.jsp">
 					<div class="form__field">
-						<label for="login__username"><svg class="icon">
- 			<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use>
-                                </svg><span class="hidden">id</span></label>
-						<%--  <input id="login__username" type="text" name="id" class="form__input" placeholder="<%=dto.getId()%> 입니다"
-                                required> --%>
-						
-						<p class="text--center" id="register_id">
-							아이디는
-							<%=dto.getId()%>
-							입니다
-						</p>
-					</div>
+                            <label for="login__username">
+                            	<svg class="icon">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user">
+                                    </use>
+                                </svg><!-- <span class="hidden">Username</span> --></label>
+                                <input id="login__username" type="text" name="id" class="form__input" placeholder="아이디는  <%=dto.getId()%>입니다."
+                                required readonly>
+                      		  </div>
+                      		  
+                      		  <div class="form__field">
+							<input type="submit" value="login page">
+						</div>
+                      		  
+                      		  
 					<div class="register_password">
 						<%-- findId.jsp --> id 찾기, findPw.jsp-> pw 찾기 --%>
 						<!--  <p class="text--center" id="find_id"><a href="findId.jsp">아이디 찾기</a> </p> -->
@@ -49,6 +52,7 @@
 							<a href="/oatjang/login/findPw.jsp">비밀번호 찾기</a>
 						</p>
 					</div>
+					</form>
 				</div>
 			</div>
 		</div>

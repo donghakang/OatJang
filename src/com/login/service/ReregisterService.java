@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.login.dao.LoginDAO;
+import com.login.dao.RegisterDAO;
 import com.login.dto.AddressDTO;
 import com.login.dto.LoginDTO;
 

@@ -27,15 +27,6 @@
 	LoginDTO dto = (LoginDTO)request.getAttribute("loginUserEntity");
 	AddressDTO addr_dto = (AddressDTO)request.getAttribute("addressEntity");
 
-/* 	if (dto != null) {
-		System.out.println(dto.getId());
-		System.out.println(dto.getName());
-		System.out.println(dto.getNickname());
-		System.out.println(dto.getPhone());
-		System.out.println(dto.getAddrId());
-		System.out.println(dto.getAge());
-	} */
-
 	int passLength = dto.getPw().length();
 	System.out.println("passLength : "+passLength);
 	String passTemp = "";
@@ -99,6 +90,12 @@
 				<input type="hidden" name="age" value="<%=dto.getAge()%>">
 				<input type="hidden" name="phone" value="<%=dto.getPhone()%>">
 				<input type="hidden" name="addr" value="<%=dto.getAddrId()%>">
+				<input type="hidden" id="roadFullAddr" name="roadFullAddr" value="<%=addr_dto.getRoadFullAddr()%>"/>
+				<input type="hidden" id="roadAddrPart1" name="roadAddrPart1" value="<%=addr_dto.getRoadAddrPart1()%>"/>
+				<input type="hidden" id="roadAddrPart2" name="roadAddrPart2" value="<%=addr_dto.getRoadAddrPart2()%>"/>
+				<input type="hidden" id="addrDetail" name="addrDetail" value="<%=addr_dto.getAddrDetail()%>"/>
+				<input type="hidden" id="lat" name="lat" value="<%=addr_dto.getLat()%>"/>
+				<input type="hidden" id="lng" name="lng" value="<%=addr_dto.getLng()%>"/>
 				<input type="submit" value="회원정보수정">
 				<input type="button" value="취 소" onclick="location.href='/oatjang/index.jsp'">
 			</form>

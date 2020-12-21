@@ -50,4 +50,6 @@ step NUMBER NOT NULL,
 logtime DATE,
 constraint fk_reply foreign key(iid) references item(iid) ON DELETE CASCADE);
 
+select * from tab;
+
 

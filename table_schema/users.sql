@@ -24,6 +24,8 @@ select * from users;
 
 
 create sequence user_seq nocycle nocache;
-  
+
 drop table users;
 drop sequence user_seq;
+
+delete from users where userid = 5;
