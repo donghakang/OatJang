@@ -11,11 +11,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
+	<script>
+    	$(document).ready(function() {
+    		$('.navigation_bar').load( "login/loginMenu.jsp", function( response, status, xhr ) {
+    			if ( status == "error" ) {
+    				var msg = "Sorry but there was an error: ";
+    			}
+    		});
+    	})
+    </script>
+    <div class="navigation_bar"></div>
+
 	<div class="board_nav ">
-		<input type="button" href="board_writing.html" class="masterBtn"
-			value="목록" /> <input type="button" onclick="location.href='/oatjang/board/boardWrite.jsp'"
+		<input type="button" href="#" class="masterBtn" value="목록" /> 
+		<input type="button" onclick="location.href='/oatjang/board/boardInsert.jsp'"
 			class="masterBtn" value="글 작성" />
 	</div>
 	<table class="board">

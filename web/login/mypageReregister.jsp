@@ -67,7 +67,7 @@
 		
 		// TODO: 주소 찾기
 		$('#searchAddress').on('click', function () {
-			var pop = window.open("/oatjang/login/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+			var pop = window.open("/oatjang/login/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes");
 		});
 		
 		
@@ -171,7 +171,7 @@
                 <th id="select_roadAddrPart1">
                 <input id="addr1" type="text" name="addr1" class="form__input"
 					   placeholder="주소" value="<%=addr_dto.getRoadAddrPart1()%>" required readonly>
-               	<button id="searchAddress" name="search_btn"></button>
+               	<input type="button" id="searchAddress" name="search_btn"></input>
 					<i class='fa fa-search'></i>
 				</th>
             </tr>
@@ -180,7 +180,7 @@
 						placeholder="상세 주소" value="<%=addr_dto.getAddrDetail()%> <%=addr_dto.getRoadAddrPart2()%>" required readonly></th>
             </tr>
             <input type="hidden" name="addrId" value="<%=dto.getAddrId()%>">
-          	<input type="hidden" id="roadFullAddr" name="roadFullAddr" />
+          	<input type="hidden" id="roadFullAddr" name="roadFullAddr" value="<%=addr_dto.getRoadFullAddr%>"/>
 			<input type="hidden" id="roadAddrPart1" name="roadAddrPart1" />
 			<input type="hidden" id="roadAddrPart2" name="roadAddrPart2" />
 			<input type="hidden" id="addrDetail" name="addrDetail" />
@@ -192,15 +192,6 @@
 	
 	
 	<div class="info_btns">
-	
-<%-- 		<input type="hidden" name="id" value="<%=dto.getId()%>">
-		<input type="hidden" name="pw" value="<%=dto.getPw()%>">
-		<input type="hidden" name="nickname" value="<%=dto.getNickname()%>">
-		<input type="hidden" name="name" value="<%=dto.getName()%>">
-		<input type="hidden" name="age" value="<%=dto.getAge()%>">
-		<input type="hidden" name="phone" value="<%=dto.getPhone()%>">
-		 --%>
-				
 		<input type="submit" value="회원정보수정">
 		<input type="button" value="취 소" onclick="location.href='/oatjang/index.jsp'">
 	</div>
