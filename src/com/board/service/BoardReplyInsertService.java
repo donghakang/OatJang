@@ -15,7 +15,6 @@ public class BoardReplyInsertService implements CommandAction {
 		request.setCharacterEncoding("UTF-8");
 		int iid = Integer.parseInt(request.getParameter("iid"));
 		int ref = Integer.parseInt(request.getParameter("ref"));
-		int reply = Integer.parseInt(request.getParameter("reply"));
 		int userid = Integer.parseInt(request.getParameter("userid"));
 		String nickname = request.getParameter("nickname");
 		String content = request.getParameter("comment");
@@ -26,6 +25,7 @@ public class BoardReplyInsertService implements CommandAction {
 		dto.setContent(content);
 		dto.setUserid(userid);
 		BoardDAO dao = BoardDAO.getInstance();
+		int reply = dao.getReplyCount(iid);
 		if (ref == 0) {
 			dao.replyInsert(dto, reply);
 		} else {

@@ -4,16 +4,10 @@
 
 /* all html  */
 * {
-<<<<<<< HEAD
-    padding: 0;
-    margin: 0;
-    
-=======
   padding: 0;
   margin: 0;
   font-family: "Roboto", sans-serif;
   font-family: "Noto Sans KR", sans-serif;
->>>>>>> 9085673... on weekend
 }
 
 *,
@@ -108,7 +102,6 @@ footer {
 }
 
 /* div 순서 */
-<<<<<<< HEAD
 .header1 > .right {order: 3; } /* Will be displayed third  */
 .header1 > .middle {order: 1; } /* Will be displayed second */
 .header1 > .search {order: 2; } /* Will be displayed first  */
@@ -129,32 +122,6 @@ footer {
     transform-origin: 0% 0%;
 	transform: translate(0, 0);
     transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
-=======
-.header1 > .right {
-  order: 3;
-} /* Will be displayed third  */
-.header1 > .middle {
-  order: 1;
-} /* Will be displayed second */
-.header1 > .search {
-  order: 2;
-} /* Will be displayed first  */
-
-/* 서치 */
-.search_engine {
-  z-index: 9;
-  display: flex;
-  position: absolute;
-  top: 0;
-  right: 0;
-  align-items: center;
-  height: 8vh;
-  opacity: 0;
-
-  transform-origin: 0% 0%;
-  transform: translate(0, 0);
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
->>>>>>> 9085673... on weekend
 }
 
 .search_engine input {
@@ -168,7 +135,6 @@ footer {
   border-bottom-left-radius: 0.4rem;
 }
 .search_engine button {
-<<<<<<< HEAD
     font-size: 1rem;
     padding: .4em;
     margin-left: -10px;
@@ -178,17 +144,6 @@ footer {
     
     border-top-right-radius: .4rem;
 	border-bottom-right-radius: .4rem;
-=======
-  font-size: 1rem;
-  padding: 0.4em;
-  margin-left: -10px;
-
-  outline: none;
-  border: none;
-
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
->>>>>>> 9085673... on weekend
 }
 
 #search_button:checked ~ .search_engine {

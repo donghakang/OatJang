@@ -151,7 +151,7 @@ public class BoardDAO {
 		// 댓글이 있는지 확인하고 있으면 전체 댓글중 step이 가장 큰걸 가져오고 아니면 1
 		SqlSession session = factory.openSession();
 		if (reply != 0) {
-			int step = session.selectOne("mybatis.BoardMapper.getReplyStep");
+			int step = session.selectOne("mybatis.BoardMapper.getReplyStep",dto);
 			session.close();
 			dto.setStep(step + 1);
 			session = factory.openSession();
@@ -198,7 +198,7 @@ public class BoardDAO {
 		session = factory.openSession();
 		try {
 			n = session.update("mybatis.BoardMapper.replyUpdateStep",
-					dto.getStep());
+					dto);
 			if (n > 0)
 				session.commit();
 		} catch (Exception e) {
@@ -324,6 +324,14 @@ public class BoardDAO {
 		} finally {
 			session.close();
 		}
+	}
+
+	public int getReplyCount(int iid) {
+		SqlSession session = factory.openSession();
+		int n = session.selectOne("mybatis.BoardMapper.getReplyCount", iid);
+		session.close();
+
+		return n;
 	}
 
 }
