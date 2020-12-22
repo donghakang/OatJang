@@ -8,7 +8,6 @@
     <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 
     <link rel="stylesheet" href="/oatjang/styles/style.css">
-    <link rel="stylesheet" href="/oatjang/styles/home.css">
 </head>
 <body class="container">
     <script>

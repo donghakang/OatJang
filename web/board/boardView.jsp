@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
@@ -273,7 +272,7 @@
         </div>
         <input type="hidden" name="ref" value="0"/>
         <input type="hidden" id="iid" name="iid" value="${dto.iid }" />
-        <input type="hidden" name="reply" value="${dto.reply }" />
+        <input type="hidden" id="reply" name="reply" value="${dto.reply }" />
         <input type="hidden" id="userid" name="userid" value="${loginComplete.userId }"/>
         <input type="hidden" id="nickname" name="nickname" value="${loginComplete.nickname}" />
     </form>
@@ -306,6 +305,7 @@
 			url:"<c:url value='/replyInsert.do'/>",
 			data:$("#commentForm").serialize(),
 			success:function(){
+				$("#reply").val($("#reply").val()+1);
 				getCommentList();
 				$("#comment").val("");
 			}
@@ -380,12 +380,13 @@
  		if(!userid){
  			userid = 0;
  		}
-  		var send = "userid="+userid+"&reply="+${dto.reply}+"&nickname="+$("#nickname").val()+"&iid="+${dto.iid}+"&ref="+$("#replyRef"+rid).val()+"&comment="+$("#comment"+rid).val();
+  		var send = "userid="+userid+"&reply="+$("#reply").val()+"&nickname="+$("#nickname").val()+"&iid="+${dto.iid}+"&ref="+$("#replyRef"+rid).val()+"&comment="+$("#comment"+rid).val();
 		$.ajax({
 			type:'GET',
 			url:"<c:url value='/replyInsert.do'/>",
 			data:send,
 			success:function(){
+				$("#reply").val($("#reply").val()+1);
 				getCommentList();
 			}
 		});

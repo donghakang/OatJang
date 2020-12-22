@@ -217,7 +217,7 @@
       <!-- 사진 css 필요 -->
    	  <div class="article_fictures">
    	  	<c:forEach var="ob" items="${fn:split(dto.images,',')}">
-   	  		<img src="/oatjang/images/${ob }"/>
+   	  		<img src="/oatjang/images/${ob }" style="width:30vw;"/>
    	  	</c:forEach>
    	  </div>
       <!-- 내용 -->
@@ -274,6 +274,7 @@
 			url:"<c:url value='/commuReplyInsert.do'/>",
 			data:$("#commentForm").serialize(),
 			success:function(){
+				$("#reply").val($("#reply").val()+1);
 				getCommentList();
 				$("#comment").val("");
 			}
@@ -348,12 +349,17 @@
  		$("#reReplyInsert"+rid).hide();
  	}
  	function insertReReply(rid){
-  		var send = "reply="+${dto.reply}+"&nickname="+$("#nickname").val()+"&iid="+${dto.iid}+"&ref="+$("#replyRef"+rid).val()+"&comment="+$("#comment"+rid).val();
+ 		var userid = $("#userid").val();
+ 		if(!userid){
+ 			userid = 0;
+ 		}
+ 		var send = "reply="+${dto.reply}+"&nickname="+$("#nickname").val()+"&iid="+${dto.iid}+"&ref="+$("#replyRef"+rid).val()+"&comment="+$("#comment"+rid).val()+"&userid="+userid;
 		$.ajax({
 			type:'GET',
 			url:"<c:url value='/commuReplyInsert.do'/>",
 			data:send,
 			success:function(){
+				$("#reply").val($("#reply").val()+1);
 				getCommentList();
 			}
 		});

@@ -129,7 +129,7 @@ public class CommuDAO {
 	public void replyInsert(CommuReplyDTO dto, int reply) {
 		SqlSession session = factory.openSession();
 		if (reply != 0) {
-			int step = session.selectOne("mybatis.CommuMapper.getReplyStep");
+			int step = session.selectOne("mybatis.CommuMapper.getReplyStep",dto);
 			session.close();
 			dto.setStep(step + 1);
 			session = factory.openSession();
@@ -176,7 +176,7 @@ public class CommuDAO {
 		session = factory.openSession();
 		try {
 			n = session.update("mybatis.CommuMapper.replyUpdateStep",
-					dto.getStep());
+					dto);
 			if (n > 0)
 				session.commit();
 		} catch (Exception e) {
@@ -282,5 +282,12 @@ public class CommuDAO {
 		session.close();
 
 		return nickname;
+	}
+	public int getReplyCount(int iid) {
+		SqlSession session = factory.openSession();
+		int n = session.selectOne("mybatis.CommuMapper.getReplyCount", iid);
+		session.close();
+
+		return n;
 	}
 }

@@ -180,7 +180,7 @@
 						placeholder="상세 주소" value="<%=addr_dto.getAddrDetail()%> <%=addr_dto.getRoadAddrPart2()%>" required readonly></th>
             </tr>
             <input type="hidden" name="addrId" value="<%=dto.getAddrId()%>">
-          	<input type="hidden" id="roadFullAddr" name="roadFullAddr" value="<%=addr_dto.getRoadFullAddr%>"/>
+          	<input type="hidden" id="roadFullAddr" name="roadFullAddr" value="<%=addr_dto.getRoadFullAddr()%>"/>
 			<input type="hidden" id="roadAddrPart1" name="roadAddrPart1" />
 			<input type="hidden" id="roadAddrPart2" name="roadAddrPart2" />
 			<input type="hidden" id="addrDetail" name="addrDetail" />
