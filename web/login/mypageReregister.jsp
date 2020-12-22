@@ -13,18 +13,18 @@
 <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 	$(document).ready(function() {
-		
+
 		$('#pw1, #pw2').keyup(function() {
 			var number = /([0-9])/;
             var alphabets = /([a-zA-Z])/;
             var special_characters = /([~,!,@,#,$,%,^,&,*,-,_,+,=,?,>,<])/;
-			
+
 			var pw1 = $("#pw1").val();
 			var pw2 = $("#pw2").val();
 			var pwStrength = $("#pwStrength");
 			var pwCheck = $("#pwCheck");
 			var pwStatus = 0;
-			
+
 			if (pw1.length < 6) {
 				pwStrength.text("weak")
 						  .css({'color': 'red'})
@@ -39,8 +39,8 @@
 					 pwStrength.text("medium").css({'color': 'yellow'})
 				 }
 			}
-			
-			
+
+
 			if (pwStatus == 2) {
 				if (pw1 == pw2) {
 					$("#pwCheck").text("비밀번호가 일치합니다.").css({
@@ -59,25 +59,25 @@
 					'color' : 'red'
 				});
 			}
-			
-			
+
+
 		});
-		
+
 		// TODO: 본인인증
-		
+
 		// TODO: 주소 찾기
 		$('#searchAddress').on('click', function () {
 			var pop = window.open("/oatjang/login/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes");
 		});
-		
-		
+
+
 	});
 	// 주소 가지고 오기
 	function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo,entX,entY,lat,lng){
-		
+
 		document.getElementById('addr1').value = roadAddrPart1;
 		document.getElementById('addr2').value = addrDetail + ", " + roadAddrPart2;
-		
+
 		document.getElementById('roadFullAddr').value = roadFullAddr;
 		document.getElementById('roadAddrPart1').value = roadAddrPart1;
 		document.getElementById('roadAddrPart2').value = roadAddrPart2;
@@ -85,7 +85,7 @@
 		document.getElementById('lat').value = lat;
 		document.getElementById('lng').value = lng;
 	}
-	
+
 </script>
 
 
@@ -114,7 +114,7 @@
 		<thead>
         	<tr class="information_select_fix">
             	<td>Username</td>
-                <th><%=dto.getId()%></th>
+                <th><%=dto.getId()%><input type="hidden" id="id"  name="id" value="<%=dto.getId()%>"></th>
                 <td>아이디는 수정할 수 없습니다</td>
             </tr>
     	</thead>
@@ -146,19 +146,19 @@
     	<thead>
         	<tr class="information_select_fix">
             	<td>name</td>
-                <th><input type="text" name="name" value="<%=request.getParameter("name")%>"></th>       
+                <th><input type="text" name="name" value="<%=request.getParameter("name")%>"></th>
             </tr>
     	</thead>
     	<thead>
         	<tr class="information_select_fix">
             	<td>Birthday</td>
-                <th><input type="text" name="age" value="<%=request.getParameter("age")%>"></th>       
+                <th><input type="text" name="age" value="<%=request.getParameter("age")%>"></th>
             </tr>
     	</thead>
     	<thead>
         	<tr class="information_select_fix">
             	<td>Phone #</td>
-                <th><input type="text" name="phone" value="<%=request.getParameter("phone")%>"></th>       
+                <th><input type="text" name="phone" value="<%=request.getParameter("phone")%>"></th>
             </tr>
     	</thead>
     </table>
@@ -186,11 +186,11 @@
 			<input type="hidden" id="addrDetail" name="addrDetail" />
 			<input type="hidden" id="lat" name="lat" />
 			<input type="hidden" id="lng" name="lng" />
-          
+
     	</thead>
 	</table>
-	
-	
+
+
 	<div class="info_btns">
 		<input type="submit" value="회원정보수정">
 		<input type="button" value="취 소" onclick="location.href='/oatjang/index.jsp'">
@@ -199,5 +199,6 @@
 </form>
 </body>
 </html>
- 
 
+
+<%--  value="<%=addr_dto.getRoadFullAddr%>"  --%>

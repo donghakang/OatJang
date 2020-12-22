@@ -11,7 +11,7 @@
 	</insert>
 	<select id="getCommuList" parameterType="hashmap" resultType="CommuDTO">
 		<![CDATA[
-         SELECT IID,USERID,TITLE,IMAGES,DESCRIPTION,HIT,TO_CHAR(LOGTIME,'YYYY.MM.DD')AS LOGTIME
+         SELECT IID,USERID,TITLE,IMAGES,DESCRIPTION,REPLY,HIT,TO_CHAR(LOGTIME,'YYYY.MM.DD')AS LOGTIME
          FROM (SELECT ROWNUM RN, AA.*
                FROM (SELECT * FROM COMMU ORDER BY IID DESC)AA)
          WHERE RN>=#{startNum} AND RN<=#{endNum}
@@ -45,10 +45,10 @@
          ORDER BY STEP
       ]]>
 	</select>
-	<select id="getReplyStep" resultType="java.lang.Integer">
+	<select id="getReplyStep" parameterType="CommuReplyDTO" resultType="java.lang.Integer">
 		<![CDATA[
          SELECT STEP
-         FROM (SELECT STEP FROM COMMUREPLY ORDER BY STEP DESC)
+         FROM (SELECT STEP FROM COMMUREPLY WHERE IID=#{iid} ORDER BY STEP DESC)
          WHERE ROWNUM=1
       ]]>
 	</select>
@@ -70,9 +70,9 @@
          WHERE ROWNUM=1
       ]]>
 	</select>
-	<update id="replyUpdateStep" parameterType="java.lang.Integer">
+	<update id="replyUpdateStep" parameterType="CommuReplyDTO">
    		<![CDATA[
-			UPDATE COMMUREPLY SET STEP=STEP+1 WHERE STEP>=#{step}
+			UPDATE COMMUREPLY SET STEP=STEP+1 WHERE IID=#{iid} AND STEP>=#{step}
 		]]>
    </update>
    <insert id="subReplyInsert" parameterType="CommuReplyDTO">
@@ -110,6 +110,13 @@
          SELECT COUNT(*)
          FROM COMMU
          WHERE (UPPER(TITLE) LIKE#{title}) OR (UPPER(DESCRIPTION) LIKE#{description})
+      ]]>
+	</select>
+	<select id="getReplyCount" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		<![CDATA[
+         SELECT REPLY
+         FROM COMMU
+         WHERE IID=#{iid}
       ]]>
 	</select>
 </mapper>

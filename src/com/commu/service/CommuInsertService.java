@@ -87,6 +87,6 @@ public class CommuInsertService implements CommandAction {
 		CommuDAO dao = CommuDAO.getInstance();
 		dao.commuInsert(dto);
 		
-		return "CommuList.do?pg=1";
+		return "commuList.do?pg=1";
 	}
 }

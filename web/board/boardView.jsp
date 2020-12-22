@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
@@ -11,7 +10,7 @@
 <title>OatJang - 중고 옷 거래 플랫폼</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <link rel="stylesheet" href="/oatjang/styles/style.css" />
-<link rel="stylesheet" href="/oatjang/styles/boardView.css" /> 
+<link rel="stylesheet" href="/oatjang/styles/boardView.css" />
 
 <script>
     	$(document).ready(function() {
@@ -32,10 +31,12 @@
 		<div class="boardView_container">
 			<div class="image_container">
 				<div class="main_image">
-					<img src="1.jpeg" />
+					<img src="images/${fn:split(dto.images,',')[0]}" />
 				</div>
 				<div class="sub_images">
-					<img src="1.jpeg" /> <img src="1.jpeg" /> <img src="1.jpeg" />
+					<c:forEach var="ob" begin="1" items="${fn:split(dto.images,',')}">
+					<img src="images/${ob}" />
+				</c:forEach>
 				</div>
 			</div>
 			<!-- 정보 -->
@@ -152,12 +153,13 @@
 			url:"<c:url value='/replyInsert.do'/>",
 			data:$("#commentForm").serialize(),
 			success:function(){
+				$("#reply").val($("#reply").val()+1);
 				getCommentList();
 				$("#comment").val("");
 			}
 		});
 	}
-	
+
  	function getCommentList(){
  		var userid = $("#userid").val();
  		if(!userid){
@@ -189,11 +191,11 @@
 			}
 		});
  	}
- 	
+
  	function updateReply(rid){
  		$("#replyContent"+rid).hide();
  		$("#replyUpdate"+rid).show();
- 		
+
  	}
  	function closeUpdate(rid){
  		$("#replyContent"+rid).show();
@@ -226,12 +228,13 @@
  		if(!userid){
  			userid = 0;
  		}
-  		var send = "userid="+userid+"&reply="+${dto.reply}+"&nickname="+$("#nickname").val()+"&iid="+${dto.iid}+"&ref="+$("#replyRef"+rid).val()+"&comment="+$("#comment"+rid).val();
+  		var send = "userid="+userid+"&reply="+$("#reply").val()+"&nickname="+$("#nickname").val()+"&iid="+${dto.iid}+"&ref="+$("#replyRef"+rid).val()+"&comment="+$("#comment"+rid).val();
 		$.ajax({
 			type:'GET',
 			url:"<c:url value='/replyInsert.do'/>",
 			data:send,
 			success:function(){
+				$("#reply").val($("#reply").val()+1);
 				getCommentList();
 			}
 		});
@@ -239,6 +242,3 @@
 </script>
 </body>
 </html>
-
-
-

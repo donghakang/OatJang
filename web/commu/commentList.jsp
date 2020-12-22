@@ -17,8 +17,8 @@
             	<div id="replyUpdate${ob.rid }" style="display:none;">
 	            	<form id="replyUpdateForm${ob.rid }">
 		               <input type="hidden" id="ridrid" name="rid" value="${ob.rid }"/>
-		               <input type="hidden" id="updateContent${ob.rid }" name="iid" value="${ob.iid }"/>
-		               <input type="text" name="content"/>
+		               <input type="hidden" id="" name="iid" value="${ob.iid }"/>
+		               <input type="text" id="updateContent${ob.rid }" name="content"/>
 		               <input type="button" onclick="closeUpdate(${ob.rid})" value="취소"/>
 		               <input type="button" onclick="updateReply2(${ob.rid})" value="수정"/>
 	            	</form>

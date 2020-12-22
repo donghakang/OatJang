@@ -170,8 +170,7 @@
 
 	<div class="navigation_bar"></div>
 	<div>
-		<form action="../boardInsert.do" method="post"
-			enctype="multipart/form-data">
+		<form action="../boardInsert.do" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="userid" value="1" />
 			<!-- 임시로 1로 해둠 나중에 로그인 아디로 바꿔야함 -->
 			<div class="textbox">
@@ -260,7 +259,7 @@
 		<!-- 버튼 -->
 		<div class="btn">
 			<div id="rightbtn">
-				<input class="go_btn masterBtn" type="submit" value="이전으로" />
+				<input class="go_btn masterBtn" type="button" value="이전으로" onclick="location.href='/oatjang/boardList.do?pg=1'"/>
 			</div>
 			<div>
 				<input class="back_btn masterBtn" type="submit" value="게시하기" />

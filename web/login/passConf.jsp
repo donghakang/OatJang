@@ -2,6 +2,7 @@
 로그인 후, 마이페이지에서 회원수정을 누를때, 비밀번호를 확인하는 페이지.
  -->
 
+<%@page import="com.login.dto.AddressDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="com.login.dto.LoginDTO" %>
@@ -13,6 +14,7 @@
 <%
 		request.setCharacterEncoding("UTF-8");
 		LoginDTO dto = (LoginDTO) session.getAttribute("loginComplete");
+		AddressDTO addr_dto = (AddressDTO)request.getAttribute("addressEntity");
 		
 		String roadFullAddr = request.getParameter("roadFullAddr");
 		String roadAddrPart1 = request.getParameter("roadAddrPart1");
@@ -49,7 +51,7 @@
 								</use>
 							</svg>
 						</label>
-						 <input id="login__username" type="text" name="id" class="form__input" placeholder="<%=dto.getId()%>"
+						 <input id="login__username" type="text" name="id" class="form__input" placeholder="<%=dto.getId()%> " value="<%=dto.getId()%>"
                                 required readonly> 
 					</div>
 					<div class="form__field">

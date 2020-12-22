@@ -32,7 +32,7 @@ public class MypageUpdateService implements CommandAction {
 		dto.setAge(Integer.parseInt(request.getParameter("age")));
 		dto.setPhone(request.getParameter("phone"));
 		dto.setAddrId(Integer.parseInt(request.getParameter("addr")));
-
+		
 		System.out.println(dto);
 
 		// 패스워드 일치
@@ -57,7 +57,7 @@ public class MypageUpdateService implements CommandAction {
 		} else {
 			// TODO: alert 창을 이용하여, 비밀번호가 틀림을 알린다.
 
-			return "/login/passConf.jsp";
+			return "login/passConfFail.jsp";
 		}
 
 	}

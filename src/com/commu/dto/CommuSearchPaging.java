@@ -38,23 +38,23 @@ public class CommuSearchPaging {
 		//----------------------------------------------------------------
 		if(startPage>pageBlock){			
 			pagingHTML.append("<a href='/oatjang/commuSearch.do?searchentity="+searchentity+"&pg="
-		+(startPage-pageBlock)+"'>["+"이전]</a>");
+		+(startPage-pageBlock)+"'>"+"이전</a>");
 		}		
 		
 		for(int i=startPage;i<=endPage;i++){
 			if(currentPage==i){
 				pagingHTML.append("<a href='/oatjang/commuSearch.do?searchentity="+searchentity+"&pg="
-			                     +i+"'><font color=red>["+ i+ "]</font></a>");
+			                     +i+"' id='a_back'>"+ i+ "</a>");
 			
 			}else{
 				pagingHTML.append("<a href='/oatjang/commuSearch.do?searchentity="+searchentity+"&pg="
-			                      +i+"'>["+i+"]</a>");
+			                      +i+"'>"+i+"</a>");
 			}
 		}
 				
 		if(endPage<totalP){
 			pagingHTML.append("<a href='/oatjang/commuSearch.do?searchentity="+searchentity+"&pg="
-		+(startPage+pageBlock)+"'>["+"다음]</a>");
+		+(startPage+pageBlock)+"'>"+"다음</a>");
 		}
 	}
 	
