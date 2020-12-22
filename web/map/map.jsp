@@ -188,7 +188,7 @@
 		//포지션 생성 ---------------------------------------------------------------------
 
 			<c:forEach items="${itemList}" var="item">
-				var addr = '${item.addr1}'
+				var addr = '${item.roadAddrPart1}'
 				var iid = ${item.iid}
 			 	<c:set var="title" value="${item.title}" />
 			 	var title = '${item.title}'
