@@ -114,12 +114,12 @@
    	<c:forEach items="${list }" var="ob">
       <div class="div1">
          <div class="div2" onclick="location.href='/oatjang/boardView.do?iid=${ob.iid}&pg=${pg }'">
-         
+
             <img src="images/${fn:split(ob.images,',')[0]}" alt="확인">
             <div class="div3" onclick="/oatjang/boardView.do?iid=${ob.iid}&pg=${pg }">
                <a href="">제목 : ${ob.title }</a>
                <a href="/oatjang/boardView.do?iid=${ob.iid}&pg=${pg }">가격 : ${ob.price }</a>
-               <a href="/oatjang/boardView.do?iid=${ob.iid}&pg=${pg }">카테고리 : 
+               <a href="/oatjang/boardView.do?iid=${ob.iid}&pg=${pg }">카테고리 :
                <c:if test="${ob.category ==0}">상의</c:if>
                <c:if test="${ob.category ==1}">하의</c:if>
                <c:if test="${ob.category ==2}">아우터</c:if>

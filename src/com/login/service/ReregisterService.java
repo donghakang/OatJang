@@ -2,6 +2,7 @@ package com.login.service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.login.dao.LoginDAO;
 import com.login.dao.RegisterDAO;
@@ -35,11 +36,19 @@ public class ReregisterService implements CommandAction {
 		addr_dto.setAddrDetail(request.getParameter("addrDetail"));
 		addr_dto.setLat(Double.parseDouble(request.getParameter("lat")));
 		addr_dto.setLng(Double.parseDouble(request.getParameter("lng")));
-
+		
+		System.out.println("id : " + dto.getId());
+		System.out.println("pw : " + dto.getPw());
+		System.out.println("nickname : " + dto.getNickname());
+		
 		LoginDAO dao = new LoginDAO();
 
 		dao.updateUser(dto);
 		dao.updateAddress(addr_dto);
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("loginComplete", dto);
+		session.setAttribute("addressEntity", addr_dto);
 
 		return "login/reRegisterOk.jsp";
 	}
