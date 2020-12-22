@@ -108,16 +108,17 @@
 </script>
 
 <body>
-    <div class="navigation_bar"></div>
-   <div class="menu_nav">
+<div class="navigation_bar"></div>
 
-      <a class="boardmain" href="/oatjang/boardList.do?pg=1">DEALS</a>
-      <!-- 목록으로 가기 -->
-	  <input type="hidden" id="loginCheck" value="${loginComplete.userId }"/>
-      <input class="go_btn masterBtn" type="button" onclick="writeCheck()" value="글쓰기" /> <!-- 내일 고치기 -->
-      <!-- 글쓰기  -->
-   </div>
-   <div class="divMaster">
+	<div class="btn_div">
+		<a class="board_a" href="/oatjang/boardList.do?pg=1">DEALS</a> 
+		<input type="hidden" id="loginCheck" value="${loginComplete.userId }" /> 
+		<input class="write_btn2" type="button" onclick="writeCheck()" value="글쓰기" />
+	</div>
+	<hr class="boardList_hr">
+
+
+	<div class="divMaster">
    	<c:forEach items="${list }" var="ob">
       <div class="div1">
       		<c:if test="${ob.success ==2 }">

@@ -24,6 +24,7 @@
 </script>
 </head>
 <body>
+<<<<<<< HEAD
     <div class="navigation_bar"></div>
 <div class="ArticleContentBox">
    <div class="article_header">
@@ -136,6 +137,75 @@
 						
 						</c:if>
 					</c:if>
+=======
+	<div class="navigation_bar"></div>
+	<a href="/oatjang/boardList.do?pg=${pg}" class="back_button"><i
+		class="fa fa-chevron-left"
+	></i></a>
+	<div class="boardview_main_container">
+		<div class="boardView_container">
+			<div class="image_container">
+				<div class="main_image">
+					<img src="images/${fn:split(dto.images,',')[0]}" />
+				</div>
+				<div class="sub_images">
+					<c:forEach var="ob" begin="1" items="${fn:split(dto.images,',')}">
+					<img src="images/${ob}" />
+				</c:forEach>
+				</div>
+			</div>
+			<!-- 정보 -->
+			<div class="info_container">
+				<div class="item_title_area">
+					<div class="item_title">
+						<!-- 글 제목 -->
+						${dto.title }
+					</div>
+					<div class="item_date">
+						조회 ${dto.hit }<br> ${dto.logtime }
+					</div>
+				</div>
+				<hr>
+				<div class="item_price">${dto.price }원</div>
+				<div class="item_category">
+					<c:if test="${dto.category == 0}">
+	            	상의
+	            	</c:if>
+					<c:if test="${dto.category == 1}">
+	            	하의
+	            	</c:if>
+					<c:if test="${dto.category == 2}">
+	            	아우터
+	            	</c:if>
+					<c:if test="${dto.category == 3}">
+	            	원피스
+	            	</c:if>
+					<c:if test="${dto.category == 4}">
+	            	신발
+	            	</c:if>
+					<c:if test="${dto.category == 5}">
+	            	악세사리
+	            	</c:if>
+				</div>
+				<div class="item_address">${dto.roadAddrPart1 }</div>
+				<div class="item_description">${dto.description }</div>
+				<hr>
+				<div class="item_nickname">${nickname }
+					<c:if test="${loginComplete.userId == dto.userid}">
+						<p class="board_btns">   
+						<a
+							href='/oatjang/boardModify.do?iid=${dto.iid }&pg=${pg }'
+							class="boardTag">수정</a>
+						<a
+							href='/oatjang/boardDelete.do?iid=${dto.iid }&pg=${pg }'
+							class="boardTag">삭제</a>
+						<button
+							onclick="loaction.href='/oatjang/boardComplete.do?iid=${dto.iid}&pg=${pg }'"
+							class="boardTag">거래완료</button>
+						</p>
+					</c:if>
+				</div>
+>>>>>>> cf7c196... boardList, commuList
 
 			</div>
 		</div>
@@ -280,7 +350,11 @@
  	}
 </script>
 </body>
+<<<<<<< HEAD
 </html>
 
 
 
+=======
+</html>
+>>>>>>> cf7c196... boardList, commuList
