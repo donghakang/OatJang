@@ -167,108 +167,104 @@
 </script>
 </head>
 <body>
+ <div class="navigation_bar">
+      <form action="../boardInsert.do" method="post" enctype="multipart/form-data">
+         <input type="hidden" name="userid" value="1" />
+         <!-- 임시로 1로 해둠 나중에 로그인 아디로 바꿔야함 -->
+         <div class="textbox">
+            <!-- 제목,가격,카테고리,설명 -->
+            <div class="div_title">
+               <input class="box title" type="text" name="title" value="" placeholder="제목을 입력하세요." />
+               <br>
+               <div class="div_category">
+                  <input class="price" type="text" name="price" value="" placeholder="가격을 입력하세요." />
+                  <select class="category" name="category" id="category" >
+                     <option value="분류">분류</option>
+                     <option value="-------">-------</option>
+                     <option value="상의">상의</option>
+                     <option value="하의">하의</option>
+                     <option value="아우터">아우터</option>
+                     <option value="원피스">원피스</option>
+                     <option value="악세사리">악세사리</option>
+                     <option value="신발">신발</option>
+                  </select>
 
-	<div class="navigation_bar"></div>
-	<div>
-		<form action="../boardInsert.do" method="post"
-			enctype="multipart/form-data">
-			<input type="hidden" name="userid" value="1" />
-			<!-- 임시로 1로 해둠 나중에 로그인 아디로 바꿔야함 -->
-			<div class="textbox">
-				<!-- 제목,가격,카테고리,설명 -->
-				<div class="div_title">
-					<input class="box title" type="text" name="title" value=""
-						placeholder="제목을 입력하세요." /> <br> <input class="box price"
-						type="text" name="price" value="" placeholder="가격을 입력하세요." />
-				</div>
-			</div>
+               </div>
+            </div>
 
-			<!-- 설명칸  -->
-			<div class="div_intext">
-				<div class="category">
-					<h3 class="cate_h3">카테고리를 선택하세요.</h3>
-					<div>
-						<input type="checkbox" name="category" value="상의" /> 상의 <input
-							type="checkbox" name="category" value="하의" /> 하의 <input
-							type="checkbox" name="category" value="아우터" /> 아우터 <input
-							type="checkbox" name="category" value="원피스" /> 원피스 <input
-							type="checkbox" name="category" value="신발" /> 신발 <input
-							type="checkbox" name="category" value="악세사리" /> 악세사리<br>
-					</div>
-				</div>
-				<textarea class="textinput bi" name="description" value=""
-					placeholder="내용을 입력하세요."></textarea>
-			</div>
-	</div>
+            <!-- 설명칸  -->
+            <div class="div_intext">
+               <textarea class="textinput bw" name="description" value="" placeholder="내용을 입력하세요."></textarea>
+            </div>
 
 
 
-	<div class="picture">
-		<!--  메인사진 -->
-		<div class="picturein">
-			<div class="div_main">
-				<div>
-					<h2>메인사진</h2>
-				</div>
-				<div class="input_wrap">
-					<a href="javascript:" onclick="mainFileUploadAction();"
-						class="my_button">파일 업로드</a> <input type="file" id="input_img"
-						name="mainfile" hidden="true" />
-				</div>
-			</div>
-			<div>
-				<div class="imgs_wrap">
-					<img id="img" />
-				</div>
-			</div>
 
-			<!-- 서브사진 -->
-			<div class="div_main">
-				<h2>서브사진</h2>
-				<div class="input_wraps">
-					<a href="javascript:" onclick="subFileUploadAction();"
-						class="my_button">파일 업로드</a> <input type="file"
-						multiple="multiple" id="input_imgs" name="subfile[]" hidden="true" />
-				</div>
-			</div>
-			<div>
-				<div class="imgs_wraps">
-					<img id="imgs" />
-				</div>
-			</div>
-		</div>
+            <div class="picture">
+               <!--  메인사진 -->
+               <div class="picturein">
+                  <div class="div_main">
+                     <div>
+                        <h2>메인사진</h2>
+                     </div>
+                     <div class="input_wrap">
+                        <a href="javascript:" onclick="mainFileUploadAction();" class="my_button">파일 업로드</a>
+                        <input type="file" id="input_img" name="mainfile" hidden="true" />
+                     </div>
+                  </div>
+                  <div>
+                     <div class="imgs_wrap">
+                        <img id="img" />
+                     </div>
+                  </div>
 
-		<div class="div_intext addressbox box">
-			<div class="address_search">
-				<input id="addr1" type="text" name="addr1" class="form__input"
-					placeholder="주소" required readonly>
+                  <!-- 서브사진 -->
+                  <div class="div_main">
+                     <h2>서브사진</h2>
+                     <div class="input_wraps">
+                        <a href="javascript:" onclick="subFileUploadAction();" class="my_button">파일 업로드</a>
+                        <input type="file" multiple="multiple" id="input_imgs" name="subfile[]" hidden="true" />
+                     </div>
+                  </div>
+                  <div>
+                     <div class="imgs_wraps">
+                        <img id="imgs" />
+                     </div>
+                  </div>
+               </div>
 
-				<button id="searchAddress" name="search_btn" type="button">
-					<i class='fa fa-search'></i>
-				</button>
-			</div>
 
-			<input id="addr2" type="text" name="addr2" class="form__input"
-				placeholder="상세 주소" required readonly> <input type="hidden"
-				id="roadFullAddr" name="roadFullAddr" /> <input type="hidden"
-				id="roadAddrPart1" name="roadAddrPart1" /> <input type="hidden"
-				id="roadAddrPart2" name="roadAddrPart2" /> <input type="hidden"
-				id="addrDetail" name="addrDetail" /> <input type="hidden" id="lat"
-				name="lat" /> <input type="hidden" id="lng" name="lng" />
-		</div>
-		<br>
-		<!-- 버튼 -->
-		<div class="btn">
-			<div id="rightbtn">
-				<input class="go_btn masterBtn" type="submit" value="이전으로" />
-			</div>
-			<div>
-				<input class="back_btn masterBtn" type="submit" value="게시하기" />
-			</div>
-		</div>
-	</div>
+               <!-- 주소 -->
+               <div class="div_intext addressbox box">
+                  <div class="address_search">
+                     <input id="addr1" type="text" name="addr1" class="form__input" placeholder="주소" required readonly>
 
-	</form>
+                     <button id="searchAddress" name="search_btn" class="my_button searchBut" type="button">
+                        <i class='fa fa-search'></i>
+                     </button>
+                  </div>
+
+                  <input id="addr2" type="text" name="addr2" class="form__input" placeholder="상세 주소" required readonly>
+                  <input type="hidden" id="roadFullAddr" name="roadFullAddr" />
+                  <input type="hidden" id="roadAddrPart1" name="roadAddrPart1" />
+                  <input type="hidden" id="roadAddrPart2" name="roadAddrPart2" />
+                  <input type="hidden" id="addrDetail" name="addrDetail" />
+                  <input type="hidden" id="lat" name="lat" />
+                  <input type="hidden" id="lng" name="lng" />
+               </div>
+               <br>
+               <!-- 버튼 -->
+               <div class="btn">
+                  <div id="rightbtn">
+                     <input class="go_btn masterBtn" type="submit" value="이전으로" />
+                  </div>
+                  <div>
+                     <input class="back_btn masterBtn" type="submit" value="게시하기" />
+                  </div>
+               </div>
+            </div>
+
+      </form>
 </body>
 
 </html>

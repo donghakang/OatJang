@@ -190,3 +190,56 @@ button {
   text-align: left;
 
 }
+
+/*boardInsert*/
+
+
+      .div_category {
+         padding: 0.4em;
+         display: flex;
+         border: 0.5px solid gray;
+         margin: 6px 20%;
+      }
+
+      .category {
+         position: absolute;
+         right: 20px;
+         width: 16%;
+      }
+
+      .price {
+         width: 40%;
+         font-size: 16px;
+         text-align: left;
+
+      }
+
+      .box {
+         padding: 5px 10px;
+         margin: 5px 0;
+      }
+
+     
+
+      .title {
+         width: 60%;
+         height: 50px;
+         font-weight: bold;
+         font-size: 20px;
+         background-color: inherit;
+         text-align: left;
+      }
+
+      li {
+         list-style: none;
+      }
+
+      .form__input{
+         width: 60%;
+         height:40px;
+           background-color: inherit;
+      }
+      .searchBut{
+         width:80px;
+         height:30px;
+      }

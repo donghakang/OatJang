@@ -111,41 +111,76 @@
 </head>
 
 
-
 <body>
-	
-	<div class="navigation_bar"></div>
-	<form action="../boardInsert.do" method="post"
-		enctype="multipart/form-data">
-		<input type="hidden" name="userid" value="1" />
-		<!-- 임시로 1로 해둠 나중에 로그인 아디로 바꿔야함 -->
-	
-	<h1 class="header">자유게시판</h1>
-<h2> 수정하기 </h2>
+   <div class="navigation_bar">
+      <form action="../boardInsert.do" method="post" enctype="multipart/form-data">
+         <input type="hidden" name="userid" value="1" />
+         <!-- 임시로 1로 해둠 나중에 로그인 아디로 바꿔야함 -->
+         <div class="textbox">
+            <!-- 제목,가격,카테고리,설명 -->
+            <div class="div_title">
+               <input class="box title" type="text" name="title" value="" placeholder="제목을 입력하세요." />
+               <br>
+               <div class="div_category">
+                  <input class="price" type="text" name="price" value="" placeholder="가격을 입력하세요." />
+                  <select class="category" name="category" id="category" >
+                     <option value="분류">분류</option>
+                     <option value="-------">-------</option>
+                     <option value="상의">상의</option>
+                     <option value="하의">하의</option>
+                     <option value="아우터">아우터</option>
+                     <option value="원피스">원피스</option>
+                     <option value="악세사리">악세사리</option>
+                     <option value="신발">신발</option>
+                  </select>
 
-		<div class="textbox">
-			<div class="div_title">
-				<input class="title" type="text" name="title" value=""
-					placeholder="제목을 입력하세요." />
-			</div>
-			<div class="div_intext">
-				<input type="hidden" name="price" value="-1" />
-			</div>
-			<textarea class="textinput" name="description" value=""
-				placeholder="내용을 입력하세요."></textarea>
-		</div>
+               </div>
+            </div>
 
-		<div class="btn">
-			<div id="rightbtn">
-				<input class="go_btn masterBtn" type="submit" value="이전으로" />
-			</div>
-			<div>
-				<input class="back_btn masterBtn" type="submit" value="수정하기" />
-			</div>
-		</div>
+            <!-- 설명칸  -->
+            <div class="div_intext">
+               <textarea class="textinput bw" name="description" value="" placeholder="내용을 입력하세요."></textarea>
+            </div>
 
 
-	</form>
+
+
+            <div class="picture">
+               <!--  메인사진 -->
+          \
+
+               <!-- 주소 -->
+               <div class="div_intext addressbox box">
+                  <div class="address_search">
+                     <input id="addr1" type="text" name="addr1" class="form__input" placeholder="주소" required readonly>
+
+                     <button id="searchAddress" name="search_btn" class="my_button searchBut" type="button">
+                        <i class='fa fa-search'></i>
+                     </button>
+                  </div>
+
+                  <input id="addr2" type="text" name="addr2" class="form__input" placeholder="상세 주소" required readonly>
+                  <input type="hidden" id="roadFullAddr" name="roadFullAddr" />
+                  <input type="hidden" id="roadAddrPart1" name="roadAddrPart1" />
+                  <input type="hidden" id="roadAddrPart2" name="roadAddrPart2" />
+                  <input type="hidden" id="addrDetail" name="addrDetail" />
+                  <input type="hidden" id="lat" name="lat" />
+                  <input type="hidden" id="lng" name="lng" />
+               </div>
+               <br>
+               <!-- 버튼 -->
+               <div class="btn">
+                  <div id="rightbtn">
+                     <input class="go_btn masterBtn" type="submit" value="이전으로" />
+                  </div>
+                  <div>
+                     <input class="back_btn masterBtn" type="submit" value="수정하기" />
+                  </div>
+               </div>
+            </div>
+
+      </form>
 </body>
+
 
 </html>
