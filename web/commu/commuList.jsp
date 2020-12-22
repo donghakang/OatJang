@@ -50,7 +50,7 @@
 
 		</thead>
 		<c:forEach items="${list }" var="ob">
-			<tbody  onclick="location.href='/oatjang/boardView.do?iid=${ob.iid}&pg=${pg }'" class="board_text" id="board_text_id">
+			<tbody  onclick="location.href='/oatjang/commuView.do?iid=${ob.iid}&pg=${pg }'" class="board_text" id="board_text_id">
 				<td class="td_class" >${ob.iid}</td>
 				<td id="td_title">${ob.title }<c:if test="${ob.reply!=0 }">(${ob.reply })</c:if></td>
 				<td>${ob.nickname }</td>

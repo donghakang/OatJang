@@ -17,6 +17,8 @@ public class CommuReplyUpdateService implements CommandAction {
 		int rid = Integer.parseInt(request.getParameter("rid"));
 		String content = request.getParameter("content");
 
+		System.out.println("CONTENT==> " + content);
+
 		CommuDAO dao = CommuDAO.getInstance();
 		CommuReplyDTO dto = new CommuReplyDTO();
 		dto.setContent(content);

@@ -11,7 +11,7 @@
 	</insert>
 	<select id="getCommuList" parameterType="hashmap" resultType="CommuDTO">
 		<![CDATA[
-         SELECT IID,USERID,TITLE,IMAGES,DESCRIPTION,HIT,TO_CHAR(LOGTIME,'YYYY.MM.DD')AS LOGTIME
+         SELECT IID,USERID,TITLE,IMAGES,DESCRIPTION,REPLY,HIT,TO_CHAR(LOGTIME,'YYYY.MM.DD')AS LOGTIME
          FROM (SELECT ROWNUM RN, AA.*
                FROM (SELECT * FROM COMMU ORDER BY IID DESC)AA)
          WHERE RN>=#{startNum} AND RN<=#{endNum}
