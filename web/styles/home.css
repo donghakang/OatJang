@@ -36,8 +36,19 @@
 }
 
 .canvas #name {
+	font-family: "Roboto", sans-serif;
     font-weight: bold;
+    letter-spacing: 0.35rem;
     font-size: 4.5rem;
+    color: #472711;
+    text-shadow: 1px 1px 4px #e2af8c;
+
+}
+
+.canvas #describe {
+	color: #613618;
+	font-weight: bold;
+	letter-spacing: 0.1rem;
 }
 
 #renderCanvas {

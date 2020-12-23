@@ -48,9 +48,7 @@
 		<!-- css 필요 -->
 		<form id="reReplyInsertForm${ob.rid }">
 			<input type="hidden" name="iid" value="${ob.iid }" />
-			<input type="hidden" id="replyRef${ob.rid }" name="ref"
-				value="${ob.ref }"
-			/>
+			<input type="hidden" id="replyRef${ob.rid }" name="ref" value="${ob.ref }"/>
 			<input type="text" id="comment${ob.rid }" name="comment" />
 			<input type="button" onclick="closeReReply(${ob.rid})" value="취소" />
 			<input type="button" onclick="insertReReply(${ob.rid})" value="답글" />

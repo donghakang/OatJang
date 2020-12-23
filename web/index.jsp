@@ -24,8 +24,8 @@
     <div class="canvas">
         <div id="renderCanvas"></div>
         <div class="description">
-            <span id="name">OatJang</span>
-            <span id="describe"> 중고 옷 거래 플랫 폼</span>
+            <span id="name">OATJANG</span>
+            <span id="describe"> 우리들의 패.잘.알 커뮤니티</span>
         </div>
     </div>
 

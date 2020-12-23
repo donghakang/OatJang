@@ -44,13 +44,13 @@ function main() {
     scene.add( new THREE.HemisphereLight( 0x443333, 0x111122 ) );
 
     addShadowedLight( 1, 1, 1, 0xffffff, 1.35 );
-    addShadowedLight( 0.5, 1, - 1, 0xffaa00, 1 );
+    addShadowedLight( 0.5, 1, - 1, 0x8f4f23, 1 );
     // renderer
 
  
 
     renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setClearColor("#fcfcfc");
+    renderer.setClearColor("#f2dcce");
 	renderer.setSize( w, h );
 
     // stats
@@ -138,9 +138,6 @@ function main() {
         }
     );
 
-    renderer = new THREE.WebGLRenderer();
-    renderer.setClearColor("#5c3317");
-    // renderer.setPixelRatio( w/ h);
     renderer.setSize(w, h);
 	container.appendChild(renderer.domElement);
 	
