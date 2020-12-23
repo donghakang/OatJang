@@ -231,7 +231,7 @@ button {
    border:1px solid #42454c;
    text-align: center; */
    /* display:inline-block; */
-   
+
 }
 
 .td_a a{
@@ -247,8 +247,8 @@ button {
    font-size:15px;
    color:#999999;
    text-decoration:none; */
-   
-} 
+
+}
 
 .page_wrap {
    text-align:center;
@@ -270,7 +270,7 @@ button {
   background: #ccc;
   color: #000;
   text-decoration: none;
-  
+
  /*  background: #333; */
  /*  color: #fff; */
 }
@@ -290,53 +290,74 @@ button {
   text-decoration: none;
 }
 
-.boardList_hr{
-   width: 70%;
-   margin : 0 auto;
-}
 .boardList_pageNum{
-   margin-top :5px;
-   text-align: center;
+	margin-top :5px;
+	text-align: center;
 }
 
-/*boardInsert*/
+.boardList_pageNum a{
+	display: inline-block;
+  padding: 3px 5px;
+  margin-right: 10px;
+  margin-top: 5px;
+  font-family:Tahoma;
+  background: #ccc;
+  color: #000;
+  text-decoration: none;
+}
 
 
-      .div_category {
-         padding: 0.4em;
-         display: flex;
-         border: 0.5px solid gray;
-         margin: 6px 20%;
-      }
+/* 네비게이션 바 아래 딜,커뮤니티 용 메뉴바 */
+.btn_div{
+	width: 70%;
+	display:flex;
+	justify-content: space-between;
+	margin : 0.8em auto 0.4em auto;
+	
+}
 
-      .category {
-         position: absolute;
-         right: 20px;
-         width: 16%;
-      }
+.boardList_hr{
+	width: 70%;
+	margin : 0 auto;
+}
 
-      .price {
-         width: 40%;
-         font-size: 16px;
-         text-align: left;
+.board_a{
+	text-align:left;
+	font-size: 30px;
+	color : #f7ca18;
+}
 
-      }
 
-      .box {
-         padding: 5px 10px;
-         margin: 5px 0;
-      }
-      
-      li {
-         list-style: none;
-      }
+.write_btn{
+/* margin-left: 48.5%; */
+  margin-left: 57%;
+  width: 140px;
+  font-size: 1.3rem;
+  text-align:center;
+  height: 40px;
+  font-size: medium;
+  font-family: "Noto Sans KR", sans-serif;
+  color: gray;
+  padding: 5px;
+  cursor: pointer;
+  border: 2px solid #f7ca18;
+  background-color: transparent;
+  transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
 
-      .form__input{
-         width: 60%;
-         height:40px;
-           background-color: inherit;
-      }
-      .searchBut{
-         width:80px;
-         height:30px;
-      }
+.write_btn2{
+/* margin-left: 54.5%; */
+  margin-left: 65%;
+  width: 140px;
+  font-size: 1.3rem;
+  text-align:center;
+  height: 40px;
+  font-size: medium;
+  font-family: "Noto Sans KR", sans-serif;
+  color: gray;
+  padding: 5px;
+  cursor: pointer;
+  border: 2px solid #f7ca18;
+  background-color: transparent;
+  transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}

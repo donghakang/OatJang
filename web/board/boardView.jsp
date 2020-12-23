@@ -91,7 +91,7 @@
 							class="boardTag"
 						>수정</button>
 						<c:if test="${dto.success !=2 }">
-						
+
 						</c:if>
 					</c:if>
 

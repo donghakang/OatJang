@@ -256,6 +256,7 @@ a:before {
   border: 2px solid #f7ca18;
   background-color: transparent;
   transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+
 }
 
 .masterBtn:hover {
@@ -285,4 +286,25 @@ a:before {
 .back_btn {
   width: 280px;
   font-size: 1.3rem;
+}
+
+
+/* 네비게이션 바 아래 딜,커뮤니티 용 메뉴바 */
+.btn_div {
+	 text-align: right;
+}
+
+
+.commuList_hr{
+	width: 70%;
+	margin : 0 auto;
+
+}
+
+.community_a{
+	/* margin-left: 210px; */
+	margin-left: 15%;
+	text-align:left;
+	font-size: 30px;
+	color : #f7ca18;
 }

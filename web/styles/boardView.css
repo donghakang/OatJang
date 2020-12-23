@@ -24,7 +24,7 @@
 .image_container {
 
     width: 30vw;
-    height: 40vw;   
+    height: 40vw;
 }
 
 
@@ -100,7 +100,7 @@
 }
 
 .item_title {
-    
+
     padding-top: 1em;
     padding-bottom: 0.2em;
     font-size: 1.2em;
@@ -138,12 +138,12 @@
 }
 
 .item_nickname a{
-   color : gray;
-   font-size: 18px;
+	color : gray;
+	font-size: 18px;
 }
 
 .item_nickname a:hover{
-   color : darkgray;
+	color : darkgray;
 }
 
 
@@ -183,15 +183,15 @@
 
 
 
- 
 
 
-/* 등록 버튼 */ 
+
+/* 등록 버튼 */
 
 .reply_area {
     width: 100%;
     display: flex;
-    
+
 }
 
 .reply_area textarea {
@@ -203,7 +203,7 @@
 
 #reply_btn {
     width: 60px;
-    height: inherit;    
+    height: inherit;
 
     border-radius: 5px;
     border:none;
@@ -253,4 +253,4 @@
 }
 .re_replyList .replyButtonGroup a:hover {
     color: #444;
-} 
+}
