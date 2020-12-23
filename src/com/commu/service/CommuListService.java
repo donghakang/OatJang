@@ -14,34 +14,34 @@ import com.commu.dto.CommuPaging;
 import controller.CommandAction;
 
 public class CommuListService implements CommandAction {
-	@Override
-	public String requestPro(HttpServletRequest request,
-			HttpServletResponse response) throws Throwable {
-		int pg = Integer.parseInt(request.getParameter("pg"));
+   @Override
+   public String requestPro(HttpServletRequest request,
+         HttpServletResponse response) throws Throwable {
+      int pg = Integer.parseInt(request.getParameter("pg"));
 
-		int pageSize = 5; // 페이지당 게시글 3개 원하면 바꾸면됨
-		int endNum = pg * pageSize;
-		int startNum = endNum - (pageSize - 1);
+      int pageSize = 10; // 페이지당 게시글 3개 원하면 바꾸면됨
+      int endNum = pg * pageSize;
+      int startNum = endNum - (pageSize - 1);
 
-		Map<String, Integer> map = new HashMap<>();
-		map.put("startNum", startNum);
-		map.put("endNum", endNum);
+      Map<String, Integer> map = new HashMap<>();
+      map.put("startNum", startNum);
+      map.put("endNum", endNum);
 
-		CommuDAO dao = CommuDAO.getInstance();
-		List<CommuDTO> list = dao.getCommuList(map);
+      CommuDAO dao = CommuDAO.getInstance();
+      List<CommuDTO> list = dao.getCommuList(map);
 
-		CommuPaging paging = new CommuPaging(pg, 5, pageSize); // 페이지를 3페이지씩 보여줌
-		paging.makePagingHTML();
+      CommuPaging paging = new CommuPaging(pg, 5, pageSize); // 페이지를 3페이지씩 보여줌
+      paging.makePagingHTML();
 
-		for (CommuDTO ob : list) {
-			String nickname = dao.getNickname(ob.getUserid());
-			ob.setNickname(nickname);
-		}
+      for (CommuDTO ob : list) {
+         String nickname = dao.getNickname(ob.getUserid());
+         ob.setNickname(nickname);
+      }
 
-		request.setAttribute("list", list);
-		request.setAttribute("pg", pg);
-		request.setAttribute("paging", paging);
+      request.setAttribute("list", list);
+      request.setAttribute("pg", pg);
+      request.setAttribute("paging", paging);
 
-		return "commu/commuList.jsp";
-	}
+      return "commu/commuList.jsp";
+   }
 }

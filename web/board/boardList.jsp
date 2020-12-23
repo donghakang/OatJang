@@ -10,7 +10,9 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Document</title>
-   <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="/oatjang/styles/style.css">
+   <link rel="stylesheet" href="/oatjang/styles/board.css">
+   
    <style>
       h2 {
          text-align: center;
@@ -80,6 +82,11 @@
          font-size: 36px;
          color: black;
       }
+      .imageBoxBox{
+		height: 200px;
+		background-size: cover;
+		background-repeat: no-repeat;
+      }
    </style>
 </head>
 <script>
@@ -113,9 +120,27 @@
    <div class="divMaster">
    	<c:forEach items="${list }" var="ob">
       <div class="div1">
-         <div class="div2" onclick="location.href='/oatjang/boardView.do?iid=${ob.iid}&pg=${pg }'">
-
-            <img src="images/${fn:split(ob.images,',')[0]}" alt="확인">
+      		<c:if test="${ob.success ==2 }">
+      		<div class="div2" onclick="#">
+            <div class="imageBoxBox" style="background-image:url('images/${fn:split(ob.images,',')[0]}'); opacity:0.1;">
+            </div>
+            <div class="div3" onclick="#">
+               <a href="">제목 : ${ob.title }</a>
+               <a href="#">가격 : ${ob.price }</a>
+               <a href="#">카테고리 :
+               <c:if test="${ob.category ==0}">상의</c:if>
+               <c:if test="${ob.category ==1}">하의</c:if>
+               <c:if test="${ob.category ==2}">아우터</c:if>
+               <c:if test="${ob.category ==3}">원피스</c:if>
+               <c:if test="${ob.category ==4}">신발</c:if>
+               <c:if test="${ob.category ==5}">악세사리</c:if></a>
+            </div>
+         </div>
+      		</c:if>
+      		<c:if test="${ob.success !=2 }">
+      		<div class="div2" onclick="location.href='/oatjang/boardView.do?iid=${ob.iid}&pg=${pg }'">
+            <div class="imageBoxBox" style="background-image:url('images/${fn:split(ob.images,',')[0]}');">
+            </div>
             <div class="div3" onclick="/oatjang/boardView.do?iid=${ob.iid}&pg=${pg }">
                <a href="">제목 : ${ob.title }</a>
                <a href="/oatjang/boardView.do?iid=${ob.iid}&pg=${pg }">가격 : ${ob.price }</a>
@@ -128,10 +153,17 @@
                <c:if test="${ob.category ==5}">악세사리</c:if></a>
             </div>
          </div>
+      		</c:if>
+         
       </div>
 	</c:forEach>
 
    </div>
+	<br>
+   <hr class="boardList_hr">
+   <div class="boardList_pageNum"><c:if test="${empty paging}">${paging2.getPagingHTML()}</c:if>
+   <c:if test="${!empty paging}">${paging.getPagingHTML()}</c:if></div>
+
 </body>
 
 </html>

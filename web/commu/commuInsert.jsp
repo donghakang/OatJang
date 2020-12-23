@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/oatjang/styles/board.css">
+<link rel="stylesheet" href="/oatjang/styles/style.css">
 
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link
@@ -107,79 +108,94 @@
 		var img_id = "#img_id_" + index;
 		$(img_id).remove();
 	}
+	
+	function checkCondition(){
+		if($(".title").val()===''){
+			alert("제목을 입력하세요");
+			$(".title").focus();
+			return;
+		}
+		if($(".price").val()===''){
+			alert("가격을 입력하세요");
+			$(".price").focus();
+			return;
+		}
+		if($("#input_img").val()===''){
+			alert("메인사진을 정하세요");
+			return;
+		}
+		$("#commuInsertForm").submit();
+	}
 </script>
 </head>
 
 <body>
 
 	<div class="navigation_bar"></div>
-	<form action="../commuInsert.do" method="post"
-		enctype="multipart/form-data">
-		<input type="hidden" name="userid" value="${loginComplete.userId}" />
-		<!-- 임시로 1로 해둠 나중에 로그인 아디로 바꿔야함 -->
-
-		<h3 class="header">자유게시판</h3>
-
-		<div class="textbox">
-			<div class="div_title">
-				<input class="title box" type="text" name="title" value=""
-					placeholder="제목을 입력하세요." />
+		<form action="../commuInsert.do" id="commuInsertForm" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="userid" value="${loginComplete.userId }" />
+			<!-- 임시로 1로 해둠 나중에 로그인 아디로 바꿔야함 -->
+			<div class="textbox">
+				<!-- 제목,가격,카테고리,설명 -->
+				<div class="div_title">
+					<input class="box title" type="text" name="title" value=""
+						placeholder="제목을 입력하세요." /> <br>
+				</div>
 			</div>
+
+			<!-- 설명칸  -->
 			<div class="div_intext">
-				<textarea class="textinput bw" name="description" value=""
+				<textarea class="textinput bi" name="description" value=""
 					placeholder="내용을 입력하세요."></textarea>
 			</div>
-		</div>
-		</div>
 
-		<div class="picture">
-			<!--  메인사진 -->
-			<div class="picturein">
-				<div class="div_main">
-					<div>
-						<h2>메인사진</h2>
-					</div>
-					<div id="input_wrap">
-						<a href="javascript:" onclick="mainFileUploadAction();"
-							class="my_button">파일 업로드</a> <input type="file" id="input_img"
-							name="mainfile" hidden="true" />
-					</div>
-				</div>
+
+
+	<div class="picture">
+		<!--  메인사진 -->
+		<div class="picturein">
+			<div class="div_main">
 				<div>
-					<div id="imgs_wrap" class="imgs_wrap">
-						<img id="img" />
-					</div>
+					<h2>메인사진</h2>
 				</div>
-
-
-
-
-				<!-- 서브사진 -->
-				<div class="div_main">
-					<h2>서브사진</h2>
-					<div id="input_wraps">
-						<a href="javascript:" onclick="subFileUploadAction();"
-							class="my_button">파일 업로드</a> <input type="file"
-							multiple="multiple" id="input_imgs" name="subfile[]"
-							hidden="true" />
-					</div>
-				</div>
-				<div>
-					<div id="imgs_wraps" class="imgs_wraps">
-						<img id="imgs" />
-					</div>
+				<div class="input_wrap">
+					<a href="javascript:" onclick="mainFileUploadAction();"
+						class="my_button">파일 업로드</a> <input type="file" id="input_img"
+						name="mainfile" hidden="true" />
 				</div>
 			</div>
-			<div class="btn">
-				<div id="rightbtn">
-					<input class="go_btn masterBtn" type="submit" value="이전으로" />
-				</div>
-				<div>
-					<input class="back_btn masterBtn" type="submit" value="게시하기" />
+			<div>
+				<div class="imgs_wrap">
+					<img id="img" />
 				</div>
 			</div>
 
+			<!-- 서브사진 -->
+			<div class="div_main">
+				<h2>서브사진</h2>
+				<div class="input_wraps">
+					<a href="javascript:" onclick="subFileUploadAction();"
+						class="my_button">파일 업로드</a> <input type="file"
+						multiple="multiple" id="input_imgs" name="subfile[]" hidden="true" />
+				</div>
+			</div>
+			<div>
+				<div class="imgs_wraps">
+					<img id="imgs" />
+				</div>
+			</div>
 		</div>
+		<br>
+		<!-- 버튼 -->
+		<div class="btn">
+			<div id="rightbtn">
+				<input class="go_btn masterBtn" type="button" value="이전으로" onclick="location.href='/oatjang/boardList.do?pg=1'"/>
+			</div>
+			<div>
+				<input class="back_btn masterBtn" type="button" onclick="checkCondition()" value="게시하기" />
+			</div>
+		</div>
+	</div>
 
 	</form>
 </body>

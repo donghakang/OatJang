@@ -17,6 +17,6 @@ public class BoardCompleteService implements CommandAction{
 		BoardDAO dao = BoardDAO.getInstance();
 		dao.boardComplete(iid);
 		
-		return "board/boardView.do?iid="+iid+"&pg="+pg;
+		return "boardList.do?&pg="+pg;
 	}
 }

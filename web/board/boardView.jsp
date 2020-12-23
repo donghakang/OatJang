@@ -77,38 +77,33 @@
 				<hr>
 				<div class="item_nickname">${nickname }</div>
 
-
-
-
-
-				<div class="board_btns">
-
-					<c:if test="${loginComplete.userId == dto.userid}">
+				<c:if test="${loginComplete.userId == dto.userid}">
 						<button
-							onclick="location.href='/oatjang/boardModify.do?iid=${dto.iid }&pg=${pg }'"
+							onclick="location.href='/oatjang/boardComplete.do?iid=${dto.iid}&pg=${pg }'"
 							class="boardTag"
-						>수정</button>
+						>거래완료</button>
 						<button
 							onclick="location.href='/oatjang/boardDelete.do?iid=${dto.iid }&pg=${pg }'"
 							class="boardTag"
 						>삭제</button>
 						<button
-							onclick="loaction.href='/oatjang/boardComplete.do?iid=${dto.iid}&pg=${pg }'"
+							onclick="location.href='/oatjang/boardModify.do?iid=${dto.iid }&pg=${pg }'"
 							class="boardTag"
-						>거래완료</button>
+						>수정</button>
+						<c:if test="${dto.success !=2 }">
+						
+						</c:if>
 					</c:if>
-
-				</div>
-
 
 			</div>
 		</div>
 
 		<div class="comment_option">
 			<h3 class="comment_title">
-				댓글&nbsp;<span id="cCnt"></span>
+				댓글
 			</h3>
 		</div>
+		<input type="hidden" id="checkSuccess" value="${dto.success }"/>
 		<div class="comment_textarea">
 			<form id="commentForm" name="commentForm" method="post">
 				<div class="reply_area">
@@ -195,6 +190,7 @@
  	function updateReply(rid){
  		$("#replyContent"+rid).hide();
  		$("#replyUpdate"+rid).show();
+ 		$("#updateContent"+rid).focus();
 
  	}
  	function closeUpdate(rid){
@@ -219,6 +215,7 @@
  			location.href="/oatjang/login/login.jsp";
  		}
  		$("#reReplyInsert"+rid).show();
+ 		$("#comment"+rid).focus();
  	}
  	function closeReReply(rid){
  		$("#reReplyInsert"+rid).hide();
@@ -228,7 +225,7 @@
  		if(!userid){
  			userid = 0;
  		}
-  		var send = "userid="+userid+"&reply="+$("#reply").val()+"&nickname="+$("#nickname").val()+"&iid="+${dto.iid}+"&ref="+$("#replyRef"+rid).val()+"&comment="+$("#comment"+rid).val();
+  		var send = "userid="+userid+"&reply="+$("#reply").val()+"&nickname="+$("#nickname").val()+"&iid="+$("#iid").val()+"&ref="+$("#replyRef"+rid).val()+"&comment="+$("#comment"+rid).val();
 		$.ajax({
 			type:'GET',
 			url:"<c:url value='/replyInsert.do'/>",
