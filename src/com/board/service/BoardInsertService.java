@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.FileItem;
 import org.apache.tomcat.util.http.fileupload.FileItemFactory;
@@ -17,6 +18,7 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
 import com.board.dao.BoardDAO;
 import com.board.dto.BoardDTO;
 import com.login.dto.AddressDTO;
+import com.login.dto.LoginDTO;
 
 import controller.CommandAction;
 
@@ -120,6 +122,11 @@ public class BoardInsertService implements CommandAction {
 
 		BoardDAO dao = BoardDAO.getInstance();
 		dao.boardInsert(dto, addr_dto);
+
+		HttpSession session = request.getSession();
+		LoginDTO entity = (LoginDTO) session.getAttribute("loginComplete");
+		System.out.println("loginComplete : " + entity);
+
 		return "boardList.do?pg=1";
 	}
 }

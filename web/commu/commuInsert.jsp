@@ -78,9 +78,10 @@
 						return;
 					}
 
-					sel_files.push(f);
+					
 					var reader = new FileReader();
 					reader.onload = function(e) {
+						sel_files.push(f);
 						var html = "<a href=\"javascript:void(0);\" onclick=\"deleteImagesAction("
 								+ index
 								+ ")\" id=\"img_id_"
@@ -96,7 +97,6 @@
 	}
 
 	function deleteImageAction(index) {
-		alert("aa")
 		sel_file.splice(index, 1);
 		var img_id = "#img_id_0";
 		$(img_id).remove();

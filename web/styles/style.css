@@ -31,10 +31,10 @@ h2 {
 body {
   padding: 0;
   margin: 0;
-  background-color: #2f303a;
+  background-color: #f9efe8;
   font-family: Poppins, sans-serif;
   font-size: 1rem;
-  color: white;
+  color: black;
   min-height: 100vh;
 }
 
@@ -45,7 +45,7 @@ footer {
   margin: 0 auto;
   padding: 0.45em;
   text-align: center;
-  background-color: #555;
+  background-color: #420900;
   text-color: #ffffff;
   font-size: 0.7em;
   height: 8vh;
@@ -207,7 +207,7 @@ div.topBotomBordersOut a:hover:after {
 .my_button {
   text-decoration: none;
   text-align: center;
-  border: 2px solid #f7ca18;
+  border: 2px solid #5b3216;
   font-family: "Noto Sans KR", sans-serif;
   color: gray;
   padding: 5px;
@@ -217,8 +217,8 @@ div.topBotomBordersOut a:hover:after {
 }
 
 .my_button:hover {
-  color: #000 !important;
-  background-color: #f7ca18;
+  color: #fff;
+  background-color: #5b3216;
 }
 
 a:before {
@@ -231,7 +231,7 @@ a:before {
   z-index: -1;
   content: "";
   color: #000 !important;
-  background: #f7ca18;
+  background: #5b3216;
   transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
 }
 
@@ -249,15 +249,15 @@ a:before {
   color: gray;
   padding: 5px;
   cursor: pointer;
-  border: 2px solid #f7ca18;
+  border: 2px solid #5b3216;
   background-color: transparent;
   transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
 
 }
 
 .masterBtn:hover {
-  color: #000 !important;
-  background-color: #f7ca18;
+  color: #fff;
+  background-color: #5b3216;
 }
 
 .masterBtn:hover:before {
@@ -275,7 +275,7 @@ a:before {
   z-index: -1;
   content: "";
   color: #000 !important;
-  background: #f7ca18;
+  background: #5b3216;
   transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
 }
 .go_btn,
@@ -303,5 +303,5 @@ a:before {
 	margin-left: 15%;
 	text-align:left;
 	font-size: 30px;
-	color : #f7ca18;
+	color : #5b3216;
 }

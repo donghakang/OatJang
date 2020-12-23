@@ -55,6 +55,7 @@
     justify-content: center;
     text-align: center;
     font-size: 1rem;
+    color: #333;
 }
 
 .menu_item {
@@ -64,29 +65,32 @@
 }
 
 #community {
-    background-color: brown;
+    background-color: #fff;
 }
 
 #maps {
-    background-color: burlywood;
+    background-color: #eee;
 }
 #deals {
-    background-color: brown;
+    background-color: #ddd;
 }
 
 #community:hover,
 #maps:hover,
 #deals:hover {
     width: 40vw;
-    color: #555;
+    color: #ddd;
     letter-spacing: 0.8rem;
     font-size: 2rem;
 }
 
 
 #community:hover{
-	background-image: url("../image/IMG_7270.jpeg");
+	background-color:#a25e42;
 }
 #maps:hover {
-	background-image: url("../image/menu_item_map.png");
+	background-color:#70331a;
+}
+#deals:hover {
+	background-color: #420900;
 }

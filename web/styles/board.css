@@ -16,7 +16,7 @@
 }
 .menu {
   background-color: rgb(194, 155, 117);
-  font-size: 20px;
+  font-size: 1em;
   border-radius: 10px;
 }
 
@@ -38,7 +38,7 @@ button {
   width: 100%;
   height: 30px;
   text-align: center;
-  font-size: 20px;
+  font-size: 1em;
 }
 
 #td_title:hover{
@@ -73,7 +73,7 @@ button {
 
 .box {
   padding: 5px 10px;
-  margin: 5px 20%;
+  margin: 5px 0;
   border-radius: 5px;
 }
 .title {
@@ -84,7 +84,6 @@ button {
   background-color: inherit;
   text-align: left;
 }
-
 .bi {
   min-height: 200px;
 }
@@ -115,24 +114,24 @@ button {
   margin-bottom: 20px;
 }
 
-.imgs_wrap .img_item {
+.imgs_wrap .selProductFile {
   width: 150px;
   padding: 10px;
   margin-right: 10px;
 }
 
-.imgs_wrap .img_item img {
+.imgs_wrap .selProductFile img {
   width: 100%;
 }
 
-.imgs_wraps .img_item {
+.imgs_wraps .selProductFile {
   width: 150px;
   padding: 10px;
   border: 1px solid gray;
   margin-right: 10px;
 }
 
-.imgs_wraps .img_item imgs {
+.imgs_wraps .selProductFile #imgs {
   width: 100%;
 }
 
@@ -183,11 +182,7 @@ button {
   margin: 5px 20%;
 }
 
-.box {
-  padding: 5px 10px;
-  margin: 5px 20%;
 
-}
 
 .title {
   width: 60%;
@@ -224,7 +219,7 @@ button {
 
 .td_class{
    height: 30px;
-   color: white;
+
 }
 
 
@@ -283,7 +278,7 @@ button {
 }
 
 #a_back{
-   background: #333;
+	background-color: inherit;
 }
 
 .boardList_pageNum a{
@@ -327,7 +322,7 @@ button {
 .board_a{
 	text-align:left;
 	font-size: 30px;
-	color : #f7ca18;
+	color: #5b3216;
 }
 
 .community_a{
@@ -345,13 +340,15 @@ button {
   height: 40px;
   font-size: medium;
   font-family: "Noto Sans KR", sans-serif;
-  color: gray;
+  color: #444;
   padding: 5px;
   cursor: pointer;
-  border: 2px solid #f7ca18;
+  border: 2px solid #5b3216;;
   background-color: transparent;
   transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
 }
+
+
 
 .write_btn2{
 /* margin-left: 54.5%; */
@@ -365,8 +362,43 @@ button {
   color: gray;
   padding: 5px;
   cursor: pointer;
-  border: 2px solid #f7ca18;
+  border: 2px solid #5b3216;;
   background-color: transparent;
   transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
 }
 
+.write_btn:hover,
+.write_btn2:hover {
+	color: #fff;
+	background-color: #5b3216;
+}
+
+li{
+  list-style: none;
+}
+ 
+.form__input{
+  width: 60%;
+  height:40px;
+  background-color: inherit;
+}
+.searchBut{
+  width:80px;
+  height:30px;
+}
+.price {
+  width: 40%;
+  height: 50px;
+  font-size: 16px;
+  background-color: inherit;
+  text-align: left;
+
+}
+.category {
+  position: absolute;
+  right: 20px;
+  width: 16%;
+  border: 1px solid gray;
+  padding: 10px;
+  margin: 5px 20%;
+}

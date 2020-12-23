@@ -13,21 +13,12 @@
 <link rel="stylesheet" href="/oatjang/styles/style.css">
 
 <script>
-	$(document)
-			.ready(
-					function() {
-						$('#searchAddress')
-								.on(
-										'click',
-										function() {
-											console.log('iii')
-											var pop = window
-													.open(
-															"/oatjang/login/jusoPopup.jsp",
-															"pop",
-															"width=570,height=420, scrollbars=yes, resizable=yes");
-										});
-					});
+	$(document).ready( function() {
+ 		$('#searchAddress').on( 'click', function() {
+ 			console.log('iii')
+ 			var pop = window.open("/oatjang/login/jusoPopup.jsp", "pop", "width=570,height=420, scrollbars=yes, resizable=yes");
+		});
+	});
 
 	// 주소 가지고 오기
 	function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
@@ -153,7 +144,6 @@
 	}
 
 	function deleteImageAction(index) {
-		alert("aa")
 		sel_file.splice(index, 1);
 		var img_id = "#img_id_0";
 		$(img_id).remove();

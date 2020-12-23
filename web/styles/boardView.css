@@ -1,6 +1,6 @@
 :root {
-    --background_size: 68vw;
-    --content_size: 800px;
+    --background_size: 860px;
+    --content_size: 860px;
 }
 * {
     margin: 0;
@@ -13,16 +13,17 @@
     flex-direction: column;
     margin: 6em auto;
     width: var(--background_size);
-
+	border: 1px solid #ccc;
 }
 
 .boardView_container {
     position: relative;
     display:flex;
+	border-bottom: 1px solid #ccc;
 }
 
 .image_container {
-
+	border-right: 1px solid #ccc;
     width: 30vw;
     height: 40vw;   
 }
@@ -60,7 +61,7 @@
 
 .boardTag {
    font-size:18px;
-   background:#666;
+   background:#824820;
   color:#fff;
   padding: 3px 10px;
   border:none;
@@ -199,23 +200,33 @@
     padding: 2px;
     border: 1px solid gray ;
     outline: none;
+    margin-left: 20px;
+	
 }
 
-#reply_btn {
-    width: 60px;
-    height: inherit;    
+ #reply_btn {
+	width: 60px;
+	height: inherit;    
+	background-color: #824820;
+	color: #fff;
+	border-radius: 5px;
+	border:none;
+	outline: none;
+}
 
-    border-radius: 5px;
-    border:none;
-    outline: none;
+#reply_btn:hover{
+    background:#fff;
+	color:#000;
 }
 
 /* 답글 공간 */
 #commentListForm{
     width: 100%;
+    margin-left: 20px;
 }
 
 .nickname_content h4 {
+	
     margin-top: 10px;
 }
 .nickname_content .reply__content {
@@ -228,6 +239,7 @@
 }
 
 .replyList .replyButtonGroup {
+	margin-right: 20px;
     text-align: right;
 }
 .replyList .replyButtonGroup a {

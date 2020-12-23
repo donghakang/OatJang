@@ -79,7 +79,6 @@ System.out.println("pw: " + pw);
 		  return str.split(searchStr).join(replaceStr);
 	}
 	
-	
 	$('#to_next_register').on('click', function() {
 		var str = $('[name="age"]').val()		// 1995-06-02
 
@@ -89,6 +88,32 @@ System.out.println("pw: " + pw);
 		$('#send_age').val(str_to_age);
 		document.submitRegister.submit();
 	})
+	
+	$('#login__nickname').keyup(function () {
+			var send = "nickname=" + $('#login__nickname').val();
+			console.log(send);
+			
+			$.ajax({
+				type:'POST',
+				url:'nicknameCheck.jsp',
+				dataType:"html",
+				data:send,
+				error:function() {
+					//TODO: fix the comment
+					console.log("Problem Occurred While Checking Valid ID")
+					/* $('#id').css("border", "2px solid #ff0000"); */
+					// TODO: true
+					nickname_checker = true;
+				},
+				success:function(data) {
+					$('#nicknameCheck').html(data);
+					/* $('#id').css("border", "2px solid #00ff00"); */
+					nickname_checker = true;
+				}
+			});
+			
+			
+	});
 </script>
 </head>
 <!-- <body class="container">
@@ -131,7 +156,7 @@ System.out.println("pw: " + pw);
 					<input id="login__nickname" type="text" name="nickname"
 						class="form__input" placeholder="nickname" required
 					>
-					<span id="nicknameCheck">이미 있는 아이디입니다.</span>
+					<span id="nicknameCheck">닉네임을 넣어주세요</span>
 				</div>
 
 				<div class="form__field">

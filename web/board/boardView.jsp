@@ -29,6 +29,7 @@
       			$("#divImageBox").css({"background-size":"cover","background-repeat":"no-repeat","background-position":"center"});
       			if(num.val()==0){
     				$("#iClassLeft").hide();
+    				$("#iClassRight").show();
     			}else{
     				$("#iClassRight").show();
     			}
@@ -40,6 +41,7 @@
       			$("#divImageBox").css({"background-size":"cover","background-repeat":"no-repeat","background-position":"center"});
       			if(num.val()==(imageLength-1)){
     				$("#iClassRight").hide();
+    				$("#iClassLeft").show();
     			}else{
     				$("#iClassLeft").show();
     			}

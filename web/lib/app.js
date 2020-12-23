@@ -50,7 +50,7 @@ function main() {
  
 
     renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setClearColor("#5c3317");
+    renderer.setClearColor("#fcfcfc");
 	renderer.setSize( w, h );
 
     // stats

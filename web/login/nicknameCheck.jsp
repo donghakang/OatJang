@@ -18,8 +18,7 @@
 <body>
 
 	<%
-	String id = request.getParameter("id");
-	System.out.println(id);
+	String nickname = request.getParameter("nickname");
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
@@ -50,11 +49,11 @@
 	*/
 
 	int n = 0;
-	if (!id.equals("") && id != null) {
+	if (!nickname.equals("") && nickname != null) {
 		try {
-			String sql = "SELECT COUNT(ID) FROM USERS WHERE ID=?";
+			String sql = "SELECT COUNT(NICKNAME) FROM USERS WHERE NICKNAME=?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
+			pstmt.setString(1, nickname);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -76,14 +75,14 @@
 			}
 		}
 	} // end if
+
 	if (n > 0) {
 	%>
-	
-	<span style="color: red; font-weight: bold">사용중</span>인 아이디 입니다.
+	<span style="color: red; font-weight: bold">사용중</span>인 닉네임 입니다.
 	<%
 } else {
 %>
-	<span style="color: green; font-weight: bold">사용 가능</span>한 아이디 입니다.
+	<span style="color: green; font-weight: bold">사용 가능</span>한 닉네임 입니다.
 	<%
 }
 %>

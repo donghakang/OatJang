@@ -102,37 +102,49 @@
 
         .boardTag {
             text-decoration: none;
-            background-color: #eeeeee;
+            background-color: #824820;
             padding: 10px 20px;
             font-size: 12px;
-            color: black;
+            color: #fff;
             border-radius: 5px;
             border: 0;
             font-family: bold;
         }
+        
+        .boardTag:hover{
+			background:#fff;
+		 	color:#000;
+		}
 
         /*등록 버튼  */
 
         .reply_area {
             width: var(--content_size);
-            display: flex;
-            
+            display: flex;   
         }
+        
 
         .reply_area textarea {
             border-radius: 5px;
             padding: 2px;
             border: 1px solid gray ;
             outline: none;
+		
         }
 
         #reply_btn {
             width: 60px;
             height: inherit;    
-
+			background-color: #824820;
+			color: #fff;
             border-radius: 5px;
             border:none;
             outline: none;
+        }
+        
+        #reply_btn:hover{
+        	background:#fff;
+		 	color:#000;
         }
 
         /* 답글 공간 */

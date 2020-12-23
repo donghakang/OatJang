@@ -2,6 +2,7 @@
 <%@page import="java.util.ArrayList"%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
 %>
@@ -16,9 +17,60 @@
 >
 <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" href="/oatjang/styles/map.css">
+
 <style>
 
 
+
+* {
+	
+    padding: 0;
+    margin: 0;
+}
+.overlaybox {
+    width:200px;
+    height:120px;
+    border: 1px solid gray;
+    padding: 6px 4px 4px 4px;
+    
+}
+
+.overlaybox .box__image {
+    width: 80px;
+    height: 80px;
+}
+
+.box__title {
+    width: 100%;
+    border-bottom: 1px solid gray;
+    font-weight: bold;
+    color: #000000;
+}
+
+
+.group {
+    display: flex;
+    margin: 10px 4px;
+}
+
+.box__image .object-fit {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+
+.box__price {
+	color: #000000;
+    position: relative;
+    width: 100%;
+    margin-left: 10px;
+}
+
+.box__price i {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
 
 
 
@@ -48,23 +100,15 @@
 			<i class="fa fa-search search_checkbox" id="search_image"></i>
 		</div>
 		<!-- <i class="fa fa-search search_checkbox" id="search_image"></i>-->
-		
+	
 
-		<div id="menu_wrap" class="bg_white">
-			<div class="option">
-				<div>
-					<form onsubmit="searchPlaces(); return false;">
-						키워드 :
-						<input type="text" value="이태원 맛집" id="keyword" size="15">
-						<button type="submit">검색하기</button>
-					</form>
-				</div>
-			</div>
-			<hr>
-			<ul id="placesList"></ul>
-			<div id="pagination"></div>
-
+		<div id="menu_wrap" class="menu_wrap">
+			<form onsubmit="searchPlaces(); return false;">
+				<input type="text" value="" id="keyword" size="15" placeholder="위치를 검색하세요!">
+				<button type="submit">검색하기</button>
+			</form>
 		</div>
+
 
 		<div class="category">
 			<ul>
@@ -180,8 +224,19 @@
 
 
 		// 콘텐츠 세팅 
-		function contentMaker(title, price, description, hit) {
-			return '<div class="overlaybox">' + title + '</div>' + '<div>' + price + '</div>' + '<div>' + description + '</div>' + '<div>' + hit + '</div>'
+		function contentMaker(title, price, image) {
+			var img_dir = '/oatjang/images/'
+			return '<div class="overlaybox">' +
+	        '	<div class="box__title">' + title + '</div>' +
+	        '	<div class="group">' +
+	        '	    <div class="box__image">' +
+	        '	        <img class="object-fit" src="' + img_dir + image + '" alt="">' +
+	        '	    </div>' +
+	        '	    <div class="box__price">' + price + '원' +
+	        '	        <i class="fa fa-hand-o-right fa-2x" aria-hidden="true"></i>' +
+	        '	    </div>' +
+	        '	</div>' + 
+	    	'</div>';
 		}
 
 
@@ -199,6 +254,8 @@
 			 	var bid = '${item.bid}'
 			 	var hit = ${item.hit}
 				var coords = new kakao.maps.LatLng(${item.lat}, ${item.lng});
+				var image = '${item.images}'.split(",")[0];
+				
 						    
 				var item = {
 					addr: addr,
@@ -212,7 +269,7 @@
 					hit: ${item.hit},
 					positionImage: positionMarkerImages[category],
 					hoverImage: hoverMarkerImages[category],
-					content: contentMaker(title, price, description, hit),
+					content: contentMaker(title, price, image),
 					latlng: coords
 				}
 				
@@ -234,7 +291,7 @@
 				
 				 kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(i, map, marker, infoWindow));
 				 kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(i, map, marker, infoWindow));
-				 kakao.maps.event.addListener(marker, 'click', console.log('is clicked'));
+				 kakao.maps.event.addListener(marker, 'click', clickOnListener(items[i].iid));
 
 				
 				// 필터를 위해
@@ -273,6 +330,14 @@
 			    return function() {
 			    	marker.setImage(items[i].positionImage);
 			        infowindow.close();
+			    };
+			}
+			
+			// 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+			function clickOnListener(iid) {
+			    return function() {
+			    	console.log(i);
+					location.href = '/oatjang/boardView.do?iid=' + iid + '&pg=1';
 			    };
 			}
 
@@ -437,7 +502,8 @@
 			            lon = position.coords.longitude; // 경도
 			        
 			        var locPosition = new kakao.maps.LatLng(lat, lon) // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-			        map.setCenter(locPosition);   
+			        map.setCenter(locPosition);  
+			        map.setLevel(5);
 			    });
 			    
 			} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다

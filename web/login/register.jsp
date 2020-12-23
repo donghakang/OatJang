@@ -18,29 +18,29 @@ $(document).ready(function() {
 	var pw2_checker = false;			// pw2 확인
 
 	$('#id').keyup(function () {
-			var send = "id=" + $('#id').val();
-			console.log(send);
-			
-			$.ajax({
-				type:'POST',
-				url:'idCheck.jsp',
-				dataType:"html",
-				data:send,
-				error:function() {
-					//TODO: fix the comment
-					console.log("Problem Occurred While Checking Valid ID")
-					/* $('#id').css("border", "2px solid #ff0000"); */
-					// TODO: true
-					id_checker = true;
-				},
-				success:function(data) {
-					$('#idCheck').html(data);
-					/* $('#id').css("border", "2px solid #00ff00"); */
-					id_checker = true;
-				}
-			});
-			
+		var send = "id=" + $('#id').val();
+		console.log(send);
+		
+		$.ajax({
+			type:'POST',
+			url:'idCheck.jsp',
+			dataType:"html",
+			data:send,
+			error:function() {
+				//TODO: fix the comment
+				console.log("Problem Occurred While Checking Valid ID")
+				/* $('#id').css("border", "2px solid #ff0000"); */
+				// TODO: true
+				id_checker = true;
+			},
+			success:function(data) {
+				$('#idCheck').html(data);
+				/* $('#id').css("border", "2px solid #00ff00"); */
+				id_checker = true;
+			}
 		});
+		
+	});
 		
 		
 		// 비밀번호 강도와, 비밀번호 체크
@@ -105,9 +105,7 @@ $(document).ready(function() {
 		// 다음으로 넘어가기 위해 모든 필드가 작성 되었는지 여부 확인
 		$('#to_next_register').on('click', function() {
 			// TODO: change checker
-			// if (id_checker && pw1_checker && pw2_checker) {
-
-			if (true) {
+			if (id_checker && pw1_checker && pw2_checker) {
 				var send_id = $('[name="id"]').val();
 				var send_pw = $('[name="pw"]').val();
 				
