@@ -15,11 +15,39 @@
 
 <script>
     	$(document).ready(function() {
+    		var imageLength = ${fn:length(fn:split(dto.images,','))};
+    		var num = $("#nowImageCount");
     		$('.navigation_bar').load( "/oatjang/login/loginMenu.jsp", function( response, status, xhr ) {
     			if ( status == "error" ) {
     				var msg = "Sorry but there was an error: ";
     			}
     		});
+    		$("#iClassLeft").on("click",function(){
+    			num.val(num.val()-1);
+				
+      			$("#divImageBox").css({"background":"url("+$("#imageName"+num.val()).val()+")"});
+      			$("#divImageBox").css({"background-size":"cover","background-repeat":"no-repeat","background-position":"center"});
+      			if(num.val()==0){
+    				$("#iClassLeft").hide();
+    			}else{
+    				$("#iClassRight").show();
+    			}
+    		});
+			$("#iClassRight").on("click",function(){
+    			num.val(Number(num.val())+1);
+				
+      			$("#divImageBox").css({"background":"url("+$("#imageName"+num.val()).val()+")"});
+      			$("#divImageBox").css({"background-size":"cover","background-repeat":"no-repeat","background-position":"center"});
+      			if(num.val()==(imageLength-1)){
+    				$("#iClassRight").hide();
+    			}else{
+    				$("#iClassLeft").show();
+    			}
+    		});
+			$("#iClassLeft").hide();
+			if(imageLength==1){
+				$("#iClassRight").hide();
+			}
     	})
 </script>
 </head>
@@ -139,19 +167,27 @@
 					</c:if>
 =======
 	<div class="navigation_bar"></div>
-	<a href="/oatjang/boardList.do?pg=${pg}" class="back_button"><i
-		class="fa fa-chevron-left"
-	></i></a>
 	<div class="boardview_main_container">
 		<div class="boardView_container">
 			<div class="image_container">
-				<div class="main_image">
-					<img src="images/${fn:split(dto.images,',')[0]}" />
-				</div>
-				<div class="sub_images">
-					<c:forEach var="ob" begin="1" items="${fn:split(dto.images,',')}">
-					<img src="images/${ob}" />
-				</c:forEach>
+				<div class="main_image">	
+					<c:forEach var="ob" varStatus="status" items="${fn:split(dto.images,',')}">
+						<input type="hidden" id="imageName${status.index }" value="/oatjang/images/${ob }"/>
+					</c:forEach>
+					<input type="hidden" id="nowImageCount" value="0"/>
+					<div id="divImageBox" style="background-image:url('/oatjang/images/${fn:split(dto.images,',')[0]}'); 
+						width: 100%; height:100%;
+						background-size: cover;
+						background-repeat: no-repeat;
+						position:relative;
+						background-position:center;
+						">
+						<i id="iClassLeft" class="fa fa-chevron-left fa-3x" style="position:absolute; left:0; top:50%; transform: translate(0, -50%);  text-shadow:
+   						-1px -1px 0 #000, 1px -1px 0 #000,-1px 1px 0 #000, 1px 1px 0 #000;"></i>
+						<i id="iClassRight"class="fa fa-chevron-right fa-3x" style="position:absolute; right:0; top:50%; transform: translate(0, -50%); text-shadow:
+   						-1px -1px 0 #000, 1px -1px 0 #000,-1px 1px 0 #000, 1px 1px 0 #000;"></i>
+					
+					</div> 
 				</div>
 			</div>
 			<!-- 정보 -->

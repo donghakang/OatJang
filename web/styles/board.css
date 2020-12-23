@@ -162,6 +162,13 @@ button {
 }
 
 /* boardInsert  */
+      .div_category {
+         padding: 0.4em;
+         display: flex;
+         border: 0.5px solid gray;
+         margin: 6px 20%;
+      }
+
 
 .addressbox {
   border: 1px solid gray;
@@ -192,7 +199,7 @@ button {
 }
 
 .price {
-  width: 60%;
+  width: 30%;
   height: 50px;
   font-size: 16px;
   background-color: inherit;
