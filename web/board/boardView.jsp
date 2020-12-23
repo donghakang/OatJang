@@ -75,31 +75,21 @@
 				<div class="item_address">${dto.roadAddrPart1 }</div>
 				<div class="item_description">${dto.description }</div>
 				<hr>
-				<div class="item_nickname">${nickname }</div>
-
-
-
-
-
-				<div class="board_btns">
-
+				<div class="item_nickname">${nickname }
 					<c:if test="${loginComplete.userId == dto.userid}">
-						<button
-							onclick="location.href='/oatjang/boardModify.do?iid=${dto.iid }&pg=${pg }'"
-							class="boardTag"
-						>수정</button>
-						<button
-							onclick="location.href='/oatjang/boardDelete.do?iid=${dto.iid }&pg=${pg }'"
-							class="boardTag"
-						>삭제</button>
+						<p class="board_btns">   
+						<a
+							href='/oatjang/boardModify.do?iid=${dto.iid }&pg=${pg }'
+							class="boardTag">수정</a>
+						<a
+							href='/oatjang/boardDelete.do?iid=${dto.iid }&pg=${pg }'
+							class="boardTag">삭제</a>
 						<button
 							onclick="loaction.href='/oatjang/boardComplete.do?iid=${dto.iid}&pg=${pg }'"
-							class="boardTag"
-						>거래완료</button>
+							class="boardTag">거래완료</button>
+						</p>
 					</c:if>
-
 				</div>
-
 
 			</div>
 		</div>

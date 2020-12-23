@@ -10,7 +10,8 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Document</title>
-   <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/oatjang/styles/style.css"/> 
+   <link rel="stylesheet" href="/oatjang/styles/board.css" />
    <style>
       h2 {
          text-align: center;
@@ -101,16 +102,17 @@
 </script>
 
 <body>
-    <div class="navigation_bar"></div>
-   <div class="menu_nav">
+<div class="navigation_bar"></div>
 
-      <a class="boardmain" href="/oatjang/boardList.do?pg=1">DEALS</a>
-      <!-- 목록으로 가기 -->
-	  <input type="hidden" id="loginCheck" value="${loginComplete.userId }"/>
-      <input class="go_btn masterBtn" type="button" onclick="writeCheck()" value="글쓰기" /> <!-- 내일 고치기 -->
-      <!-- 글쓰기  -->
-   </div>
-   <div class="divMaster">
+	<div class="btn_div">
+		<a class="board_a" href="/oatjang/boardList.do?pg=1">DEALS</a> 
+		<input type="hidden" id="loginCheck" value="${loginComplete.userId }" /> 
+		<input class="write_btn2" type="button" onclick="writeCheck()" value="글쓰기" />
+	</div>
+	<hr class="boardList_hr">
+
+
+	<div class="divMaster">
    	<c:forEach items="${list }" var="ob">
       <div class="div1">
          <div class="div2" onclick="location.href='/oatjang/boardView.do?iid=${ob.iid}&pg=${pg }'">
@@ -132,6 +134,10 @@
 	</c:forEach>
 
    </div>
+   <br>
+   <hr class="boardList_hr">
+   <div class="boardList_pageNum"><c:if test="${empty paging}">${paging2.getPagingHTML()}</c:if>
+	<c:if test="${!empty paging}">${paging.getPagingHTML()}</c:if></div>
 </body>
 
 </html>

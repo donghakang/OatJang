@@ -278,3 +278,76 @@ button {
 	background: #333;
 }
 
+.boardList_pageNum{
+	margin-top :5px;
+	text-align: center;
+}
+
+.boardList_pageNum a{
+	display: inline-block;
+  padding: 3px 5px;
+  margin-right: 10px;
+  margin-top: 5px;
+  font-family:Tahoma;
+  background: #ccc;
+  color: #000;
+  text-decoration: none;
+}
+
+
+/* 네비게이션 바 아래 딜,커뮤니티 용 메뉴바 */
+.btn_div{
+	width: 100%;
+}
+
+.boardList_hr{
+	width: 70%;
+	margin : 0 auto;
+}
+
+.board_a{
+	text-align:left;
+	font-size: 30px;
+	color : #f7ca18;
+}
+
+.community_a{
+	text-align:left;
+	font-size: 30px;
+	color : #f7ca18;
+}
+
+.write_btn{
+/* margin-left: 48.5%; */
+  margin-left: 57%;
+  width: 140px;
+  font-size: 1.3rem;
+  text-align:center;
+  height: 40px;
+  font-size: medium;
+  font-family: "Noto Sans KR", sans-serif;
+  color: gray;
+  padding: 5px;
+  cursor: pointer;
+  border: 2px solid #f7ca18;
+  background-color: transparent;
+  transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+
+.write_btn2{
+/* margin-left: 54.5%; */
+  margin-left: 65%;
+  width: 140px;
+  font-size: 1.3rem;
+  text-align:center;
+  height: 40px;
+  font-size: medium;
+  font-family: "Noto Sans KR", sans-serif;
+  color: gray;
+  padding: 5px;
+  cursor: pointer;
+  border: 2px solid #f7ca18;
+  background-color: transparent;
+  transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+

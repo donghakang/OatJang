@@ -4,13 +4,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link rel="stylesheet" href="/oatjang/styles/board.css">
+
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/oatjang/styles/board.css"/>
 <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
@@ -33,11 +34,13 @@
 		</script>
     <div class="navigation_bar"></div>
 	<input type="hidden" id="loginCheck" value="${loginComplete.userId }"/>
-	<div class="board_nav ">
-		<input type="button" href="#" class="masterBtn" value="목록" />
-		<input type="button" onclick="writeCheck()"
-			class="masterBtn" value="글 작성" />
+
+	<div class="btn_div">
+		<a href="/oatjang/commuList.do?pg=1" class="community_a">COMMUNITY</a>
+		<input type="button" onclick="writeCheck()" class="write_btn" value="글 작성" />
 	</div>
+	<hr class="commuList_hr">
+
 
 	<div class="board_list_wrap"> <!-- 전체영역 -->
 	<table class="board">
@@ -52,7 +55,7 @@
 		<c:forEach items="${list }" var="ob">
 			<tbody  onclick="location.href='/oatjang/commuView.do?iid=${ob.iid}&pg=${pg }'" class="board_text" id="board_text_id">
 				<td class="td_class" >${ob.iid}</td>
-				<td id="td_title">${ob.title }<c:if test="${ob.reply!=0 }">(${ob.reply })</c:if></td>
+				<td id="td_title">${ob.title }  <c:if test="${ob.reply!=0 }" ><font color="red">  (${ob.reply }) </font></c:if></td>
 				<td>${ob.nickname }</td>
 				<td>${ob.logtime }</td>
 				<td>${ob.hit }</td>

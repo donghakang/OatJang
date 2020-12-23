@@ -53,9 +53,14 @@
 
 .board_btns {
     position: absolute;
-    bottom: 1em;
-    display:flex;
+  /*   bottom: 1em;
+    display:flex; */
     justify-content: center;
+}
+
+.boardTag {
+	font-size:18px;
+	
 }
 
 
@@ -121,6 +126,15 @@
 
 .item_nickname {
     padding-top: 1em;
+}
+
+.item_nickname a{
+	color : gray;
+	font-size: 18px;
+}
+
+.item_nickname a:hover{
+	color : darkgray;
 }
 
 
