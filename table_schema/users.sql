@@ -19,7 +19,7 @@ addrid number(10));
 commit
 
 insert into users values(1,'abcd','1111','테스트','테스트',20,1111,0);
-
+insert into users values(2,'corn202023@gmail.com','1111','이해민','HM',20,1111,'서울');
 select * from users;
 
 

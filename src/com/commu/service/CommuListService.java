@@ -19,9 +19,9 @@ public class CommuListService implements CommandAction {
          HttpServletResponse response) throws Throwable {
       int pg = Integer.parseInt(request.getParameter("pg"));
 
-		int pageSize = 10; // 페이지당 게시글 3개 원하면 바꾸면됨
-		int endNum = pg * pageSize;
-		int startNum = endNum - (pageSize - 1);
+      int pageSize = 10; // 페이지당 게시글 3개 원하면 바꾸면됨
+      int endNum = pg * pageSize;
+      int startNum = endNum - (pageSize - 1);
 
       Map<String, Integer> map = new HashMap<>();
       map.put("startNum", startNum);

@@ -104,7 +104,7 @@
 }
 
 .item_title {
-    
+
     padding-top: 1em;
     padding-bottom: 0.2em;
     font-size: 1.2em;
@@ -142,12 +142,12 @@
 }
 
 .item_nickname a{
-   color : gray;
-   font-size: 18px;
+	color : gray;
+	font-size: 18px;
 }
 
 .item_nickname a:hover{
-   color : darkgray;
+	color : darkgray;
 }
 
 
@@ -190,16 +190,16 @@
 
 
 
- 
 
 
-/* 등록 버튼 */ 
+
+/* 등록 버튼 */
 
 .reply_area {
 	background-color: pink;
     width: var(--content_size);
     display: flex;
-    
+	
 }
 
 .reply_area textarea {
@@ -270,4 +270,4 @@
 }
 .re_replyList .replyButtonGroup a:hover {
     color: #444;
-} 
+}

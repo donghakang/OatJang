@@ -10,9 +10,8 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Document</title>
-   <link rel="stylesheet" href="/oatjang/styles/style.css">
-   <link rel="stylesheet" href="/oatjang/styles/board.css">
-   
+    <link rel="stylesheet" href="/oatjang/styles/style.css"/>
+   <link rel="stylesheet" href="/oatjang/styles/board.css" />
    <style>
       h2 {
          text-align: center;
@@ -111,8 +110,8 @@
 <div class="navigation_bar"></div>
 
 	<div class="btn_div">
-		<a class="board_a" href="/oatjang/boardList.do?pg=1">DEALS</a> 
-		<input type="hidden" id="loginCheck" value="${loginComplete.userId }" /> 
+		<a class="board_a" href="/oatjang/boardList.do?pg=1">DEALS</a>
+		<input type="hidden" id="loginCheck" value="${loginComplete.userId }" />
 		<input class="write_btn2" type="button" onclick="writeCheck()" value="글쓰기" />
 	</div>
 	<hr class="boardList_hr">
@@ -145,7 +144,7 @@
             <div class="div3" onclick="/oatjang/boardView.do?iid=${ob.iid}&pg=${pg }">
                <a href="">제목 : ${ob.title }</a>
                <a href="/oatjang/boardView.do?iid=${ob.iid}&pg=${pg }">가격 : ${ob.price }</a>
-               <a href="/oatjang/boardView.do?iid=${ob.iid}&pg=${pg }">카테고리 : 
+               <a href="/oatjang/boardView.do?iid=${ob.iid}&pg=${pg }">카테고리 :
                <c:if test="${ob.category ==0}">상의</c:if>
                <c:if test="${ob.category ==1}">하의</c:if>
                <c:if test="${ob.category ==2}">아우터</c:if>
@@ -155,16 +154,15 @@
             </div>
          </div>
       		</c:if>
-         
+
       </div>
 	</c:forEach>
 
    </div>
-	<br>
+   <br>
    <hr class="boardList_hr">
    <div class="boardList_pageNum"><c:if test="${empty paging}">${paging2.getPagingHTML()}</c:if>
-   <c:if test="${!empty paging}">${paging.getPagingHTML()}</c:if></div>
-
+	<c:if test="${!empty paging}">${paging.getPagingHTML()}</c:if></div>
 </body>
 
 </html>

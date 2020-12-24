@@ -274,7 +274,7 @@
 		<!-- 버튼 -->
 		<div class="btn">
 			<div id="rightbtn">
-				<input class="go_btn masterBtn" type="submit" value="이전으로" />
+				<input class="go_btn masterBtn" type="button" value="이전으로" onclick="location.href='/oatjang/boardList.do?pg=1'"/>
 			</div>
 			<div>
 				<input class="back_btn masterBtn" type="button" onclick="checkCondition()" value="게시하기" />

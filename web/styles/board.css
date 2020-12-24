@@ -233,7 +233,7 @@ button {
    border:1px solid #42454c;
    text-align: center; */
    /* display:inline-block; */
-   
+
 }
 
 .td_a a{
@@ -249,8 +249,8 @@ button {
    font-size:15px;
    color:#999999;
    text-decoration:none; */
-   
-} 
+
+}
 
 .page_wrap {
    text-align:center;
@@ -264,7 +264,7 @@ button {
 }
 
 .td_a a {
- display: inline-block;
+  display: inline-block;
   padding: 3px 5px;
   margin-right: 10px;
   margin-top: 5px;
@@ -272,7 +272,7 @@ button {
   background: #ccc;
   color: #000;
   text-decoration: none;
-  
+
  /*  background: #333; */
  /*  color: #fff; */
 }
@@ -311,7 +311,11 @@ button {
 
 /* 네비게이션 바 아래 딜,커뮤니티 용 메뉴바 */
 .btn_div{
-	width: 100%;
+	width: 70%;
+	display:flex;
+	justify-content: space-between;
+	margin : 0.8em auto 0.4em auto;
+	
 }
 
 .boardList_hr{
@@ -325,11 +329,6 @@ button {
 	color: #5b3216;
 }
 
-.community_a{
-	text-align:left;
-	font-size: 30px;
-	color : #f7ca18;
-}
 
 .write_btn{
 /* margin-left: 48.5%; */

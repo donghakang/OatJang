@@ -32,23 +32,23 @@ public class CommuPaging {
 		//----------------------------------------------------------------
 		if(startPage>pageBlock){			
 			pagingHTML.append("<a href='/oatjang/commuList.do?pg="
-		+(startPage-pageBlock)+"'>["+"이전]</a>");
+		+(startPage-pageBlock)+"'>"+"이전</a>");
 		}		
 		
 		for(int i=startPage;i<=endPage;i++){
 			if(currentPage==i){
 				pagingHTML.append("<a href='/oatjang/commuList.do?pg="
-			                     +i+"'><font color=red>["+ i+ "]</font></a>");
+			                     +i+"' id='a_back'>"+ i+ "</a>");
 			
 			}else{
 				pagingHTML.append("<a href='/oatjang/commuList.do?pg="
-			                      +i+"'>["+i+"]</a>");
+			                      +i+"'>"+i+"</a>");
 			}
 		}
 				
 		if(endPage<totalP){
 			pagingHTML.append("<a href='/oatjang/commuList.do?pg="
-		+(startPage+pageBlock)+"'>["+"다음]</a>");
+		+(startPage+pageBlock)+"'>"+"다음</a>");
 		}
 	}
 	

@@ -93,8 +93,15 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.login.dto.LoginDTO" %>
 
-<%@ include file="loginMenu.jsp" %>
-
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>OatJang - 메인 페이지</title>
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<link rel="stylesheet" href="/oatjang/styles/style.css">
+    <link rel="stylesheet" href="/oatjang/styles/home.css">
+</head>
 <%
 	LoginDTO dto = (LoginDTO)request.getAttribute("entity");
 %>

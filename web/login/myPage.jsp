@@ -25,17 +25,8 @@
 
 <%
 	LoginDTO dto = (LoginDTO)request.getAttribute("loginUserEntity");
-	AddressDTO addr_dto = (AddressDTO)request.getAttribute("addressEntity"); 
+	AddressDTO addr_dto = (AddressDTO)request.getAttribute("addressEntity");
 
-/* 	if (dto != null) {
-		System.out.println(dto.getId());
-		System.out.println(dto.getName());
-		System.out.println(dto.getNickname());
-		System.out.println(dto.getPhone());
-		System.out.println(dto.getAddrId());
-		System.out.println(dto.getAge());
-	} */
-	
 	int passLength = dto.getPw().length();
 	System.out.println("passLength : "+passLength);
 	String passTemp = "";
@@ -86,7 +77,7 @@
                     <th><%=addr_dto.getRoadAddrPart1()%><br><%=addr_dto.getAddrDetail()%> <%=addr_dto.getRoadAddrPart2() %></th>
                 </tr>
             </thead>
-            
+
 
         </table>
 
@@ -108,9 +99,9 @@
 				<input type="submit" value="회원정보수정">
 				<input type="button" value="취 소" onclick="location.href='/oatjang/index.jsp'">
 			</form>
-            
+
         </div>
     </div>
 
 </body>
-</html> 
+</html>

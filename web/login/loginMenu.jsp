@@ -55,7 +55,7 @@
 
             });
         });
-        
+
         function searchBoard()
         {
 
@@ -70,7 +70,7 @@
 
 <%
 LoginDTO dto = (LoginDTO)session.getAttribute("loginComplete");
-%> 
+%>
 
 <body class="container">
     <header class="header1">
@@ -80,7 +80,7 @@ LoginDTO dto = (LoginDTO)session.getAttribute("loginComplete");
 
         <div id="right" class="right container red topBotomBordersOut">
             <a href="#" alt="search" id="search">search</a>
-            
+
 			<!-- 로그인 세션이 없을시, -->
 			<c:if test="${ empty loginComplete }">
             	<a href="/oatjang/login/login.jsp" alt="login">login</a></li>
@@ -91,7 +91,7 @@ LoginDTO dto = (LoginDTO)session.getAttribute("loginComplete");
             	<a href="/oatjang/logout.do" alt="log out">log out</a></li>
 			</c:if>
         </div>
-        
+
 
         <div id="middle" class="middle container red topBotomBordersOut">
             <a href="#" alt="all">all</a>
@@ -104,7 +104,7 @@ LoginDTO dto = (LoginDTO)session.getAttribute("loginComplete");
     <div id="search_engine" class="search_engine">
         <form onsubmit="searchBoard();" name="sear" id="frm">
             <input type="text" id="search_keyword" name="searchentity" class="searchTerm"  placeholder="What are you looking for?">
-             <input type ="hidden" name="pg" value ="1"> 
+             <input type ="hidden" name="pg" value ="1">
             <button type="submit"><i class="fa fa-search search_checkbox" id="search_image"></i></button>
         </form>
     </div>
