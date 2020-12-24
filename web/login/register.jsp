@@ -148,7 +148,7 @@ $(document).ready(function() {
 
 						<div class="form__field">
 							<input id="id" type="text" name="id" class="form__input"
-								placeholder="Username" required
+								placeholder="Username" autocomplete="off" required
 							>
 							<span id="idCheck">아이디를 입력하세요.</span>
 						</div>

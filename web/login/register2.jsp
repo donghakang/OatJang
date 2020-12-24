@@ -154,14 +154,14 @@ System.out.println("pw: " + pw);
 
 				<div class="form__field form__field__first">
 					<input id="login__nickname" type="text" name="nickname"
-						class="form__input" placeholder="nickname" required
+						class="form__input" placeholder="nickname" autocomplete="off" required
 					>
 					<span id="nicknameCheck">닉네임을 넣어주세요</span>
 				</div>
 
 				<div class="form__field">
 					<input id="login__name" type="text" name="name" class="form__input"
-						placeholder="Name" required
+						placeholder="Name" autocomplete="off" required
 					>
 				</div>
 
@@ -174,7 +174,7 @@ System.out.println("pw: " + pw);
 
 				<div class="form__field">
 					<input id="login__phone" type="text" name="phone"
-						class="form__input" placeholder="Phone Number" required
+						class="form__input" placeholder="Phone Number" autocomplete="off" required
 					>
 				</div>
 
