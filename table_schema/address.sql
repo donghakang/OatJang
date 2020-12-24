@@ -2,9 +2,9 @@
 -- address
 create table address(
 addrid number,
-roadAddrPart1 varchar(100),
-roadAddrPart2 varchar(100),
-addrDetail varchar(100),
+roadAddrPart1 varchar(500),
+roadAddrPart2 varchar(500),
+addrDetail varchar(500),
 lat number,
 lng number
 )

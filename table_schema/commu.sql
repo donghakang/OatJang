@@ -6,10 +6,10 @@ delete commu;
 create table commu(
     iid number(10) primary key,
     userid number(10),
-    title varchar2(30) not null,
-    images varchar2(500),
-    description varchar2(500),
-    reply number(6) default 0,
+    title varchar2(100) not null,
+    images varchar2(1000),
+    description varchar2(1000),
+    reply number(10) default 0,
     hit number default 0,
     logtime date default sysdate,
     constraint fk_commu foreign key(userid) references users(userid));

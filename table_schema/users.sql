@@ -7,10 +7,10 @@ drop table users;
 --primary key : unique + not null
 create table users(
 userid number(10) primary key,
-id varchar(10) unique,
-pw varchar(10) not null,
-name varchar(10) not null,
-nickname varchar(10),
+id varchar(20) unique,
+pw varchar(20) not null,
+name varchar(30) not null,
+nickname varchar(30),
 age number(10),
 phone number(10),
 addrid number(10));
